@@ -30,6 +30,10 @@ function handleError(error: CustomError, res: Response) {
     return res.status(401).json({ error: error.message });
   }
 
+  if (error.name === "NotFoundError") {
+    return res.status(404).json({ error: error.message });
+  }
+
   if (error.name === "WriteConcernError") {
     return res.status(500).json({ error: error.message });
   }

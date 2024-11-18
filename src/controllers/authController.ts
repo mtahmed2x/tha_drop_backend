@@ -1,10 +1,9 @@
 import to from "await-to-ts";
 import { Request, Response } from "express";
-import Auth from "@models/authModel";
+import Auth, { AuthDocument } from "@models/authModel";
 import sendEmail from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
 import handleError from "@utils/handleError";
-import { HydratedDocument } from "mongoose";
 
 type Email = string;
 type Password = string;
@@ -39,24 +38,42 @@ type Payload = {
   verificationOTP: VerificationOTP;
 };
 
-// const verifyEmail = async (payload: Payload) : Promise<{error: Error | null, auth: HydratedDocument | null}> => {
-//   const email = payload.email;
-//   const verificationOTP = payload.verificationOTP;
+const verifyEmail = async (
+  payload: Payload
+): Promise<[Error | null, AuthDocument | null]> => {
+  const { email, verificationOTP } = payload;
+  let [error, auth] = await to(Auth.findOne({ email }));
+  if (error) return [error, null];
+  if (!auth) {
+    error = new Error("Email don't exist");
+    error.name = "NotFoundError";
+    return [error, null];
+  }
+  if (auth && verificationOTP === auth.verificationOTP) return [null, auth];
+  error = new Error("Wrong Verification Code");
+  error.name = "UnauthorizedError";
+  return [error, null];
+};
 
-//   let error: Error | null;
-//   let auth: typeof Auth | null;
+const activate = async (
+  req: Request<{}, {}, Payload>,
+  res: Response
+): Promise<any> => {
+  let [error, auth] = await verifyEmail(req.body);
+  if (error) return handleError(error, res);
 
-//   [error, auth] = await to(Auth.findOne({email}));
-
-//   return { error, auth };
-// };
-
-// const activate = async (req: Request, res: Response): Promise<any> => {
-//  verifyEmail(req.body);
-// };
+  if (auth) {
+    auth.verificationOTP = "";
+    auth.verificationOTPExpire = null;
+    auth.isVerified = true;
+    await auth?.save();
+    return res.status(200).json({ message: "Verification Successful" });
+  }
+};
 
 const AuthController = {
   register,
+  activate,
 };
 
 export default AuthController;

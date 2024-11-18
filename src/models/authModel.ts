@@ -4,7 +4,7 @@ export type AuthDocument = Document & {
   email: string;
   password: string;
   verificationOTP: string;
-  verificationOTPExpire: Date;
+  verificationOTPExpire: Date | null;
   isVerified: boolean;
   isBlocked: boolean;
 };

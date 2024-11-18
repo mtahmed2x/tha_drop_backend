@@ -1,5 +1,8 @@
 import AuthController from "@controllers/authController";
 import express from "express";
-const router = express.Router();
+const authRouter = express.Router();
 
-router.post("/register", AuthController.register);
+authRouter.post("/register", AuthController.register);
+authRouter.post("/activate", AuthController.activate);
+
+export default authRouter;

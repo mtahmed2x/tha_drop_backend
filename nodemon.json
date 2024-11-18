@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["src/**/*.spec.ts", "node_modules", "dist"],
+  "exec": "ts-node -r module-alias/register src/server.ts"
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc",
-    "dev": "nodemon -r module-alias/register src/server.ts"
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
