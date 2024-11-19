@@ -21,11 +21,11 @@ const authSchema = new Schema<AuthDocument>({
   },
   verificationOTP: {
     type: String,
-    required: true,
+    required: false,
   },
   verificationOTPExpire: {
     type: Date,
-    required: true,
+    required: false,
   },
   isVerified: {
     type: Boolean,

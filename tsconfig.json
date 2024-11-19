@@ -2,15 +2,13 @@
   "compilerOptions": {
     "target": "ES2023",
     "module": "CommonJS",
-    "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/*"],
       "@connection/*": ["src/connection/*"],
       "@controllers/*": ["src/controllers/*"],
       "@models/*": ["src/models/*"],
