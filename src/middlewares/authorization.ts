@@ -6,7 +6,6 @@ import { DecodedUser } from "@models/user";
 
 import Auth from "@models/auth";
 import User from "@models/user";
-import Creator from "@models/creator";
 import handleError from "@utils/handleError";
 
 type Decoded = {
@@ -16,7 +15,7 @@ type Decoded = {
 export const decode = async (
   token: string
 ): Promise<[Error | null, DecodedUser | null]> => {
-  let error, auth, user, creator;
+  let error, auth, user;
 
   let decoded: Decoded;
   try {
@@ -53,16 +52,6 @@ export const decode = async (
     name: user.name,
   };
 
-  if (auth.role === "creator") {
-    [error, creator] = await to(Creator.findOne({ auth: auth._id }));
-    if (error) return [error, null];
-    if (!creator) {
-      error = new Error("Creator does not exist");
-      error.name = "NotFoundError";
-      return [error, null];
-    }
-    data.creatorId = creator._id!.toString();
-  }
   return [null, data];
 };
 

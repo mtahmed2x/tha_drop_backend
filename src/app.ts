@@ -1,13 +1,9 @@
 import express from "express";
 import cors from "cors";
 import authRouter from "@routers/auth";
-import CategoryRouter from "@routers/category";
-import SubCategoryRouter from "@routers/subCategory";
-import PodcastRouter from "@routers/podcast";
-import PlanRouter from "@routers/plan";
-import UserRouter from "@routers/user";
-import CreatorRouter from "@routers/creator";
-import SubScriptionRouter from "@routers/subscription";
+import { errorHandler } from "@utils/errorHandler";
+import accountRouter from "@routers/stripeAccount";
+import TicketRouter from "@routers/ticket";
 
 const app = express();
 
@@ -20,12 +16,9 @@ app.use(
   })
 );
 app.use("/auth", authRouter);
-app.use("/category", CategoryRouter);
-app.use("/sub-category", SubCategoryRouter);
-app.use("/podcast", PodcastRouter);
-app.use("/plan", PlanRouter);
-app.use("subscription", SubScriptionRouter);
-app.use("/user", UserRouter);
-app.use("/creator", CreatorRouter);
+app.use("/account", accountRouter);
+app.use("/ticket", TicketRouter);
+
+app.use(errorHandler);
 
 export default app;

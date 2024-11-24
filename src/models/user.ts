@@ -17,7 +17,7 @@ export type DecodedUser = {
   isVerified: boolean;
   isBlocked: boolean;
   email: string;
-  role: "user" | "creator" | "admin";
+  role: "GUEST" | "HOST" | "DJ" | "BARTENDER" | "BOTTLEGIRL";
   creatorId?: string;
 };
 

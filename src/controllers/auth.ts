@@ -1,52 +1,59 @@
 import to from "await-to-ts";
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import "dotenv/config";
 import Auth, { AuthDocument } from "@models/auth";
 import User, { UserDocument } from "@models/user";
-import Creator, { CreatorDocument } from "@models/creator";
 import sendEmail from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
 import handleError from "@utils/handleError";
+import Guest from "@models/guest";
+import Host from "@models/host";
+import Bartender from "@models/bartender";
+import DJ from "@models/DJ";
+import BottleGirl from "@models/bottleGirl";
+import createHttpError from "http-errors";
+import Stripe from "stripe";
 
-type AuthPayload = {
-  email: string;
-  password: string;
-  confirmPassword?: string;
-};
+type Register = Pick<
+  AuthDocument & UserDocument,
+  | "name"
+  | "email"
+  | "role"
+  | "dateOfBirth"
+  | "address"
+  | "password"
+  | "confirmPassword"
+>;
+type Activate = Pick<AuthDocument, "email" | "verificationOTP">;
+type Login = Pick<AuthDocument, "email" | "password">;
+type ForgotPassword = { email: string };
+type ChangePassword = Pick<AuthDocument, "password" | "confirmPassword">;
 
-type UserPayload = {
-  name: string;
-  role: "admin" | "user" | "creator";
-  dateOfBirth: string;
-  address: string;
-};
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-type VerifyEmailPayload = {
-  email: string;
-  verificationOTP: string;
-};
-
-type ForgotPasswordPayload = {
-  email: string;
-};
-
-type ChangePasswordPayload = {
-  password: string;
-  confirmPassword?: string;
+const roleModelMap = {
+  GUEST: Guest,
+  HOST: Host,
+  DJ: DJ,
+  BARTENDER: Bartender,
+  BOTTLEGIRL: BottleGirl,
 };
 
 const register = async (
-  req: Request<{}, {}, AuthPayload & UserPayload>,
-  res: Response
+  req: Request<{}, {}, Register>,
+  res: Response,
+  next: NextFunction
 ): Promise<any> => {
   const { name, email, role, dateOfBirth, address, password, confirmPassword } =
     req.body;
 
-  let [error, auth] = await to(Auth.findOne({ email }));
-  if (error) return handleError(error, res);
-  if (auth) return res.status(400).json({ error: "Email already exists" });
+  let error, auth, user;
+
+  [error, auth] = await to(Auth.findOne({ email }));
+  if (error) return next(error);
+  if (auth) return next(createHttpError(400, "Email already exists"));
 
   const verificationOTP = generateOTP();
   const verificationOTPExpire = new Date(Date.now() + 1 * 60 * 1000);
@@ -61,9 +68,9 @@ const register = async (
       verificationOTPExpire,
     })
   );
-  if (error) return handleError(error, res);
+  if (error) return next(error);
 
-  const [userError, user] = await to(
+  [error, user] = await to(
     User.create({
       auth: auth._id,
       name: name,
@@ -71,37 +78,31 @@ const register = async (
       address: address,
     })
   );
-  if (userError) return handleError(userError, res);
+  if (error) return next(error);
 
-  type ResponseData = [AuthDocument, UserDocument, CreatorDocument?];
-  const responseData: ResponseData = [
-    auth as AuthDocument,
-    user as UserDocument,
-  ];
+  const account = await stripe.accounts.create({ type: "express" });
 
-  if (role === "creator") {
-    const [creatorError, creator] = await to(
-      Creator.create({
-        auth: auth._id,
-        user: auth._id,
-      })
-    );
-    if (creatorError)
-      return res.status(500).json({ error: creatorError.message });
-
-    responseData.push(creator);
-  }
+  const RoleModel = roleModelMap[role];
+  let roleDoc;
+  [error, roleDoc] = await to(
+    RoleModel.create({
+      auth: auth._id,
+      user: user._id,
+      stripeAccoundId: account.id,
+    })
+  );
+  if (error) return next(error);
 
   sendEmail(email, verificationOTP);
 
   return res.status(201).json({
     message: "Registration Successful. Verify your email.",
-    data: responseData,
+    data: { auth, user, roleDoc, account },
   });
 };
 
 const verifyEmail = async (
-  payload: VerifyEmailPayload
+  payload: Activate
 ): Promise<[Error | null, AuthDocument | null]> => {
   const { email, verificationOTP } = payload;
   let [error, auth] = await to(Auth.findOne({ email }));
@@ -118,7 +119,7 @@ const verifyEmail = async (
 };
 
 const activate = async (
-  req: Request<{}, {}, VerifyEmailPayload>,
+  req: Request<{}, {}, Activate>,
   res: Response
 ): Promise<any> => {
   let [error, auth] = await verifyEmail(req.body);
@@ -138,7 +139,7 @@ const generateToken = (id: string): string => {
 };
 
 const login = async (
-  req: Request<{}, {}, AuthPayload>,
+  req: Request<{}, {}, Login>,
   res: Response
 ): Promise<any> => {
   const { email, password } = req.body;
@@ -159,7 +160,7 @@ const login = async (
 };
 
 const forgotPassword = async (
-  req: Request<{}, {}, ForgotPasswordPayload>,
+  req: Request<{}, {}, ForgotPassword>,
   res: Response
 ): Promise<any> => {
   const { email } = req.body;
@@ -177,7 +178,7 @@ const forgotPassword = async (
 };
 
 const recoverPassword = async (
-  req: Request<{}, {}, VerifyEmailPayload>,
+  req: Request<{}, {}, Activate>,
   res: Response
 ): Promise<any> => {
   const [error, auth] = await verifyEmail(req.body);
@@ -189,7 +190,7 @@ const recoverPassword = async (
 };
 
 const changePassword = async (
-  req: Request<{}, {}, ChangePasswordPayload>,
+  req: Request<{}, {}, ChangePassword>,
   res: Response
 ): Promise<any> => {
   const { password, confirmPassword } = req.body;

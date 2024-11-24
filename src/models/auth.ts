@@ -1,11 +1,11 @@
 import { Document, Schema, model } from "mongoose";
-import Creator from "@models/creator";
 import User from "@models/user";
 
 export type AuthDocument = Document & {
   email: string;
   password: string;
-  role: "user" | "admin" | "creator";
+  confirmPassword?: string;
+  role: "GUEST" | "HOST" | "DJ" | "BARTENDER" | "BOTTLEGIRL";
   verificationOTP: string;
   verificationOTPExpire: Date | null;
   isVerified: boolean;
@@ -25,7 +25,7 @@ const authSchema = new Schema<AuthDocument>(
     },
     role: {
       type: String,
-      enum: ["user", "admin", "creator"],
+      enum: ["GUEST", "HOST", "DJ", "BARTENDER", "BOTTLEGIRL"],
     },
     verificationOTP: {
       type: String,
@@ -53,7 +53,6 @@ authSchema.pre("findOneAndDelete", async function (next) {
   const auth = await this.model.findOne(this.getQuery());
   if (auth) {
     await User.deleteOne({ authId: auth._id });
-    await Creator.deleteOne({ authId: auth._id });
   }
   next();
 });
