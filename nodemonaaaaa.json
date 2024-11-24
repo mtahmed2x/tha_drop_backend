@@ -1,7 +1,0 @@
-{
-  "verbose": true,
-  "watch": ["src"],
-  "ext": "ts",
-  "ignore": ["src/**/*.spec.ts", "node_modules"],
-  "exec": "concurrently \"npx tsc --watch\" \"ts-node -r tsconfig-paths/register src/server.ts\""
-}
