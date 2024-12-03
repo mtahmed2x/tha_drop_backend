@@ -3,7 +3,6 @@ import { Document, Schema, Types, model } from "mongoose";
 export type GuestDocument = Document & {
   auth: Types.ObjectId;
   user: Types.ObjectId;
-  stripeAccoundId: string;
 };
 
 const schema = new Schema<GuestDocument>({
@@ -13,10 +12,6 @@ const schema = new Schema<GuestDocument>({
   },
   user: {
     type: Schema.Types.ObjectId,
-    required: true,
-  },
-  stripeAccoundId: {
-    type: String,
     required: true,
   },
 });
