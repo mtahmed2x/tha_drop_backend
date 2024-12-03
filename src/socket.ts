@@ -2,9 +2,12 @@ import { decode } from "@middlewares/authorization";
 import { Server, Socket } from "socket.io";
 import dotenv from "dotenv";
 
+
 dotenv.config();
 
 let io: Server | undefined;
+
+let a = 9;
 
 export const initSocket = (server: any): void => {
   io = new Server(server, {
