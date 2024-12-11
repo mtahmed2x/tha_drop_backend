@@ -15,8 +15,10 @@
       "@middlewares/*": ["src/middlewares/*"],
       "@models/*": ["src/models/*"],
       "@routers/*": ["src/routers/*"],
+      "@shared/*": ["src/shared/*"],
       "@types/*": ["src/types/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@schemas/*": ["src/schemas/*"]
     }
   },
   "include": ["src/**/*.ts"],

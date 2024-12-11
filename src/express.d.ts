@@ -1,15 +1,10 @@
-import { Request } from "express";
-import { Types } from "mongoose";
-import { DecodedUser } from "@models/user";
-import { CategoryDocument } from "@models/category";
-import { SubCategoryDocument } from "@models/subCategory";
+import { DecodedUser } from "@schemas/decodedUser";
 
 declare global {
-  namespace Express {
-    interface Request {
-      user: DecodedUser;
-      category: CategoryDocument;
-      subCategory: SubCategoryDocument;
+    namespace Express {
+        interface Request {
+            user: DecodedUser;
+
+        }
     }
-  }
 }

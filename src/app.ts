@@ -1,23 +1,25 @@
 import express from "express";
 import cors from "cors";
-import authRouter from "@routers/auth";
+import authRouter from "@routers/authRouter";
 import { errorHandler } from "@utils/errorHandler";
 import accountRouter from "@routers/stripeAccount";
 import TicketRouter from "@routers/ticket";
+import EventRouter from "@routers/eventRouter";
 
 const app = express();
 
 app.use(express.json());
 app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
+    cors({
+        origin: "*",
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
 );
 app.use("/auth", authRouter);
 app.use("/account", accountRouter);
 app.use("/ticket", TicketRouter);
+app.use("/event", EventRouter);
 
 app.use(errorHandler);
 
