@@ -12,21 +12,12 @@ const userSchema = new Schema<UserSchema>({
         type: String,
         required: true
     },
-    role: {
-        type: String,
-        required: true,
-        enum: Role
-    },
     phoneNumber: {
         type: String,
         required: true
     },
     address: {
         type: String
-    },
-    license: {
-        type: String,
-        required: true
     },
     dateOfBirth: {
         type: String

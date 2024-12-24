@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/successes/.2e3f7c54b5c643f13df89ff5b342fa81e099e4e7-audit.json",
+    "files": [
+        {
+            "date": 1735075390851,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/successes/um-2024-12-25-03-success.log",
+            "hash": "c155d5e8b792d5b2df144671e705f308e0d1f2c3a9643761cc5eaeb48df94212"
+        },
+        {
+            "date": 1735077638410,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/successes/um-2024-12-25-04-success.log",
+            "hash": "8ccc234bea3811dd8d8a0a095cf09b6e51291ea5e308577bceb4d0abd10302ec"
+        }
+    ],
+    "hashType": "sha256"
+}

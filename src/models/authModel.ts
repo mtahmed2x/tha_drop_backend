@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { AuthSchema } from "../schemas/authSchema";
+import { Role } from "@shared/enum";
 
 const authSchema = new Schema<AuthSchema>({
   email: {
@@ -10,13 +11,21 @@ const authSchema = new Schema<AuthSchema>({
     type: String,
     required: true
   },
+  role: {
+    type: String,
+    required: true,
+    enum: Role
+  },
+  license: {
+    type: String,
+    required: true,
+  },
   verificationOTP: {
     type: String,
-    required: true
   },
   verificationOTPExpire: {
     type: Date,
-    required: true
+    
   },
   recoveryOTP: {
     type: String

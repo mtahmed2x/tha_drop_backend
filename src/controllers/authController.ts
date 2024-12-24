@@ -13,7 +13,8 @@ import generateOTP from "@utils/generateOTP";
 
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const { name, email, role, phoneNumber, license, password } = req.body;
+    const { name, email, phoneNumber, role, password } = req.body;
+    const { license } = (req as any).files;
     let error, auth;
     const hashedPassword = await bcrypt.hash(password, 10);
     const verificationOTP = generateOTP();
@@ -21,11 +22,16 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
     const session = await mongoose.startSession();
 
+    [error, auth] = await to(Auth.findOne({ email }));
+    if (error) return next(error);
+    if (auth) return next(createError(StatusCodes.CONFLICT, "Email already exists"));
+
     try {
         session.startTransaction();
         [error, auth] = await to(Auth.create({
             email,
             password: hashedPassword,
+            license: license[0].path,
             role,
             verificationOTP,
             verificationOTPExpire,
@@ -40,9 +46,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
         [error] = await to(User.create({
             auth: auth._id,
             name,
-            role,
             phoneNumber,
-            license
         }));
         if (error) return next(error);
 
@@ -72,7 +76,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
     if (error) return next(error);
     if (!auth) return next(createError(StatusCodes.NOT_FOUND, "Account Not found"));
 
-    if (auth.verificationOTP === "" || auth.verificationOTPExpire === null || new Date() > auth.verificationOTPExpire!)
+    if (auth.verificationOTP === "" || auth.verificationOTPExpire === null)
         return next(createError(StatusCodes.UNAUTHORIZED, "Verification OTP has expired"));
     if (verificationOTP !== auth.verificationOTP) return next(createError(StatusCodes.UNAUTHORIZED, "Wrong OTP"));
 
@@ -138,7 +142,7 @@ const recoveryVerification = async (req: Request, res: Response, next: NextFunct
     if (error) return next(error);
     if (!auth) return next(createError(StatusCodes.NOT_FOUND, "Account Not found"));
 
-    if (auth.recoveryOTP === "" || auth.recoveryOTPExpire === null || new Date() > auth.recoveryOTPExpire!)
+    if (auth.recoveryOTP === "" || auth.recoveryOTPExpire === null)
         return next(createError(StatusCodes.UNAUTHORIZED, "Verification OTP has expired"));
     if (recoveryOTP !== auth.recoveryOTP) return next(createError(StatusCodes.UNAUTHORIZED, "Wrong OTP"));
 
@@ -154,8 +158,9 @@ const recoveryVerification = async (req: Request, res: Response, next: NextFunct
 };
 
 const resetPassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const { email, password, confirmPassword } = req.body;
-    const [error, auth] = await to(Auth.findOne({ email }));
+    const user = req.user;
+    const {password, confirmPassword } = req.body;
+    const [error, auth] = await to(Auth.findOne({ email: user.email }));
     if (error) return next(error);
     if (!auth) return next(createError(StatusCodes.NOT_FOUND, "Account Not Found"));
     if (password !== confirmPassword) return next(createError(StatusCodes.BAD_REQUEST, "Passwords don't match"));
@@ -166,15 +171,17 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction): P
 
 const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     const user = req.user;
-    const { oldPassword, password, confirmPassword } = req.body;
-    const [error, auth] = await to(Auth.findById(user.authId));
+    const { password, newPassword, confirmPassword } = req.body;
+    let error, auth, isMatch;
+    [error, auth] = await to(Auth.findById(user.authId));
     if (error) return next(error);
     if (!auth) return next(createError(StatusCodes.NOT_FOUND, "Account Not Found"));
 
-    const isMatch = await bcrypt.compare(oldPassword, auth.password);
+    [error, isMatch] = await to(bcrypt.compare(password, auth.password));
+    if (error) return next(error);
     if (!isMatch) return next(createError(StatusCodes.UNAUTHORIZED, "Wrong Password"));
 
-    auth.password = await bcrypt.hash(password, 10);
+    auth.password = await bcrypt.hash(newPassword, 10);
     await auth.save();
     return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
 

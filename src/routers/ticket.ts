@@ -1,10 +1,10 @@
-import express from "express";
+// import express from "express";
 
-import TicketController from "@controllers/ticket";
+// import TicketController from "@controllers/ticket";
 
-const router = express.Router();
+// const router = express.Router();
 
-router.post("/create", TicketController.create);
-router.post("/buy", TicketController.buy);
+// router.post("/create", TicketController.create);
+// router.post("/buy", TicketController.buy);
 
-export default router;
+// export default router;

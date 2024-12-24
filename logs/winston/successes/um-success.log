@@ -1,0 +1,97 @@
+Wed Dec 25 2024 3:29:45 [PodCast] [31merror[39m: Verification OTP has expired
+UnauthorizedError: Verification OTP has expired
+    at activate (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:80:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Dec 25 2024 3:44:17 [PodCast] [31merror[39m: Verification OTP has expired
+UnauthorizedError: Verification OTP has expired
+    at recoveryVerification (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:146:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Dec 25 2024 3:44:46 [PodCast] [31merror[39m: Wrong OTP
+UnauthorizedError: Wrong OTP
+    at recoveryVerification (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:147:66)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Dec 25 2024 3:45:12 [PodCast] [31merror[39m: Wrong OTP
+UnauthorizedError: Wrong OTP
+    at recoveryVerification (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:147:66)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Dec 25 2024 3:47:22 [PodCast] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:46:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Wed Dec 25 2024 3:47:30 [PodCast] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at resetPassword (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:164:39)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Dec 25 2024 3:47:51 [PodCast] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at resetPassword (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:164:39)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Dec 25 2024 3:52:14 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:103:50)
+UnauthorizedError
+Wed Dec 25 2024 3:56:17 [PodCast] [31merror[39m: Wrong Password
+UnauthorizedError: Wrong Password
+    at changePassword (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:181:42)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Dec 25 2024 3:56:51 [PodCast] [31merror[39m: data and hash arguments required
+Error: data and hash arguments required
+    at Object.compare (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/bcrypt@5.1.1/node_modules/bcrypt/bcrypt.js:208:17)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/bcrypt@5.1.1/node_modules/bcrypt/promises.js:29:12
+    at new Promise (<anonymous>)
+    at Object.module.exports.promise (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/bcrypt@5.1.1/node_modules/bcrypt/promises.js:20:12)
+    at Object.compare (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/bcrypt@5.1.1/node_modules/bcrypt/bcrypt.js:204:25)
+    at changePassword (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:180:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Wed Dec 25 2024 4:0:38 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Wed Dec 25 2024 4:0:46 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:103:50)
+UnauthorizedError
+Wed Dec 25 2024 4:1:4 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Wed Dec 25 2024 4:3:4 [PodCast] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:100:39)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError

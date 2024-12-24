@@ -20,22 +20,14 @@ export const getUserInfo = async (authId: string): Promise<DecodedUser | null> =
     data = {
         authId: auth._id!.toString(),
         email: auth.email,
+        role: auth.role,
         isVerified: auth.isVerified,
         isBlocked: auth.isBlocked,
+        isApproved: auth.isApproved,
         userId: user._id!.toString(),
-        role: user.role,
         name: user.name,
     };
     return data;
-};
-
-const hasAccess = (roles: Role[]) => {
-    return (req: Request, res: Response, next: NextFunction): void => {
-        const user = req.user;
-        console.log(user);
-        if (roles.includes(user.role as Role)) return next();
-        return next(createError(403, "Access Denied."));
-    };
 };
 
 const authorizeToken = (secret: string, errorMessage: string) => {
@@ -61,6 +53,15 @@ const authorizeToken = (secret: string, errorMessage: string) => {
         req.user = data;
 
         return next();
+    };
+};
+
+const hasAccess = (roles: Role[]) => {
+    return (req: Request, res: Response, next: NextFunction): void => {
+        const user = req.user;
+        console.log(user);
+        if (roles.includes(user.role as Role)) return next();
+        return next(createError(403, "Access Denied."));
     };
 };
 

@@ -7,6 +7,7 @@ import { StatusCodes } from "http-status-codes";
 const coverDirectory = "uploads/events/cover";
 const galleryDirectory = "uploads/events/gallery";
 const avatarDirectory = "uploads/profile/avatar";
+const licenseDirectory = "uploads/auth/license";
 
 const ensureDirectoryExists = (directory: string) => {
     if (!fs.existsSync(directory)) {
@@ -17,6 +18,8 @@ const ensureDirectoryExists = (directory: string) => {
 ensureDirectoryExists(coverDirectory);
 ensureDirectoryExists(galleryDirectory);
 ensureDirectoryExists(avatarDirectory);
+ensureDirectoryExists(licenseDirectory);
+
 
 const storage: StorageEngine = multer.diskStorage({
     destination: (req: Request, file: Express.Multer.File, cb: (error: Error | null, destination: string) => void) => {
@@ -26,7 +29,10 @@ const storage: StorageEngine = multer.diskStorage({
             cb(null, galleryDirectory);
         } else if (file.fieldname === "avatar") {
             cb(null, avatarDirectory);
-        } else {
+        } else if (file.fieldname === "license") {
+            cb(null, licenseDirectory);
+        }
+         else {
             cb(new Error("Invalid file field"), "");
         }
     },
@@ -38,6 +44,7 @@ const storage: StorageEngine = multer.diskStorage({
 
 const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
     const allowedTypes: Record<string, RegExp> = {
+        license: /jpeg|jpg|png|gif/,
         cover: /jpeg|jpg|png|gif/,
         avatar: /jpeg|jpg|png|gif/,
         gallery: /jpeg|jpg|png|gif/,
@@ -67,6 +74,7 @@ const upload = multer({
 });
 
 const uploadMiddleware = upload.fields([
+    { name: "license", maxCount: 1 },
     { name: "cover", maxCount: 1 },
     { name: "avatar", maxCount: 1 },
     { name: "gallery", maxCount: 10 },
