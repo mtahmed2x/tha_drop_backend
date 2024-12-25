@@ -7,6 +7,10 @@ const subCategorySchema = new Schema<SubCategorySchema>({
         required: true,
         unique: true
     },
+    subCategoryImage: {
+        type: String,
+        required: true
+    },
     events: [
         {
             type: Schema.Types.ObjectId,

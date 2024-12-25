@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import e, { Request, Response, NextFunction } from "express";
 import multer, { StorageEngine, FileFilterCallback } from "multer";
 import fs from "fs";
 import path from "path";
@@ -7,7 +7,9 @@ import { StatusCodes } from "http-status-codes";
 const coverDirectory = "uploads/events/cover";
 const galleryDirectory = "uploads/events/gallery";
 const avatarDirectory = "uploads/profile/avatar";
-const licenseDirectory = "uploads/auth/license";
+const licensePhotoDirectory = "uploads/auth/licensePhoto";
+const categoryImageDirectory = "uploads/category/categoryImage";
+const subCategoryImageDirectory = "uploads/category/subCategoryImage";
 
 const ensureDirectoryExists = (directory: string) => {
     if (!fs.existsSync(directory)) {
@@ -18,7 +20,9 @@ const ensureDirectoryExists = (directory: string) => {
 ensureDirectoryExists(coverDirectory);
 ensureDirectoryExists(galleryDirectory);
 ensureDirectoryExists(avatarDirectory);
-ensureDirectoryExists(licenseDirectory);
+ensureDirectoryExists(licensePhotoDirectory);
+ensureDirectoryExists(categoryImageDirectory);
+ensureDirectoryExists(subCategoryImageDirectory);
 
 
 const storage: StorageEngine = multer.diskStorage({
@@ -29,10 +33,13 @@ const storage: StorageEngine = multer.diskStorage({
             cb(null, galleryDirectory);
         } else if (file.fieldname === "avatar") {
             cb(null, avatarDirectory);
-        } else if (file.fieldname === "license") {
-            cb(null, licenseDirectory);
-        }
-         else {
+        } else if (file.fieldname === "licensePhoto") {
+            cb(null, licensePhotoDirectory);
+        } else if (file.fieldname === "categoryImage") {
+            cb(null, categoryImageDirectory);
+        } else if (file.fieldname === "subCategoryImage") {
+            cb(null, subCategoryImageDirectory);
+        } else {
             cb(new Error("Invalid file field"), "");
         }
     },
@@ -44,7 +51,9 @@ const storage: StorageEngine = multer.diskStorage({
 
 const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
     const allowedTypes: Record<string, RegExp> = {
-        license: /jpeg|jpg|png|gif/,
+        licensePhoto: /jpeg|jpg|png|gif/,
+        categoryImage: /jpeg|jpg|png|gif/,
+        subCategoryImage: /jpeg|jpg|png|gif/,
         cover: /jpeg|jpg|png|gif/,
         avatar: /jpeg|jpg|png|gif/,
         gallery: /jpeg|jpg|png|gif/,
@@ -74,7 +83,9 @@ const upload = multer({
 });
 
 const uploadMiddleware = upload.fields([
-    { name: "license", maxCount: 1 },
+    { name: "licensePhoto", maxCount: 1 },
+    { name: "categoryImage", maxCount: 1 },
+    { name: "subCategoryImage", maxCount: 1 },
     { name: "cover", maxCount: 1 },
     { name: "avatar", maxCount: 1 },
     { name: "gallery", maxCount: 10 },

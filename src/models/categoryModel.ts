@@ -8,6 +8,10 @@ const categorySchema = new Schema<CategorySchema>({
         required: true,
         unique: true
     },
+    categoryImage: {
+        type: String,
+        required: true
+    },
     subCategories: [
         {
             type: Schema.Types.ObjectId,

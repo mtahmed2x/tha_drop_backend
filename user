@@ -1,0 +1,21 @@
+email 
+password 
+role
+verificationOTP 
+verificationOTPExpiredAt 
+recoveryOTP 
+recoveryOTPExpiredAt 
+isVerified 
+isBlocked 
+isApproved 
+
+auth Types.ObjectId
+name 
+licensePhoto 
+phoneNumber 
+address 
+dateOfBirth 
+gender 
+avatar 
+isResturentOwner 
+resturentName 

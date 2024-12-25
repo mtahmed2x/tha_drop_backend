@@ -9,4 +9,7 @@ export type UserSchema = Document & {
     dateOfBirth: string;
     gender: Gender;
     avatar: string;
+    licensePhoto: string;
+    isResturentOwner: boolean;
+    resturentName?: string;
 };

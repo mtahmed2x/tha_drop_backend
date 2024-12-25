@@ -6,29 +6,40 @@ const userSchema = new Schema<UserSchema>({
     auth: {
         type: Schema.Types.ObjectId,
         ref: "Auth",
-        required: true
+        required: true,
     },
     name: {
         type: String,
-        required: true
+        required: true,
     },
     phoneNumber: {
         type: String,
-        required: true
+        required: true,
     },
     address: {
-        type: String
+        type: String,
     },
     dateOfBirth: {
-        type: String
+        type: String,
     },
     gender: {
         type: String,
-        enum: Gender
+        enum: Gender,
     },
     avatar: {
-        type: String
-    }
+        type: String,
+    },
+    licensePhoto: {
+        type: String,
+        required: true,
+    },
+    isResturentOwner: {
+        type: Boolean,
+        default: false,
+    },
+    resturentName: {
+        type: String,
+    },
 });
 
 const User = model<UserSchema>("User", userSchema);

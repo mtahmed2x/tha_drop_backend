@@ -95,3 +95,68 @@ NotFoundError: No account found with the given email
     at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:100:39)
     at processTicksAndRejections (node:internal/process/task_queues:105:5)
 NotFoundError
+Wed Dec 25 2024 21:50:0 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 21:51:53 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 21:53:42 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 21:54:34 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 21:54:34 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 21:55:3 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 21:55:3 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 21:55:56 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 21:55:56 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 21:56:8 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 21:56:8 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 21:56:25 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 21:56:25 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 21:57:32 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 21:57:32 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 22:9:28 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 22:9:28 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 22:17:44 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 22:17:44 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 22:17:53 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 22:17:53 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 22:18:21 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 22:18:21 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 22:27:1 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 22:27:1 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 22:28:8 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 22:28:8 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 22:29:57 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 22:29:57 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 22:32:41 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 22:32:41 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 22:32:54 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 22:32:54 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 23:52:42 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 23:52:42 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 23:53:51 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 23:53:51 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 23:57:41 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 23:57:41 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Wed Dec 25 2024 23:58:42 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 25 2024 23:58:42 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:1:57 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:1:57 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:4:3 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:4:3 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:6:14 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:6:14 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:7:3 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:7:3 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:10:19 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:10:19 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:11:12 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:11:12 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:12:15 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:12:15 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:14:10 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:14:10 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:16:51 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:16:51 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:17:20 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:17:20 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:17:41 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:17:41 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 0:17:49 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 0:17:49 [PodCast] [32minfo[39m: Server is running at PORT: 8080

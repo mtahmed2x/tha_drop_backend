@@ -11,14 +11,13 @@ import { Role } from "@shared/enum";
 import sendEmail from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
 
-
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const { name, email, phoneNumber, role, password } = req.body;
-    const { license } = (req as any).files;
+    const { name, email, phoneNumber, role, password, confirmPassword } = req.body;
+    const { licensePhoto } = (req as any).files;
     let error, auth;
     const hashedPassword = await bcrypt.hash(password, 10);
     const verificationOTP = generateOTP();
-    const verificationOTPExpire = new Date(Date.now() + 60 * 1000);
+    const verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
 
     const session = await mongoose.startSession();
 
@@ -28,27 +27,29 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
     try {
         session.startTransaction();
-        [error, auth] = await to(Auth.create({
-            email,
-            password: hashedPassword,
-            license: license[0].path,
-            role,
-            verificationOTP,
-            verificationOTPExpire,
-            recoveryOTP: "",
-            recoveryOTPExpire: null,
-            isVerified: false,
-            isBlocked: false,
-            isApproved: role === Role.GUEST
-        }));
-        if (error) return next(error);
+        [error, auth] = await to(
+            Auth.create({
+                email,
+                password: hashedPassword,
+                role,
+                verificationOTP,
+                verificationOTPExpiredAt,
+                isVerified: false,
+                isBlocked: false,
+                isApproved: role === Role.GUEST,
+            })
+        );
+        if (error) throw error;
 
-        [error] = await to(User.create({
-            auth: auth._id,
-            name,
-            phoneNumber,
-        }));
-        if (error) return next(error);
+        [error] = await to(
+            User.create({
+                auth: auth._id,
+                name,
+                phoneNumber,
+                licensePhoto: licensePhoto[0].path,
+            })
+        );
+        if (error) throw error;
 
         await sendEmail(email, verificationOTP);
         await session.commitTransaction();
@@ -57,7 +58,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
         return res.status(StatusCodes.CREATED).json({
             success: true,
             message: "Success",
-            data: auth.isVerified
+            data: auth.isVerified,
         });
     } catch (error) {
         if (session.inTransaction()) {
@@ -76,12 +77,12 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
     if (error) return next(error);
     if (!auth) return next(createError(StatusCodes.NOT_FOUND, "Account Not found"));
 
-    if (auth.verificationOTP === "" || auth.verificationOTPExpire === null)
+    if (auth.verificationOTP === "" || auth.verificationOTPExpiredAt === null)
         return next(createError(StatusCodes.UNAUTHORIZED, "Verification OTP has expired"));
     if (verificationOTP !== auth.verificationOTP) return next(createError(StatusCodes.UNAUTHORIZED, "Wrong OTP"));
 
     auth.verificationOTP = "";
-    auth.verificationOTPExpire = null;
+    auth.verificationOTPExpiredAt = null;
     auth.isVerified = true;
     await auth.save();
 
@@ -117,7 +118,7 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
     return res.status(StatusCodes.OK).json({
         success: true,
         message: "Success",
-        data: { accessToken, refreshToken, auth, user }
+        data: { accessToken, refreshToken, auth, user },
     });
 };
 
@@ -129,7 +130,7 @@ const forgotPassword = async (req: Request, res: Response, next: NextFunction): 
 
     const recoveryOTP = generateOTP();
     auth.recoveryOTP = recoveryOTP;
-    auth.recoveryOTPExpire = new Date(Date.now() + 60 * 1000);
+    auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
     await auth.save();
     await sendEmail(email, recoveryOTP);
 
@@ -142,12 +143,12 @@ const recoveryVerification = async (req: Request, res: Response, next: NextFunct
     if (error) return next(error);
     if (!auth) return next(createError(StatusCodes.NOT_FOUND, "Account Not found"));
 
-    if (auth.recoveryOTP === "" || auth.recoveryOTPExpire === null)
+    if (auth.recoveryOTP === "" || auth.recoveryOTPExpiredAt === null)
         return next(createError(StatusCodes.UNAUTHORIZED, "Verification OTP has expired"));
     if (recoveryOTP !== auth.recoveryOTP) return next(createError(StatusCodes.UNAUTHORIZED, "Wrong OTP"));
 
     auth.recoveryOTP = "";
-    auth.recoveryOTPExpire = null;
+    auth.recoveryOTPExpiredAt = null;
     await auth.save();
 
     const recoverySecret = process.env.JWT_RECOVERY_SECRET;
@@ -159,7 +160,7 @@ const recoveryVerification = async (req: Request, res: Response, next: NextFunct
 
 const resetPassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     const user = req.user;
-    const {password, confirmPassword } = req.body;
+    const { password, confirmPassword } = req.body;
     const [error, auth] = await to(Auth.findOne({ email: user.email }));
     if (error) return next(error);
     if (!auth) return next(createError(StatusCodes.NOT_FOUND, "Account Not Found"));
@@ -184,7 +185,6 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
     auth.password = await bcrypt.hash(newPassword, 10);
     await auth.save();
     return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
-
 };
 
 const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -228,7 +228,7 @@ const AuthController = {
     resetPassword,
     changePassword,
     getAccessToken,
-    remove
+    remove,
 };
 
 export default AuthController;
