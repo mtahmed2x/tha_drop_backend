@@ -8,13 +8,16 @@ import SubCategory from "@models/subCategoryModel";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   let error, category, subCategory;
-  const { categoryId, title, subCategoryImage } = req.body;
+  const { categoryId, title } = req.body;
+  const subCategoryImage = (req as any).files.subCategoryImage;
+
+  const imagePath = subCategoryImage[0].path;
 
   [error, category] = await to(Category.findById(categoryId));
   if (error) return next(error);
   if (!category) return next(createError(StatusCodes.NOT_FOUND, "Category not found!"));
 
-  [error, subCategory] = await to(SubCategory.create({ title, subCategoryImage }));
+  [error, subCategory] = await to(SubCategory.create({ title, subCategoryImage: imagePath }));
   if (error) return next(error);
 
   category.subCategories.push(subCategory._id as Types.ObjectId);
@@ -114,29 +117,10 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
   return res.status(StatusCodes.OK).json({ success: true, message: "Success" });
 };
 
-// const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-//     const id = req.params.id;
-//     let error, subCategory, podcasts;
-//     [error, subCategory] = await to(SubCategory.findById(id));
-//     if (error) return next(error);
-//     if (!subCategory) return next(createError(httpStatus.NOT_FOUND, "SubCategory not found"));
-//
-//     [error, podcasts] = await to(
-//         subCategory.populate({
-//             path: "podcasts",
-//             populate: { path: "creator", select: "user", populate: { path: "user", select: "name -_id" } }
-//         })
-//     );
-//     if (error) return next(error);
-//     if (!podcasts) return next(createError(httpStatus.NOT_FOUND, "No Podcasts found in the subCategory"));
-//
-//     return res.status(httpStatus.OK).json({ message: "Success", data: podcasts });
-// };
-
 const SubCategoryController = {
   create,
-  // getAll,
-  // get,
+  get,
+  getAll,
   update,
   remove,
 };

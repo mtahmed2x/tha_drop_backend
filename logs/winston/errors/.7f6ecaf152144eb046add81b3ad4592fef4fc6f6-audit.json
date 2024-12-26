@@ -34,6 +34,36 @@
             "date": 1735149711432,
             "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-26-00-error.log",
             "hash": "d12a8026fe7081c7743efc31b67bd976fd17315fcb19f79508688e996a1f93e8"
+        },
+        {
+            "date": 1735183749461,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-26-09-error.log",
+            "hash": "461225b48d451a0086c272f5ef543de89df51e778f6bbb038fc2f4f6c557f7b2"
+        },
+        {
+            "date": 1735188013081,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-26-10-error.log",
+            "hash": "a30d614279ff7ae2b8fa26aff7420d503ae5485b70c2b3d99b6676a37d7e68c2"
+        },
+        {
+            "date": 1735189406367,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-26-11-error.log",
+            "hash": "e9b43d92d3e7e3d83baec9c0f13ce3a7ba63cc30e17bb16ab50aa1474ad18cab"
+        },
+        {
+            "date": 1735208075102,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-26-16-error.log",
+            "hash": "0f3727f18ee5744b847ef75d4fbb5ac6dd2bd15b43e4408fa96f96e2a1d6bec0"
+        },
+        {
+            "date": 1735210871538,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-26-17-error.log",
+            "hash": "c25e12ff5c9ad0dad090addaba49f25ab311729bc9400f6f83fe3ae88603ad0a"
+        },
+        {
+            "date": 1735214789072,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-26-18-error.log",
+            "hash": "dbed81b60c42fc19516216b09ffa4785e4114335d53820e0e2ab53ff58a0cc3c"
         }
     ],
     "hashType": "sha256"

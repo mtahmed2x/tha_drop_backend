@@ -1,0 +1,99 @@
+Thu Dec 26 2024 16:3:24 [PodCast] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:106:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Thu Dec 26 2024 16:4:29 [PodCast] [31merror[39m: Verify your email first
+UnauthorizedError: Verify your email first
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:111:48)
+UnauthorizedError
+Thu Dec 26 2024 16:5:6 [PodCast] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:106:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Thu Dec 26 2024 16:6:5 [PodCast] [31merror[39m: Your account had been blocked. Contact Administrator
+ForbiddenError: Your account had been blocked. Contact Administrator
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:113:28)
+ForbiddenError
+Thu Dec 26 2024 16:14:35 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:14:35 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:14:47 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:14:47 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:15:8 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:15:9 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:16:29 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:16:29 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:16:32 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:16:32 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:17:32 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:17:32 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:17:55 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:17:55 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:19:36 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:19:36 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:21:41 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:21:41 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:26:30 [PodCast] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Thu Dec 26 2024 16:27:26 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:27:26 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:27:45 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:27:45 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:28:54 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:28:54 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:28:58 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:28:58 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:32:11 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:32:11 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:35:14 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:35:14 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:36:12 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:36:12 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:37:30 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:37:30 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:38:0 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:38:0 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:38:58 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:38:58 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:40:15 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:40:15 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:41:2 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:41:2 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:43:17 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:43:17 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:43:39 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:43:39 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:47:20 [PodCast] [31merror[39m: SubCategory validation failed: subCategoryImage: Path `subCategoryImage` is required.
+ValidationError: SubCategory validation failed: subCategoryImage: Path `subCategoryImage` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Thu Dec 26 2024 16:47:36 [PodCast] [31merror[39m: SubCategory validation failed: subCategoryImage: Path `subCategoryImage` is required.
+ValidationError: SubCategory validation failed: subCategoryImage: Path `subCategoryImage` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Thu Dec 26 2024 16:47:59 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Dec 26 2024 16:47:59 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Thu Dec 26 2024 16:48:2 [PodCast] [31merror[39m: SubCategory validation failed: subCategoryImage: Path `subCategoryImage` is required.
+ValidationError: SubCategory validation failed: subCategoryImage: Path `subCategoryImage` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Thu Dec 26 2024 16:48:54 [PodCast] [31merror[39m: SubCategory validation failed: subCategoryImage: Path `subCategoryImage` is required.
+ValidationError: SubCategory validation failed: subCategoryImage: Path `subCategoryImage` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError

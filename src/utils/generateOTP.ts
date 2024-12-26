@@ -1,11 +1,13 @@
 import crypto from "crypto";
 
-const generateOTP = (length = 6) => {
-  return crypto
-    .randomBytes(length)
-    .toString("base64")
-    .replace(/[^a-zA-Z0-9]/g, "")
-    .slice(0, length);
+const generateOTP = (length = 4) => {
+    const digits = "0123456789";
+    let otp = "";
+    for (let i = 0; i < length; i++) {
+        const randomIndex = crypto.randomInt(0, digits.length);
+        otp += digits[randomIndex];
+    }
+    return otp;
 };
 
 export default generateOTP;
