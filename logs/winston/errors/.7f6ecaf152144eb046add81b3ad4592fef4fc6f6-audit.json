@@ -64,6 +64,11 @@
             "date": 1735214789072,
             "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-26-18-error.log",
             "hash": "dbed81b60c42fc19516216b09ffa4785e4114335d53820e0e2ab53ff58a0cc3c"
+        },
+        {
+            "date": 1735296048337,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-27-16-error.log",
+            "hash": "70ca7fb62672f5baedfcf8097d4cce5e145c52ddece11913442ee51fc5c3268e"
         }
     ],
     "hashType": "sha256"

@@ -1,0 +1,41 @@
+Fri Dec 27 2024 16:40:50 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Dec 27 2024 16:40:50 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Fri Dec 27 2024 16:50:17 [PodCast] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at param (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:365:14)
+    at param (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:421:3)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+UnauthorizedError
+Fri Dec 27 2024 16:50:24 [PodCast] [31merror[39m: Cast to ObjectId failed for value "76c76432f700664a6c4a362" (type string) at path "_id" for model "Category"
+CastError: Cast to ObjectId failed for value "76c76432f700664a6c4a362" (type string) at path "_id" for model "Category"
+    at SchemaObjectId.cast (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1236:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1653:17)
+    at cast (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4906:12)
+    at model.Query.Query._castConditions (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2309:10)
+    at model.Query._findOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2632:8)
+    at model.Query.exec (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4458:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async update (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/categoryController.ts:87:23)
+CastError
+Fri Dec 27 2024 16:56:14 [PodCast] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at param (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:365:14)
+    at param (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:421:3)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+UnauthorizedError
