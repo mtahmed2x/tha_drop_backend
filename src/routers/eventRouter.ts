@@ -1,11 +1,13 @@
 import EventController from "@controllers/eventController";
+import { handleFileUpload } from "@middlewares/uploadFile";
 import express from "express";
 
 const router = express.Router();
-router.post("/create", EventController.create);
-router.get("/", EventController.getAll);
+router.post("/create", handleFileUpload, EventController.create);
 router.get("/:id", EventController.get);
-router.put("/update", EventController.update);
+router.get("/", EventController.getAll);
+
+// router.put("/update", EventController.update);
 router.delete("/delete/:id", EventController.remove);
 
 export default router;

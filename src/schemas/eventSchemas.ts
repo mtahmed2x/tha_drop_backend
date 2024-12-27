@@ -11,7 +11,7 @@ export type EventSchema = Document & {
     description: string;
     cover: string;
     gallery: string[];
-    ticketPrice: Types.Decimal128;
+    ticketPrice: number;
     productId: string;
     ticketPriceId: string;
     deadline: Date;

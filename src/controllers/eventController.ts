@@ -5,23 +5,26 @@ import Event from "@models/eventModel";
 import Stripe from "stripe";
 import createError from "http-errors";
 import { EventSchema } from "@schemas/eventSchemas";
+import { Types } from "mongoose";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-type Files = Express.Request & {
-    files: { [fieldname: string]: Express.Multer.File[] };
-};
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const { title, organizer, host, categoryId, subCategoryId, date, location, description, ticketPrice, deadline } =
+    const { title, organizer, host, category, subCategory, date, location, description, deadline } =
         req.body;
-    let error, cover, gallery, product, price, event;
-    if ((req as Files).files) {
-        cover = (req as Files).files.cover;
-        gallery = (req as Files).files.gallery;
+    const ticketPrice = parseInt(req.body.ticketPrice)
+    let error, coverPath, gallery, product, price, event;
+    console.log(req.files);
+    
+    if(!req.files || !req.files.cover || !req.files.gallery) {
+        return next(createError(StatusCodes.BAD_REQUEST, "Cover and gallery image is required"));
     }
+    coverPath = req.files.cover[0].path;
+    gallery = req.files.gallery;
+    
     let galleryPath: string[] = [];
-    gallery!.map((file) => {
+    gallery!.map((file: Express.Multer.File) => {
         galleryPath.push(file.path);
     });
 
@@ -47,8 +50,8 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
             title,
             organizer,
             host,
-            categoryId,
-            subCategoryId,
+            category,
+            subCategory,
             date,
             location,
             description,
@@ -56,7 +59,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
             productId: product.id,
             ticketPriceId: price.id,
             deadline,
-            cover: cover![0].path,
+            cover: coverPath,
             gallery: galleryPath,
         })
     );
@@ -68,8 +71,8 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
     const [error, event] = await to(
         Event.findById(id)
             .populate({ path: "host", select: "-_id name" })
-            .populate({ path: "categoryId", select: "-_id title" })
-            .populate({ path: "subCategoryId", select: "-_id title" })
+            .populate({ path: "category", select: "-_id title" })
+            .populate({ path: "subCategory", select: "-_id title" })
             .lean()
     );
     if (error) return next(error);
@@ -82,85 +85,89 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
     const [error, events] = await to(
         Event.find()
             .populate({ path: "host", select: "-_id name" })
-            .populate({ path: "categoryId", select: "-_id title" })
-            .populate({ path: "subCategoryId", select: "-_id title" })
+            .populate({ path: "category", select: "-_id title" })
+            .populate({ path: "subCategory", select: "-_id title" })
             .skip((page - 1) * limit)
             .limit(limit)
             .lean()
     );
     if (error) return next(error);
     if (!events) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
-    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
+    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: events });
 };
-const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const id = req.params.id;
-    const { title, organizer, host, categoryId, subCategoryId, date, location, description, ticketPrice, deadline } =
-        req.body;
-    let error, cover, gallery, product, price, event;
+// const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+//     const id = req.params.id;
+//     let error, event;
+//     [error, event] = await to(Event.findById(id));
+//     if (error) return next(error);
+//     if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
 
-    if ((req as Files).files) {
-        cover = (req as Files).files.cover;
-        gallery = (req as Files).files.gallery;
-    }
+//     const { title, organizer, host, categoryId, subCategoryId, date, location, description, ticketPrice, deadline } =
+//         req.body;
+//     let newCoverPath, gallery, product, price, oldCoverPath;
 
-    [error, event] = await to(Event.findById(id));
-    if (error) return next(error);
-    if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
+//     if(req.files && req.files.cover) {
+//         oldCoverPath = event.cover;
+//         newCoverPath = req.files.cover[0].path;
+//     }
 
-    let updateFields: Partial<EventSchema> = {};
 
-    if (title || description) {
-        if (title) updateFields.title = title;
-        if (description) updateFields.description = description;
+    
 
-        [error] = await to(stripe.products.update(event.productId, updateFields));
-        if (error) return next(error);
-    }
+//     let updateFields: Partial<EventSchema> = {};
 
-    if (organizer) updateFields.organizer = organizer;
-    if (host) updateFields.host = host;
-    if (categoryId) updateFields.category = categoryId;
-    if (subCategoryId) updateFields.subCategory = subCategoryId;
-    if (date) updateFields.date = date;
-    if (location) updateFields.location = location;
-    if (deadline) updateFields.deadline = deadline;
+//     if (title || description) {
+//         if (title) updateFields.title = title;
+//         if (description) updateFields.description = description;
 
-    if (ticketPrice) {
-        [error] = await to(
-            stripe.prices.update(event.ticketPriceId, {
-                active: false,
-            })
-        );
-        if (error) return next(error);
+//         [error] = await to(stripe.products.update(event.productId, updateFields));
+//         if (error) return next(error);
+//     }
 
-        [error, price] = await to(
-            stripe.prices.create({
-                product: event.productId,
-                unit_amount: ticketPrice,
-                currency: "usd",
-            })
-        );
-        if (error) return next(error);
+//     if (organizer) updateFields.organizer = organizer;
+//     if (host) updateFields.host = host;
+//     if (categoryId) updateFields.category = categoryId;
+//     if (subCategoryId) updateFields.subCategory = subCategoryId;
+//     if (date) updateFields.date = date;
+//     if (location) updateFields.location = location;
+//     if (deadline) updateFields.deadline = deadline;
 
-        updateFields.ticketPrice = ticketPrice;
-        updateFields.ticketPriceId = price.id;
-    }
+//     if (ticketPrice) {
+//         [error] = await to(
+//             stripe.prices.update(event.ticketPriceId, {
+//                 active: false,
+//             })
+//         );
+//         if (error) return next(error);
 
-    if (cover) updateFields.cover = cover[0].path;
+//         [error, price] = await to(
+//             stripe.prices.create({
+//                 product: event.productId,
+//                 unit_amount: ticketPrice,
+//                 currency: "usd",
+//             })
+//         );
+//         if (error) return next(error);
 
-    let galleryPath: string[] = [];
-    if (gallery) {
-        gallery.map((file) => {
-            galleryPath.push(file.path);
-        });
-        updateFields.gallery = galleryPath;
-    }
+//         updateFields.ticketPrice = ticketPrice;
+//         updateFields.ticketPriceId = price.id;
+//     }
 
-    [error, event] = await to(Event.findByIdAndUpdate(id, { $set: updateFields }, { new: true }));
-    if (error) return next(error);
+//     if (cover) updateFields.cover = cover[0].path;
 
-    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
-};
+//     let galleryPath: string[] = [];
+//     if (gallery) {
+//         gallery.map((file) => {
+//             galleryPath.push(file.path);
+//         });
+//         updateFields.gallery = galleryPath;
+//     }
+
+//     [error, event] = await to(Event.findByIdAndUpdate(id, { $set: updateFields }, { new: true }));
+//     if (error) return next(error);
+
+//     return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
+// };
 
 const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     const id = req.params.id;
@@ -174,7 +181,7 @@ const EventController = {
     create,
     get,
     getAll,
-    update,
+    // update,
     remove,
 };
 

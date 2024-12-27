@@ -49,7 +49,7 @@ const eventSchema = new Schema<EventSchema>(
             },
         ],
         ticketPrice: {
-            type: Schema.Types.Decimal128,
+            type: Number,
             required: true,
         },
         ticketPriceId: {
