@@ -58,7 +58,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
       },
       {
         $addFields: {
-          avatar: { $ifNull: ["$avatar", null] },
+          avatar: { $ifNull: ["$avatar", "assets/avatar-default.webp"] }, 
           dateOfBirth: { $ifNull: ["$dateOfBirth", null] },
         },
       },
@@ -106,6 +106,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
     limit,
   });
 };
+
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;

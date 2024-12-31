@@ -1,0 +1,185 @@
+Mon Dec 30 2024 16:36:0 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 30 2024 16:36:0 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Mon Dec 30 2024 16:36:12 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:12 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:13 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:13 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:14 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:15 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:15 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:41 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:36:50 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:36:53 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:36:57 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:37:18 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:37:20 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:39:30 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 30 2024 16:39:30 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Mon Dec 30 2024 16:46:8 [PodCast] [31merror[39m: Failed to delete category image:  ENOENT: no such file or directory, unlink '/home/mir/dev/projects/alwaysbanks_backend/uploads/category/categoryImage/categoryImage-1735310149465-431037912.png'

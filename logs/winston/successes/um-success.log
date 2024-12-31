@@ -1578,3 +1578,348 @@ Sat Dec 28 2024 3:2:11 [PodCast] [32minfo[39m: Successfully Connected to Mongo
 Sat Dec 28 2024 3:2:11 [PodCast] [32minfo[39m: Server is running at PORT: 8080
 Sat Dec 28 2024 3:3:16 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
 Sat Dec 28 2024 3:3:16 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Mon Dec 30 2024 16:36:0 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 30 2024 16:36:0 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Mon Dec 30 2024 16:36:12 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:12 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:13 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:13 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:14 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:15 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:15 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:16 [PodCast] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:20:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 16:36:41 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:36:50 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:36:53 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:36:57 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:37:18 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:37:20 [PodCast] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/alwaysbanks_backend/src/controllers/authController.ts:110:48)
+UnauthorizedError
+Mon Dec 30 2024 16:39:30 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 30 2024 16:39:30 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Mon Dec 30 2024 16:46:8 [PodCast] [31merror[39m: Failed to delete category image:  ENOENT: no such file or directory, unlink '/home/mir/dev/projects/alwaysbanks_backend/uploads/category/categoryImage/categoryImage-1735310149465-431037912.png'
+Mon Dec 30 2024 17:22:3 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 30 2024 17:22:3 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Mon Dec 30 2024 17:23:12 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "foisal" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "foisal" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 17:23:15 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "foisal" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "foisal" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 17:54:57 [PodCast] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:17:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 17:55:12 [PodCast] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:17:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Mon Dec 30 2024 18:0:29 [PodCast] [31merror[39m: Failed to delete category image:  ENOENT: no such file or directory, unlink '/home/mir/dev/projects/alwaysbanks_backend/uploads/category/categoryImage/categoryImage-1735355531003-581707596.png'
+Mon Dec 30 2024 18:0:35 [PodCast] [31merror[39m: Failed to delete category image:  ENOENT: no such file or directory, unlink '/home/mir/dev/projects/alwaysbanks_backend/uploads/category/categoryImage/categoryImage-1735355747096-122786692.png'
+Mon Dec 30 2024 18:0:55 [PodCast] [31merror[39m: Failed to delete category image:  ENOENT: no such file or directory, unlink '/home/mir/dev/projects/alwaysbanks_backend/uploads/category/categoryImage/categoryImage-1735355950802-582866087.png'
+Mon Dec 30 2024 18:13:9 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 30 2024 18:13:9 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Mon Dec 30 2024 18:19:17 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 30 2024 18:19:17 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Mon Dec 30 2024 18:19:57 [PodCast] [31merror[39m: Failed to delete category image:  ENOENT: no such file or directory, unlink '/home/mir/dev/projects/alwaysbanks_backend/uploads/category/subCategoryImage/subCategoryImage-1735310354771-47792554.png'
+Mon Dec 30 2024 18:21:40 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.subcategories index: title_1 dup key: { title: "asdfasdf" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.subcategories index: title_1 dup key: { title: "asdfasdf" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 18:21:46 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.subcategories index: title_1 dup key: { title: "asdfasdf" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.subcategories index: title_1 dup key: { title: "asdfasdf" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 18:40:56 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "asdfsdf" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "asdfsdf" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 18:40:58 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "asdfsdf" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "asdfsdf" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 18:41:7 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "asdf" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "asdf" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 18:50:11 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "asdf" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "asdf" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 19:0:9 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "renbona" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "renbona" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 19:15:31 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.subcategories index: title_1 dup key: { title: "foisal" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.subcategories index: title_1 dup key: { title: "foisal" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Tue Dec 31 2024 9:4:24 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 9:4:24 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 9:20:11 [PodCast] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (/home/mir/dev/projects/alwaysbanks_backend/src/utils/jwt.ts:17:26)
+    at /home/mir/dev/projects/alwaysbanks_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Tue Dec 31 2024 9:30:13 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 9:30:13 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 9:33:27 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 9:33:27 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 9:34:0 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 9:34:0 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 10:43:36 [PodCast] [31merror[39m: Failed to connect to MongoDB: bad auth : authentication failed
+Tue Dec 31 2024 10:44:31 [PodCast] [31merror[39m: Failed to connect to MongoDB: bad auth : authentication failed
+Tue Dec 31 2024 11:13:33 [PodCast] [31merror[39m: Failed to connect to MongoDB: bad auth : authentication failed
+Tue Dec 31 2024 11:14:11 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 11:14:11 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 12:55:51 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 12:55:51 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 12:57:7 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 12:57:7 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 12:57:26 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 12:57:26 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 12:58:33 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 12:58:33 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 12:59:12 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 12:59:12 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 12:59:45 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 12:59:45 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 13:1:1 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 13:1:1 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 13:3:19 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 13:3:19 [PodCast] [32minfo[39m: Server is running at PORT: 8080
+Tue Dec 31 2024 13:3:29 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Dec 31 2024 13:3:29 [PodCast] [32minfo[39m: Server is running at PORT: 8080

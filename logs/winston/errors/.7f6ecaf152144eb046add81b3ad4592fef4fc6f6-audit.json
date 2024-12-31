@@ -84,6 +84,46 @@
             "date": 1735333300366,
             "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-28-03-error.log",
             "hash": "0c5866d495e0b40c71eb0e9d0022a19b5111c162b059075d8f302dd57f07af42"
+        },
+        {
+            "date": 1735554959671,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-30-16-error.log",
+            "hash": "8f266112f6018aa0b5c3b60711cce50dc088bddb6d4a00ae13359cf15cd4db90"
+        },
+        {
+            "date": 1735557721900,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-30-17-error.log",
+            "hash": "b3a188e1202cb4116e9c603eeede1e4758a85981c31d16fc885041f051c97f2b"
+        },
+        {
+            "date": 1735560787613,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-30-18-error.log",
+            "hash": "2c16df6750d43335f5285f9753c28e82b72635d6b15971fdf1e4eac93361f2a8"
+        },
+        {
+            "date": 1735614162325,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-31-09-error.log",
+            "hash": "47e7c66ec8ead608675f638761d42c75c4b08adfb27b8c9a6588e08166786512"
+        },
+        {
+            "date": 1735620214878,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-31-10-error.log",
+            "hash": "da7fe40c35a18b6eadff35fb1e046a6b22a2d7fb0d876c230edbba1ff03c5a81"
+        },
+        {
+            "date": 1735622011907,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-31-11-error.log",
+            "hash": "ba00fd7ced6dbc8daf4a8960dac1d9aadd8286951f007ca708816eeeee3266cc"
+        },
+        {
+            "date": 1735628150333,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-31-12-error.log",
+            "hash": "3ffa0ff709a1dae44ad272a45d483f4f385f29d4b2c130cb3c36548fe0ffc630"
+        },
+        {
+            "date": 1735628459966,
+            "name": "/home/mir/dev/projects/alwaysbanks_backend/logs/winston/errors/um-2024-12-31-13-error.log",
+            "hash": "9bc81199a9b6bde0a73899dd52cca5d732c24611407a544529b15f05e7da5c05"
         }
     ],
     "hashType": "sha256"

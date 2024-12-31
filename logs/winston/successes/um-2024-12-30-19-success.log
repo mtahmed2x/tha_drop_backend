@@ -1,0 +1,16 @@
+Mon Dec 30 2024 19:0:9 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "renbona" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.categories index: title_1 dup key: { title: "renbona" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Mon Dec 30 2024 19:15:31 [PodCast] [31merror[39m: E11000 duplicate key error collection: tha_drop.subcategories index: title_1 dup key: { title: "foisal" }
+MongoServerError: E11000 duplicate key error collection: tha_drop.subcategories index: title_1 dup key: { title: "foisal" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/alwaysbanks_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
