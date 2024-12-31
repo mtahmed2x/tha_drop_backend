@@ -11,6 +11,7 @@ import SubCategoryRouter from "@routers/subCategoryRouter";
 import FaqRouter from "@routers/faqRouter";
 import TaCRouter from "@routers/tacRouter";
 import PrivacyRouter from "@routers/privacyRouter";
+import AboutRouter from "@routers/aboutRouter";
 
 const app = express();
 
@@ -31,9 +32,11 @@ app.use("/account", accountRouter);
 app.use("/event", EventRouter);
 app.use("/category", CategoryRouter);
 app.use("/subCategory", SubCategoryRouter);
-app.use("/faq", FaqRouter);
+
 app.use("/tac", TaCRouter);
+app.use("/faq", FaqRouter);
 app.use("/privacy", PrivacyRouter);
+app.use("/about", AboutRouter);
 
 app.use(notFound);
 app.use(errorHandler);

@@ -8,5 +8,5 @@ const aboutSchema = new Schema<AboutSchema>({
     }
 })
 
-const About = model("About", aboutSchema);
+const About = model<AboutSchema>("About", aboutSchema);
 export default About;

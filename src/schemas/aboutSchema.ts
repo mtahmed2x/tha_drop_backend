@@ -1,5 +1,5 @@
 import { Document } from "mongoose"
 
 export type AboutSchema = Document & {
-    text: String,
+    text: string,
 }
