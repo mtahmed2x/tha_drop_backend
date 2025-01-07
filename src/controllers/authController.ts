@@ -62,7 +62,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     return res.status(StatusCodes.CREATED).json({
       success: true,
       message: "Success",
-      data: auth.isVerified,
+      data: { isVerified: auth.isVerified },
     });
   } catch (error) {
     if (session.inTransaction()) {
@@ -99,6 +99,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
 };
 
 const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  console.log(req);
   const { email, password } = req.body;
   console.log(req.body);
 

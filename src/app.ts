@@ -12,6 +12,7 @@ import FaqRouter from "@routers/faqRouter";
 import TaCRouter from "@routers/tacRouter";
 import PrivacyRouter from "@routers/privacyRouter";
 import AboutRouter from "@routers/aboutRouter";
+import BookmarkRouter from "@routers/bookmarkRouter";
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use("/account", accountRouter);
 app.use("/event", EventRouter);
 app.use("/category", CategoryRouter);
 app.use("/subCategory", SubCategoryRouter);
+app.use("/bookmark", BookmarkRouter);
 
 app.use("/tac", TaCRouter);
 app.use("/faq", FaqRouter);

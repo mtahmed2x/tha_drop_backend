@@ -7,6 +7,7 @@ import createError from "http-errors";
 import { UserSchema } from "@schemas/userSchema";
 import { Role } from "@shared/enum";
 import TimeUtils from "@utils/tileUtils";
+import { equal } from "assert";
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userid = req.user.userId;
@@ -50,7 +51,23 @@ const updateSchedule = async (req: Request, res: Response, next: NextFunction): 
 const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const role = req.query.role as Role;
   const isApproved = req.query.isApproved === "true";
+  const dateString = req.query.date as string;
   const searchQuery = req.query.search as string;
+
+  let startAt, endAt;
+  if (req.query.startAt && req.query.endAt) {
+    startAt = TimeUtils.parseTimeToMinutes(req.query.startAt as string);
+    endAt = TimeUtils.parseTimeToMinutes(req.query.endAt as string);
+  }
+
+  let day: string | null = null;
+  if (dateString) {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return res.status(StatusCodes.BAD_REQUEST).json({ success: false, message: "Invalid date format", data: {} });
+    }
+    day = date.toLocaleString("en-US", { weekday: "long" });
+  }
 
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || 10;
@@ -61,6 +78,19 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
           { name: { $regex: searchQuery, $options: "i" } },
           { "auth.email": { $regex: searchQuery, $options: "i" } },
         ],
+      }
+    : {};
+
+  const scheduleFilter = day
+    ? {
+        schedule: {
+          $elemMatch: {
+            day: day,
+            isActive: true,
+            startAt: { $lte: startAt },
+            endAt: { $gte: endAt },
+          },
+        },
       }
     : {};
 
@@ -85,6 +115,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
           "auth.role": role,
           "auth.isApproved": isApproved,
           ...searchFilter,
+          ...scheduleFilter,
         },
       },
       {
@@ -105,6 +136,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
                 address: 1,
                 dateOfBirth: 1,
                 avatar: 1,
+                schedule: 1,
                 "auth._id": 1,
                 "auth.isApproved": 1,
                 "auth.isBlocked": 1,
