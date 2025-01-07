@@ -18,7 +18,7 @@ const logDir = path.join(process.cwd(), "logs", "winston");
 
 export const logger = createLogger({
   level: "info",
-  format: combine(label({ label: "PodCast" }), timestamp(), colorize(), myFormat),
+  format: combine(label({ label: "Tha Drop" }), timestamp(), colorize(), myFormat),
   transports: [
     new transports.Console({
       format: combine(colorize(), myFormat),
@@ -42,7 +42,7 @@ export const logger = createLogger({
 
 export const errorLogger = createLogger({
   level: "error",
-  format: combine(label({ label: "PodCast" }), timestamp(), colorize(), myFormat),
+  format: combine(label({ label: "The Drop" }), timestamp(), colorize(), myFormat),
   transports: [
     new transports.Console({
       format: combine(colorize(), myFormat),

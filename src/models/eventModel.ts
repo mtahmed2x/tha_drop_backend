@@ -30,10 +30,7 @@ const eventSchema = new Schema<EventSchema>(
             type: Date,
             required: true,
         },
-        location: {
-            type: String,
-            required: true,
-        },
+        
         description: {
             type: String,
             required: true,
@@ -45,7 +42,6 @@ const eventSchema = new Schema<EventSchema>(
         gallery: [
             {
                 type: String,
-                required: true,
             },
         ],
         ticketPrice: {
@@ -60,12 +56,20 @@ const eventSchema = new Schema<EventSchema>(
             type: Date,
             required: true,
         },
-        mapCoordinates: {
+        availabe: {
+            type: Number,
+        },
+        map: {
+            location: {
+                type: String,
+            },
             latitude: {
                 type: Number,
+                required: true,
             },
             longitude: {
                 type: Number,
+                required: true,
             },
         },
     },

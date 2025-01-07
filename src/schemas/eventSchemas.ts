@@ -7,15 +7,16 @@ export type EventSchema = Document & {
     category: Types.ObjectId;
     subCategory: Types.ObjectId;
     date: Date;
-    location: string;
     description: string;
     cover: string;
-    gallery: string[];
+    gallery?: string[];
     ticketPrice: number;
     productId: string;
     ticketPriceId: string;
     deadline: Date;
-    mapCoordinates: {
+    availabe?: number;
+    map: {
+        location?: string;
         latitude: number;
         longitude: number;
     };

@@ -1,3 +1,0 @@
-Tue Dec 31 2024 11:13:33 [PodCast] [31merror[39m: Failed to connect to MongoDB: bad auth : authentication failed
-Tue Dec 31 2024 11:14:11 [PodCast] [32minfo[39m: Successfully Connected to MongoDB Atlas
-Tue Dec 31 2024 11:14:11 [PodCast] [32minfo[39m: Server is running at PORT: 8080

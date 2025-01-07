@@ -9,91 +9,90 @@ import { Types } from "mongoose";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const { title, organizer, host, category, subCategory, date, location, description, deadline } =
-        req.body;
-    const ticketPrice = parseInt(req.body.ticketPrice)
-    let error, coverPath, gallery, product, price, event;
-    console.log(req.files);
-    
-    if(!req.files || !req.files.cover || !req.files.gallery) {
-        return next(createError(StatusCodes.BAD_REQUEST, "Cover and gallery image is required"));
-    }
-    coverPath = req.files.cover[0].path;
-    gallery = req.files.gallery;
-    
-    let galleryPath: string[] = [];
-    gallery!.map((file: Express.Multer.File) => {
-        galleryPath.push(file.path);
-    });
-
-    [error, product] = await to(
-        stripe.products.create({
-            name: title,
-            description: description,
-        })
-    );
-    if (error) return next(error);
-
-    [error, price] = await to(
-        stripe.prices.create({
-            product: product.id,
-            unit_amount: ticketPrice,
-            currency: "usd",
-        })
-    );
-    if (error) return next(error);
-
-    [error, event] = await to(
-        Event.create({
-            title,
-            organizer,
-            host,
-            category,
-            subCategory,
-            date,
-            location,
-            description,
-            ticketPrice,
-            productId: product.id,
-            ticketPriceId: price.id,
-            deadline,
-            cover: coverPath,
-            gallery: galleryPath,
-        })
-    );
-    if (error) return next(error);
-    return res.status(StatusCodes.CREATED).json({ success: true, message: "Success", data: event });
+  return res.status(StatusCodes.OK).json({ message: "ok" });
+  // const { title, organizer, host, category, subCategory, date, location, description, deadline, latitude, longitude } =
+  //     req.body;
+  // const ticketPrice = parseInt(req.body.ticketPrice)
+  // let error, coverPath, gallery, product, price, event;
+  // console.log(req.files);
+  // if(!req.files || !req.files.cover || !req.files.gallery) {
+  //     return next(createError(StatusCodes.BAD_REQUEST, "Cover and gallery image is required"));
+  // }
+  // coverPath = req.files.cover[0].path;
+  // gallery = req.files.gallery;
+  // let galleryPath: string[] = [];
+  // gallery!.map((file: Express.Multer.File) => {
+  //     galleryPath.push(file.path);
+  // });
+  // [error, product] = await to(
+  //     stripe.products.create({
+  //         name: title,
+  //         description: description,
+  //     })
+  // );
+  // if (error) return next(error);
+  // [error, price] = await to(
+  //     stripe.prices.create({
+  //         product: product.id,
+  //         unit_amount: ticketPrice,
+  //         currency: "usd",
+  //     })
+  // );
+  // if (error) return next(error);
+  // [error, event] = await to(
+  //     Event.create({
+  //         title,
+  //         organizer,
+  //         host,
+  //         category,
+  //         subCategory,
+  //         date,
+  //         location,
+  //         description,
+  //         ticketPrice,
+  //         productId: product.id,
+  //         ticketPriceId: price.id,
+  //         deadline,
+  //         cover: coverPath,
+  //         gallery: galleryPath,
+  //         mapCoordinates : {
+  //             latitude: Number.parseInt(latitude),
+  //             longitude: Number.parseInt(longitude),
+  //         }
+  //     })
+  // );
+  // if (error) return next(error);
+  // return res.status(StatusCodes.CREATED).json({ success: true, message: "Success", data: event });
 };
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const id = req.params.id;
-    const [error, event] = await to(
-        Event.findById(id)
-            .populate({ path: "host", select: "-_id name" })
-            .populate({ path: "category", select: "-_id title" })
-            .populate({ path: "subCategory", select: "-_id title" })
-            .lean()
-    );
-    if (error) return next(error);
-    if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
-    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
+  const id = req.params.id;
+  const [error, event] = await to(
+    Event.findById(id)
+      .populate({ path: "host", select: "-_id name" })
+      .populate({ path: "category", select: "-_id title" })
+      .populate({ path: "subCategory", select: "-_id title" })
+      .lean()
+  );
+  if (error) return next(error);
+  if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
 };
 const getAll = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 10;
-    const [error, events] = await to(
-        Event.find()
-            .populate({ path: "host", select: "-_id name" })
-            .populate({ path: "category", select: "-_id title" })
-            .populate({ path: "subCategory", select: "-_id title" })
-            .skip((page - 1) * limit)
-            .limit(limit)
-            .lean()
-    );
-    if (error) return next(error);
-    if (!events) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
-    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: events });
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
+  const [error, events] = await to(
+    Event.find()
+      .populate({ path: "host", select: "-_id name" })
+      .populate({ path: "category", select: "-_id title" })
+      .populate({ path: "subCategory", select: "-_id title" })
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .lean()
+  );
+  if (error) return next(error);
+  if (!events) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: events });
 };
 // const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
 //     const id = req.params.id;
@@ -110,9 +109,6 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
 //         oldCoverPath = event.cover;
 //         newCoverPath = req.files.cover[0].path;
 //     }
-
-
-    
 
 //     let updateFields: Partial<EventSchema> = {};
 
@@ -170,19 +166,19 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
 // };
 
 const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const id = req.params.id;
-    const [error, event] = await to(Event.findByIdAndDelete(id));
-    if (error) return next(error);
-    if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
-    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
+  const id = req.params.id;
+  const [error, event] = await to(Event.findByIdAndDelete(id));
+  if (error) return next(error);
+  if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
 };
 
 const EventController = {
-    create,
-    get,
-    getAll,
-    // update,
-    remove,
+  create,
+  get,
+  getAll,
+  // update,
+  remove,
 };
 
 export default EventController;

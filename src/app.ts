@@ -26,6 +26,7 @@ app.use(
     credentials: true,
   })
 );
+
 app.use("/user", UserRouter);
 app.use("/auth", AuthRouter);
 app.use("/account", accountRouter);

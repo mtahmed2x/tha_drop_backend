@@ -1,13 +1,17 @@
-import EventController from "@controllers/eventController";
-import { handleFileUpload } from "@middlewares/uploadFile";
 import express from "express";
+import EventController from "@controllers/eventController";
+import { authorize, isAdmin } from "@middlewares/authorization";
 
-const router = express.Router();
-router.post("/create", handleFileUpload, EventController.create);
-router.get("/:id", EventController.get);
-router.get("/", EventController.getAll);
+import fileUpload from "express-fileupload";
+import fileHandler from "@middlewares/fileHandler";
 
-// router.put("/update", EventController.update);
-router.delete("/delete/:id", EventController.remove);
+const EventRouter = express.Router();
 
-export default router;
+EventRouter.post("/create", fileUpload(), fileHandler, EventController.create);
+// CategoryRouter.get("/", authorize, CategoryController.getAll);
+// CategoryRouter.get("/:id", authorize, CategoryController.get);
+// CategoryRouter.put("/update/:id", authorize, isAdmin, handleFileUpload, CategoryController.update);
+// CategoryRouter.delete("/delete/:id", authorize, isAdmin, CategoryController.remove);
+// CategoryRouter.get("/:id/sub-categories", authorize, CategoryController.getSubCategories);
+
+export default EventRouter;

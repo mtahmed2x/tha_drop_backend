@@ -4,9 +4,7 @@ declare global {
   namespace Express {
     interface Request {
       user: DecodedUser;
-      files?: {
-        [fieldname: string]: Express.Multer.File[];
-      };
+      files?: fileUpload.FileArray | null | undefined;
     }
   }
 }
