@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import AuthRouter from "@routers/authRouter";
 import UserRouter from "@routers/userRouter";
@@ -38,6 +38,10 @@ app.use("/tac", TaCRouter);
 app.use("/faq", FaqRouter);
 app.use("/privacy", PrivacyRouter);
 app.use("/about", AboutRouter);
+
+app.use("/", (req: Request, res: Response, next: NextFunction) => {
+  res.send("Hello From Tha Drop");
+});
 
 app.use(notFound);
 app.use(errorHandler);

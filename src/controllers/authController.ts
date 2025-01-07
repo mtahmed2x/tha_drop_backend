@@ -100,6 +100,9 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
 
 const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, password } = req.body;
+  console.log(req.body);
+
+  console.log(email, password);
   let error, auth, isPasswordValid;
   [error, auth] = await to(Auth.findOne({ email }));
   if (error) return next(error);

@@ -6,6 +6,7 @@ import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
 import { UserSchema } from "@schemas/userSchema";
 import { Role } from "@shared/enum";
+import TimeUtils from "@utils/tileUtils";
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userid = req.user.userId;
@@ -14,6 +15,36 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
   );
   if (error) return next(error);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
+};
+
+const updateSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  const schedules = req.body.schedules;
+
+  let error, user;
+  [error, user] = await to(User.findById(userId));
+  if (error) return next(error);
+  if (!user) return next(createError(StatusCodes.NOT_FOUND, "Account not found"));
+
+  type Schedule = {
+    day: string;
+    isActive: boolean;
+    startAt: string;
+    endAt: string;
+  };
+
+  schedules.forEach((schedule: Schedule) => {
+    const day = schedule.day;
+    const isActive = schedule.isActive;
+    const startAt = schedule.startAt ? TimeUtils.parseTimeToMinutes(schedule.startAt) : null;
+    const endAt = schedule.startAt ? TimeUtils.parseTimeToMinutes(schedule.endAt) : null;
+    user.schedule?.push({ day, isActive, startAt, endAt });
+  });
+
+  [error] = await to(user.save());
+  if (error) return next(error);
+
+  res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
 };
 
 const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -58,7 +89,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
       },
       {
         $addFields: {
-          avatar: { $ifNull: ["$avatar", "assets/avatar-default.webp"] }, 
+          avatar: { $ifNull: ["$avatar", "assets/avatar-default.webp"] },
           dateOfBirth: { $ifNull: ["$dateOfBirth", null] },
         },
       },
@@ -106,7 +137,6 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
     limit,
   });
 };
-
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
@@ -207,6 +237,7 @@ const unblock = async (req: Request, res: Response, next: NextFunction): Promise
 
 const UserController = {
   get,
+  updateSchedule,
   getAllUsers,
   update,
   approve,

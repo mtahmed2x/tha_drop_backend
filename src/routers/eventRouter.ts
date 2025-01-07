@@ -8,7 +8,7 @@ import fileHandler from "@middlewares/fileHandler";
 const EventRouter = express.Router();
 
 EventRouter.post("/create", fileUpload(), fileHandler, EventController.create);
-// CategoryRouter.get("/", authorize, CategoryController.getAll);
+EventRouter.get("/", EventController.getAll);
 // CategoryRouter.get("/:id", authorize, CategoryController.get);
 // CategoryRouter.put("/update/:id", authorize, isAdmin, handleFileUpload, CategoryController.update);
 // CategoryRouter.delete("/delete/:id", authorize, isAdmin, CategoryController.remove);

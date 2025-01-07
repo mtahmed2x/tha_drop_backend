@@ -11,5 +11,6 @@ router.post("/unblock/:id", authorize, isAdmin, UserController.unblock);
 router.get("/all", authorize, UserController.getAllUsers);
 router.get("/info", authorize, UserController.get);
 router.put("/update", authorize, handleFileUpload, UserController.update);
+router.post("/update-schedule", authorize, UserController.updateSchedule);
 
 export default router;
