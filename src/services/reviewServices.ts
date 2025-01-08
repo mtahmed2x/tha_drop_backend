@@ -2,9 +2,8 @@ import Review from "@models/reviewModel";
 import to from "await-to-ts";
 import { Request, Response, NextFunction } from "express";
 
-const getAverageRating = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { targetId } = req.body.targetId;
-  const [error, avgRating] = await to(
+const getAverageRating = async (targetId: string): Promise<number> => {
+  const [error, result] = await to(
     Review.aggregate([
       {
         $match: { target: targetId },
@@ -17,6 +16,17 @@ const getAverageRating = async (req: Request, res: Response, next: NextFunction)
       },
     ])
   );
+  if (error) throw error;
+
+  if (result.length === 0) {
+    return 0;
+  }
+
+  return result[0].averageRating;
 };
 
-const getAllReview = async (req: Request, res: Response, next: NextFunction): Promise<any> => {};
+const ReviewServices = {
+  getAverageRating,
+};
+
+export default ReviewServices;

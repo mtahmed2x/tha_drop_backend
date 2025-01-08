@@ -12,8 +12,8 @@ import sendEmail from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { name, email, phoneNumber, role, password, confirmPassword } = req.body;
-  const { licensePhoto } = (req as any).files;
+  const { name, email, phoneNumber, role, password, confirmPassword, licenseUrl } = req.body;
+  
   let error, auth;
   const hashedPassword = await bcrypt.hash(password, 10);
   const verificationOTP = generateOTP();
@@ -50,7 +50,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
         auth: auth._id,
         name,
         phoneNumber,
-        licensePhoto: licensePhoto[0].path,
+        licensePhoto: licenseUrl,
       })
     );
     if (error) throw error;
@@ -107,17 +107,26 @@ const resendOTP = async (req: Request, res: Response, next: NextFunction): Promi
 
   let verificationOTP, recoveryOTP;
 
-  if (status === "activate") {
+  if (status === "activate" && auth.isVerified)
+    return res
+      .status(StatusCodes.OK)
+      .json({ success: true, message: "Your account is already verified. Please login.", data: {} });
+
+  if (status === "activate" && !auth.isVerified) {
     verificationOTP = generateOTP();
     auth.verificationOTP = verificationOTP;
     auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+    [error] = await to(auth.save());
+    if (error) return next(error);
     sendEmail(email, verificationOTP);
   }
 
-  if (status === "recover") {
+  if (status === "recovery") {
     recoveryOTP = generateOTP();
     auth.recoveryOTP = recoveryOTP;
     auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+    [error] = await to(auth.save());
+    if (error) return next(error);
     sendEmail(email, recoveryOTP);
   }
 
