@@ -12,7 +12,7 @@ const reviewSchema = new Schema<ReviewSchema>({
     required: true,
     ref: "User",
   },
-  star: {
+  rating: {
     type: Number,
     required: true,
     min: [1, "Star rating must be at least 1"],
