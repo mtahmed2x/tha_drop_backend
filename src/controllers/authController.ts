@@ -62,7 +62,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     return res.status(StatusCodes.CREATED).json({
       success: true,
       message: "Success",
-      data: auth.isVerified,
+      data: { isVerified: auth.isVerified },
     });
   } catch (error) {
     if (session.inTransaction()) {
@@ -98,8 +98,38 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { accessToken, auth, user } });
 };
 
+const resendOTP = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const { email, status } = req.body;
+  let error, auth;
+  [error, auth] = await to(Auth.findOne({ email: email }));
+  if (error) return next(error);
+  if (!auth) return next(createError(StatusCodes.NOT_FOUND, "Account not found"));
+
+  let verificationOTP, recoveryOTP;
+
+  if (status === "activate") {
+    verificationOTP = generateOTP();
+    auth.verificationOTP = verificationOTP;
+    auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+    sendEmail(email, verificationOTP);
+  }
+
+  if (status === "recover") {
+    recoveryOTP = generateOTP();
+    auth.recoveryOTP = recoveryOTP;
+    auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+    sendEmail(email, recoveryOTP);
+  }
+
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { verificationOTP, recoveryOTP } });
+};
+
 const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  console.log(req);
   const { email, password } = req.body;
+  console.log(req.body);
+
+  console.log(email, password);
   let error, auth, isPasswordValid;
   [error, auth] = await to(Auth.findOne({ email }));
   if (error) return next(error);
@@ -233,6 +263,7 @@ const AuthController = {
   recoveryVerification,
   resetPassword,
   changePassword,
+  resendOTP,
   getAccessToken,
   remove,
 };

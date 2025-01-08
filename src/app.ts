@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import AuthRouter from "@routers/authRouter";
 import UserRouter from "@routers/userRouter";
@@ -12,6 +12,8 @@ import FaqRouter from "@routers/faqRouter";
 import TaCRouter from "@routers/tacRouter";
 import PrivacyRouter from "@routers/privacyRouter";
 import AboutRouter from "@routers/aboutRouter";
+import BookmarkRouter from "@routers/bookmarkRouter";
+import ReviewRouter from "@routers/reviewRouter";
 
 const app = express();
 
@@ -26,17 +28,24 @@ app.use(
     credentials: true,
   })
 );
+
 app.use("/user", UserRouter);
 app.use("/auth", AuthRouter);
 app.use("/account", accountRouter);
 app.use("/event", EventRouter);
 app.use("/category", CategoryRouter);
 app.use("/subCategory", SubCategoryRouter);
+app.use("/bookmark", BookmarkRouter);
+app.use("/review", ReviewRouter);
 
 app.use("/tac", TaCRouter);
 app.use("/faq", FaqRouter);
 app.use("/privacy", PrivacyRouter);
 app.use("/about", AboutRouter);
+
+app.use("/", (req: Request, res: Response, next: NextFunction) => {
+  res.send("Hello From Tha Drop");
+});
 
 app.use(notFound);
 app.use(errorHandler);
