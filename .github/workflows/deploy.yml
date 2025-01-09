@@ -20,5 +20,5 @@ jobs:
       - name: Deploy to Droplet
         run: |
           ssh -o StrictHostKeyChecking=no mir@${{ secrets.DROPLET_IP }} \
-          "cd ~/projects/the-drop-backend && git pull origin main && docker-compose down && docker-compose up -d --build"
+          "cd ~/projects/tha_drop_backend && git pull origin main && docker-compose down && docker-compose up -d --build"
 
