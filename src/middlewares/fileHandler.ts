@@ -18,12 +18,14 @@ export const fileHandler = async (req: Request, res: Response, next: NextFunctio
   try {
     const fileFields = [
       { fieldName: "avatar", folder: "the_drop/profile", key: "avatarUrl" },
+      { fieldName: "licensePhoto", folder: "the_drop/licensePhoto", key: "licenseUrl" },
       { fieldName: "categoryImage", folder: "the_drop/category", key: "categoryImageUrl" },
       { fieldName: "subcategoryImage", folder: "the_drop/subcategory", key: "subcategoryImageUrl" },
       { fieldName: "cover", folder: "the_drop/cover", key: "coverUrl" },
       { fieldName: "gallery", folder: "the_drop/gallery", key: "galleryUrls" },
     ];
-
+    console.log(req.files);
+    
     if (req.files) {
       await Promise.all(
         fileFields.map(async ({ fieldName, folder, key }) => {

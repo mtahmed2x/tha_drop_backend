@@ -7,45 +7,19 @@ import createError from "http-errors";
 import { UserSchema } from "@schemas/userSchema";
 import { Role } from "@shared/enum";
 import TimeUtils from "@utils/tileUtils";
-import { equal } from "assert";
+import Cloudinary from "@shared/cloudinary";
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userid = req.user.userId;
   const [error, user] = await to(
-    User.findById(userid).populate({ path: "auth", select: "email role isApproved isBlocked avatar" }).lean()
+    User.findById(userid).populate({ path: "auth", select: "email role isApproved isBlocked" }).lean()
   );
+  if (!user!.dateOfBirth) user!.dateOfBirth = null;
+  if (!user!.address) user!.address = null;
+  if (!user!.gender) user!.gender = null;
+
   if (error) return next(error);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
-};
-
-const updateSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const userId = req.user.userId;
-  const schedules = req.body.schedules;
-
-  let error, user;
-  [error, user] = await to(User.findById(userId));
-  if (error) return next(error);
-  if (!user) return next(createError(StatusCodes.NOT_FOUND, "Account not found"));
-
-  type Schedule = {
-    day: string;
-    isActive: boolean;
-    startAt: string;
-    endAt: string;
-  };
-
-  schedules.forEach((schedule: Schedule) => {
-    const day = schedule.day;
-    const isActive = schedule.isActive;
-    const startAt = schedule.startAt ? TimeUtils.parseTimeToMinutes(schedule.startAt) : null;
-    const endAt = schedule.startAt ? TimeUtils.parseTimeToMinutes(schedule.endAt) : null;
-    user.schedule?.push({ day, isActive, startAt, endAt });
-  });
-
-  [error] = await to(user.save());
-  if (error) return next(error);
-
-  res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
 };
 
 const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -174,39 +148,37 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   const userId = req.user.userId;
   console.log(req.body);
 
-  const { name, phoneNumber, address, dateOfBirth, gender, isResturentOwner, resturentName } = req.body;
-  console.log(name, phoneNumber);
+  const { name, phoneNumber, address, dateOfBirth, gender, isResturentOwner, resturentName, avatarUrl, licenseUrl } =
+    req.body;
+  console.log(avatarUrl);
 
-  let avatar, licensePhoto;
-  const files = (req as any).files || {};
-  if (files.avatar) {
-    avatar = files.avatar[0].path;
-  }
-  if (files.licensePhoto) {
-    licensePhoto = files.licensePhoto[0].path;
-  }
   let error, user;
-  [error, user] = await to(User.findById(userId));
+  [error, user] = await to(User.findById(userId).populate({ path: "auth", select: "email role isApproved isBlocked" }));
   if (error) return next(error);
-
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User Not Found"));
 
-  const updatedFields: Partial<UserSchema> = {
-    name: name || user.name,
-    phoneNumber: phoneNumber || user.phoneNumber,
-    address: address || user.address,
-    dateOfBirth: dateOfBirth || user.dateOfBirth,
-    gender: gender || user.gender,
-    avatar: avatar || user.avatar,
-    licensePhoto: licensePhoto || user.licensePhoto,
-  };
-  if (isResturentOwner !== undefined) {
-    updatedFields.isResturentOwner = isResturentOwner;
-    updatedFields.resturentName = resturentName || user.resturentName;
+  if (avatarUrl) {
+    await Cloudinary.remove(user.avatar);
+    user.avatar = avatarUrl;
   }
 
-  [error, user] = await to(User.findByIdAndUpdate(userId, { $set: updatedFields }, { new: true }));
+  if (licenseUrl) {
+    await Cloudinary.remove(user.licensePhoto);
+    user.licensePhoto = licenseUrl;
+  }
 
+  user.name = name || user.name;
+  user.phoneNumber = phoneNumber || user.phoneNumber;
+  user.address = address || user.address;
+  user.dateOfBirth = dateOfBirth || user.dateOfBirth;
+  user.gender = gender || user.gender;
+
+  if (isResturentOwner !== undefined) {
+    user.isResturentOwner = isResturentOwner;
+    user.resturentName = resturentName || user.resturentName;
+  }
+
+  [error] = await to(user.save());
   if (error) return next(error);
 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
@@ -269,7 +241,6 @@ const unblock = async (req: Request, res: Response, next: NextFunction): Promise
 
 const UserController = {
   get,
-  updateSchedule,
   getAllUsers,
   update,
   approve,

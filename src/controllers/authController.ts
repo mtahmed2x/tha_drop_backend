@@ -10,10 +10,12 @@ import User from "@models/userModel";
 import { Role } from "@shared/enum";
 import sendEmail from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
+import Stripe from "stripe";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { name, email, phoneNumber, role, password, confirmPassword } = req.body;
-  const { licensePhoto } = (req as any).files;
+  const { name, email, phoneNumber, role, password, confirmPassword, licenseUrl } = req.body;
+
   let error, auth;
   const hashedPassword = await bcrypt.hash(password, 10);
   const verificationOTP = generateOTP();
@@ -44,16 +46,27 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
       })
     );
     if (error) throw error;
+    let user, account;
 
-    [error] = await to(
+    [error, user] = await to(
       User.create({
         auth: auth._id,
         name,
         phoneNumber,
-        licensePhoto: licensePhoto[0].path,
+        licensePhoto: licenseUrl,
       })
     );
     if (error) throw error;
+
+    if (role !== Role.GUEST && role !== Role.ADMIN) {
+      [error, account] = await to(stripe.accounts.create({ type: "express" }));
+      if (error) throw error;
+
+      user.stripeAccountId = account.id;
+      user.stripeAccoutStatus = false;
+      [error] = await to(user.save());
+      if (error) throw error;
+    }
 
     await sendEmail(email, verificationOTP);
     await session.commitTransaction();
@@ -107,17 +120,26 @@ const resendOTP = async (req: Request, res: Response, next: NextFunction): Promi
 
   let verificationOTP, recoveryOTP;
 
-  if (status === "activate") {
+  if (status === "activate" && auth.isVerified)
+    return res
+      .status(StatusCodes.OK)
+      .json({ success: true, message: "Your account is already verified. Please login.", data: {} });
+
+  if (status === "activate" && !auth.isVerified) {
     verificationOTP = generateOTP();
     auth.verificationOTP = verificationOTP;
     auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+    [error] = await to(auth.save());
+    if (error) return next(error);
     sendEmail(email, verificationOTP);
   }
 
-  if (status === "recover") {
+  if (status === "recovery") {
     recoveryOTP = generateOTP();
     auth.recoveryOTP = recoveryOTP;
     auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+    [error] = await to(auth.save());
+    if (error) return next(error);
     sendEmail(email, recoveryOTP);
   }
 

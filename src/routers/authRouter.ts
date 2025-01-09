@@ -2,10 +2,12 @@ import AuthController from "@controllers/authController";
 import express from "express";
 import { authorize, recoveryAuthorize, refreshAuthorize } from "@middlewares/authorization";
 import { handleFileUpload } from "@middlewares/uploadFile";
+import fileUpload from "express-fileupload";
+import fileHandler from "@middlewares/fileHandler";
 
 const authRouter = express.Router();
 
-authRouter.post("/register", handleFileUpload, AuthController.register);
+authRouter.post("/register", fileUpload(), fileHandler, AuthController.register);
 authRouter.post("/activate", AuthController.activate);
 authRouter.post("/login", AuthController.login);
 authRouter.post("/forgot-password", AuthController.forgotPassword);

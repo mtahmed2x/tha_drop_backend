@@ -52,14 +52,130 @@ const userSchema = new Schema<UserSchema>({
           required: true,
         },
         startAt: {
-          type: Number,
+          type: String,
         },
         endAt: {
-          type: Number,
+          type: String,
         },
       },
     ],
     required: false,
+  },
+  reviews: {
+    type: [
+      {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "User",
+          required: true,
+          unique: true,
+        },
+        name: {
+          type: String,
+          required: true,
+        },
+        avatar: {
+          type: String,
+          required: true,
+        },
+        rating: {
+          type: Number,
+          required: true,
+          min: [1, "Star rating must be at least 1"],
+          max: [5, "Star rating must not exceed 5"],
+        },
+        comment: {
+          type: String,
+        },
+        createdAt: {
+          type: Date,
+          required: true,
+        },
+        updatedAt: {
+          type: Date,
+          required: true,
+        },
+      },
+    ],
+  },
+  stripeAccountId: {
+    type: String,
+  },
+  stripeAccoutStatus: {
+    type: Boolean,
+  },
+  tickets: {
+    type: [
+      {
+        event: {
+          type: Schema.Types.ObjectId,
+          ref: "Event",
+          required: true,
+        },
+        title: {
+          type: String,
+          required: true,
+        },
+        description: {
+          type: String,
+          required: true,
+        },
+        location: {
+          type: String,
+          required: true,
+        },
+        date: {
+          type: Date,
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+        customId: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+    required: false,
+  },
+
+  guests: {
+    type: [
+      {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "User",
+          required: true,
+        },
+        event: {
+          type: Schema.Types.ObjectId,
+          ref: "Event",
+          required: true,
+        },
+        name: {
+          type: String,
+          required: true,
+        },
+        avatar: {
+          type: String,
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+        eventTitle: {
+          type: String,
+          required: true,
+        },
+        location: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
   },
 });
 

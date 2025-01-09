@@ -5,15 +5,17 @@ import Event from "@models/eventModel";
 import Stripe from "stripe";
 import createError from "http-errors";
 import Cloudinary from "@shared/cloudinary";
+import SubCategory from "@models/subCategoryModel";
+import { Types } from "mongoose";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
   const {
     title,
     organizer,
-    host,
-    category,
-    subCategory,
+    categoryId,
+    subCategoryId,
     date,
     description,
     coverUrl,
@@ -26,7 +28,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   const ticketPrice = parseInt(req.body.ticketPrice);
   const availableTickets = parseInt(req.body.availableTickets);
 
-  let error, product, price, event;
+  let error, product, price, event, subCategory;
   [error, product] = await to(
     stripe.products.create({
       name: title,
@@ -44,13 +46,17 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   );
   if (error) return next(error);
 
+  [error, subCategory] = await to(SubCategory.findById(subCategoryId));
+  if (error) return next(error);
+  if (!subCategory) return next(createError(StatusCodes.NOT_FOUND, "Subcategory not found"));
+
   [error, event] = await to(
     Event.create({
       title,
       organizer,
-      host,
-      category,
-      subCategory,
+      host: userId,
+      category: categoryId,
+      subCategory: subCategoryId,
       date,
       description,
       cover: coverUrl,
@@ -68,6 +74,11 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
     })
   );
   if (error) return next(error);
+
+  subCategory.events.push(event._id as Types.ObjectId);
+  [error] = await to(subCategory.save());
+  if (error) return next(error);
+
   return res.status(StatusCodes.CREATED).json({ success: true, message: "Success", data: event });
 };
 
@@ -75,9 +86,9 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
   const id = req.params.id;
   const [error, event] = await to(
     Event.findById(id)
-      .populate({ path: "host", select: "_id, name" })
-      .populate({ path: "category", select: "-_id title" })
-      .populate({ path: "subCategory", select: "-_id title" })
+      .populate({ path: "host", select: "name" })
+      .populate({ path: "category", select: "title" })
+      .populate({ path: "subCategory", select: "title" })
       .lean()
   );
   if (error) return next(error);
@@ -90,9 +101,9 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
   const limit = Number(req.query.limit) || 10;
   const [error, events] = await to(
     Event.find()
-      .populate({ path: "host", select: "-_id name" })
-      .populate({ path: "category", select: "-_id title" })
-      .populate({ path: "subCategory", select: "-_id title" })
+      .populate({ path: "host", select: "name" })
+      .populate({ path: "category", select: "title" })
+      .populate({ path: "subCategory", select: "title" })
       .skip((page - 1) * limit)
       .limit(limit)
       .lean()
@@ -103,22 +114,14 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
 };
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const id = req.params.id;
+  const { title, organizer, description, coverUrl, galleryUrls, availableTickets, deadline } = req.body;
+
   let error, event;
   [error, event] = await to(Event.findById(id));
   if (error) return next(error);
   if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
 
-  const { title, organizer, description, coverUrl, galleryUrls, prevGalleyUrls, deadline } = req.body;
-  const availableTickets = parseInt(req.body.availableTickets);
-
-  if (coverUrl) {
-    Cloudinary.remove(event.cover);
-    event.cover = coverUrl;
-  }
-  if (prevGalleyUrls) {
-    event.gallery = prevGalleyUrls;
-    if (galleryUrls) event.gallery?.push(...galleryUrls);
-  }
+  console.log(event);
 
   if (title || description) {
     event.title = title || event.title;
@@ -131,6 +134,16 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   event.organizer = organizer || event.organizer;
   event.deadline = deadline || event.deadline;
   event.availableTickets = availableTickets || event.availableTickets;
+
+  if (coverUrl) {
+    // await Cloudinary.remove(coverUrl);
+    event.cover = coverUrl;
+  }
+
+  if (galleryUrls) {
+    // await Cloudinary.remove(galleryUrls);
+    event.gallery = galleryUrls;
+  }
 
   [error, event] = await to(event.save());
   if (error) return next(error);

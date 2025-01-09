@@ -2,15 +2,22 @@ import express from "express";
 import UserController from "@controllers/userController";
 import { authorize, isAdmin } from "@middlewares/authorization";
 import { handleFileUpload } from "@middlewares/uploadFile";
+import UserServices from "src/services/userServices";
+import fileUpload from "express-fileupload";
+import fileHandler from "@middlewares/fileHandler";
 
 const router = express.Router();
 
+router.put("/update-schedule", authorize, UserServices.updateSchedule);
+router.get("/my-schedule", authorize, UserServices.getMySchedules);
+router.get("/my-tickets", authorize, UserServices.getMyTickets);
+router.get("/my-guests", authorize, UserServices.getMyGuests);
+router.get("/my-reviews", authorize, UserServices.getMyReviews);
 router.post("/approve/:id", authorize, isAdmin, UserController.approve);
 router.post("/block/:id", authorize, isAdmin, UserController.block);
 router.post("/unblock/:id", authorize, isAdmin, UserController.unblock);
 router.get("/all", authorize, UserController.getAllUsers);
 router.get("/info", authorize, UserController.get);
-router.put("/update", authorize, handleFileUpload, UserController.update);
-router.post("/update-schedule", authorize, UserController.updateSchedule);
+router.put("/update", fileUpload(), fileHandler, authorize, UserController.update);
 
 export default router;
