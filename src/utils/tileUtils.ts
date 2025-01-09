@@ -14,8 +14,25 @@ const parseTimeToMinutes = (input: string): number => {
   return totalMinutes;
 };
 
+const parseMinutesToTime = (totalMinutes: number): string => {
+  if (totalMinutes < 0 || totalMinutes >= 1440) {
+    throw new Error("Invalid total minutes. Must be between 0 and 1439.");
+  }
+
+  const hours24 = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  const period = hours24 >= 12 ? "pm" : "am";
+  const hours12 = hours24 % 12 || 12; // Convert 24-hour format to 12-hour format
+
+  const formattedMinutes = minutes.toString().padStart(2, "0");
+
+  return `${hours12}:${formattedMinutes} ${period}`;
+};
+
 const TimeUtils = {
   parseTimeToMinutes,
+  parseMinutesToTime,
 };
 
 export default TimeUtils;

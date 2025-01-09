@@ -30,7 +30,7 @@ const getMyTickets = async (req: Request, res: Response, next: NextFunction): Pr
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
 
-  return res.status(StatusCodes.OK).json({ success: true, nessage: "Success", data: user.tickets });
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user.tickets });
 };
 
 const getMyGuests = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -39,7 +39,16 @@ const getMyGuests = async (req: Request, res: Response, next: NextFunction): Pro
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
 
-  return res.status(StatusCodes.OK).json({ success: true, nessage: "Success", data: user.guests });
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user.guests });
+};
+
+const getMySchedules = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  const [error, user] = await to(User.findById(userId));
+  if (error) return next(error);
+  if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user.schedule });
 };
 
 const updateSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -51,28 +60,14 @@ const updateSchedule = async (req: Request, res: Response, next: NextFunction): 
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "Account not found"));
 
-  type Schedule = {
-    day: string;
-    isActive: boolean;
-    startAt: string;
-    endAt: string;
-  };
-
-  schedules.forEach((schedule: Schedule) => {
-    const day = schedule.day;
-    const isActive = schedule.isActive;
-    const startAt = schedule.startAt ? TimeUtils.parseTimeToMinutes(schedule.startAt) : null;
-    const endAt = schedule.startAt ? TimeUtils.parseTimeToMinutes(schedule.endAt) : null;
-    user.schedule?.push({ day, isActive, startAt, endAt });
-  });
-
+  user.schedule = schedules;
   [error] = await to(user.save());
   if (error) return next(error);
 
   res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
 };
 
-const getReviews = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const getMyReviews = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.body.userId || req.user.userId;
 
   const [error, user] = await to(User.findById(userId));
@@ -95,7 +90,10 @@ const getReviews = async (req: Request, res: Response, next: NextFunction): Prom
 
 const UserServices = {
   updateSchedule,
-  getReviews,
+  getMyTickets,
+  getMyGuests,
+  getMySchedules,
+  getMyReviews,
 };
 
 export default UserServices;

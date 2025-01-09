@@ -52,10 +52,10 @@ const userSchema = new Schema<UserSchema>({
           required: true,
         },
         startAt: {
-          type: Number,
+          type: String,
         },
         endAt: {
-          type: Number,
+          type: String,
         },
       },
     ],
@@ -138,39 +138,44 @@ const userSchema = new Schema<UserSchema>({
         },
       },
     ],
+    required: false,
   },
 
   guests: {
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-    event: {
-      type: Schema.Types.ObjectId,
-      ref: "Event",
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    avatar: {
-      type: String,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-    eventTitle: {
-      type: String,
-      required: true,
-    },
-    location: {
-      type: String,
-      required: true,
-    },
+    type: [
+      {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "User",
+          required: true,
+        },
+        event: {
+          type: Schema.Types.ObjectId,
+          ref: "Event",
+          required: true,
+        },
+        name: {
+          type: String,
+          required: true,
+        },
+        avatar: {
+          type: String,
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+        eventTitle: {
+          type: String,
+          required: true,
+        },
+        location: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
   },
 });
 

@@ -101,19 +101,20 @@ const getEvents = async (req: Request, res: Response, next: NextFunction): Promi
     SubCategory.findById(id)
       .populate({
         path: "events",
-        select: "title cover date",
+        select: "title cover date map",
         options: { skip, limit },
       })
       .select("title")
       .lean()
   );
+
   if (error) return next(error);
   if (!subCategory)
     return res
       .status(StatusCodes.NOT_FOUND)
       .json({ success: false, message: "SubCategory not found", data: { subCategory: [] } });
 
-  const totalEvents = await SubCategory.countDocuments({ _id: id, events: { $exists: true } });
+  const totalEvents = subCategory.events.length;
   const totalPages = Math.ceil(totalEvents / limit);
 
   return res.status(StatusCodes.OK).json({
@@ -182,6 +183,7 @@ const SubCategoryController = {
   get,
   update,
   remove,
+  getEvents,
 };
 
 export default SubCategoryController;

@@ -8,12 +8,16 @@ import fileHandler from "@middlewares/fileHandler";
 
 const router = express.Router();
 
+router.put("/update-schedule", authorize, UserServices.updateSchedule);
+router.get("/my-schedule", authorize, UserServices.getMySchedules);
+router.get("/my-tickets", authorize, UserServices.getMyTickets);
+router.get("/my-guests", authorize, UserServices.getMyGuests);
+router.get("/my-reviews", authorize, UserServices.getMyReviews);
 router.post("/approve/:id", authorize, isAdmin, UserController.approve);
 router.post("/block/:id", authorize, isAdmin, UserController.block);
 router.post("/unblock/:id", authorize, isAdmin, UserController.unblock);
 router.get("/all", authorize, UserController.getAllUsers);
 router.get("/info", authorize, UserController.get);
 router.put("/update", fileUpload(), fileHandler, authorize, UserController.update);
-router.post("/update-schedule", authorize, UserServices.updateSchedule);
 
 export default router;

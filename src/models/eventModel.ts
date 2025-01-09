@@ -30,7 +30,6 @@ const eventSchema = new Schema<EventSchema>(
       type: Date,
       required: true,
     },
-
     description: {
       type: String,
       required: true,
@@ -44,6 +43,10 @@ const eventSchema = new Schema<EventSchema>(
         type: String,
       },
     ],
+    productId: {
+      type: String,
+      required: true,
+    },
     ticketPrice: {
       type: Number,
       required: true,
