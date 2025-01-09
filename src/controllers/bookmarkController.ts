@@ -1,4 +1,4 @@
-import e, { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import to from "await-to-ts";
 import Bookmark from "@models/bookmarkModel";
 import { StatusCodes } from "http-status-codes";

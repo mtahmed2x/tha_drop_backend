@@ -1,8 +1,7 @@
 import express from "express";
 import UserController from "@controllers/userController";
 import { authorize, isAdmin } from "@middlewares/authorization";
-import { handleFileUpload } from "@middlewares/uploadFile";
-import UserServices from "src/services/userServices";
+import UserServices from "@services/userServices";
 import fileUpload from "express-fileupload";
 import fileHandler from "@middlewares/fileHandler";
 
