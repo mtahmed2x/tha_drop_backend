@@ -12,6 +12,6 @@ router.get("/", authorize, SubCategoryController.getAll);
 router.get("/:id", authorize, SubCategoryController.get);
 router.put("/update/:id", fileUpload(), fileHandler, authorize, isAdmin, SubCategoryController.update);
 router.delete("/delete/:id", authorize, isAdmin, SubCategoryController.remove);
-router.get("/:id/all-events", SubCategoryController.getEvents);
+router.get("/:id/all-events", authorize, SubCategoryController.getEvents);
 
 export default router;
