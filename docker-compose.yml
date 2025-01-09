@@ -13,9 +13,6 @@ services:
     networks:
       - the_drop_network
 
-volumes:
-  mongodb_data:
-
 networks:
   the_drop_network:
     driver: bridge

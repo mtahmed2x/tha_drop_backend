@@ -47,7 +47,7 @@ app.use("/privacy", PrivacyRouter);
 app.use("/about", AboutRouter);
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("Hello From Tha Drop Backend aaaaaaaa");
+  res.send("Hello From Tha Drop Backend");
 });
 
 app.use(notFound);
