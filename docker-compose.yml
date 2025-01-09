@@ -10,23 +10,6 @@ services:
       - SERVICE_NAME=Tha Drop
     env_file:
       - .env
-    depends_on:
-      - mongodb
-    networks:
-      - the_drop_network
-
-  mongodb:
-    image: mongo:8.0
-    container_name: mongodb
-    restart: always
-    ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: tha_drop
-    volumes:
-      - mongodb_data:/data/db
     networks:
       - the_drop_network
 
