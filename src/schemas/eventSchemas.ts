@@ -14,7 +14,8 @@ export type EventSchema = Document & {
   productId: string;
   ticketPriceId: string;
   deadline: Date;
-  availableTickets?: number;
+  availableTickets: number;
+  ticketSell: number;
   map: {
     location?: string;
     latitude: number;

@@ -59,6 +59,10 @@ const eventSchema = new Schema<EventSchema>(
     availableTickets: {
       type: Number,
     },
+    ticketSell: {
+      type: Number,
+      default: 0,
+    },
     map: {
       location: {
         type: String,

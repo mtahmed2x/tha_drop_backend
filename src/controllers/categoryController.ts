@@ -6,15 +6,15 @@ import { NextFunction, Request, Response } from "express";
 import fs from "fs";
 import path from "path";
 import { logger } from "@shared/logger";
+import Cloudinary from "@shared/cloudinary";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { title } = req.body;
-  const { files: { categoryImage } = {} } = req;
-  if (!title || !categoryImage)
+  const { title, categoryImageUrl } = req.body;
+
+  if (!title || !categoryImageUrl)
     return next(createError(StatusCodes.BAD_REQUEST, "Category Title and Image is required"));
 
-  const categoryImagePath = categoryImage[0].path;
-  const [error, category] = await to(Category.create({ title, categoryImage: categoryImagePath }));
+  const [error, category] = await to(Category.create({ title, categoryImage: categoryImageUrl }));
   if (error) return next(error);
   return res.status(StatusCodes.CREATED).json({ success: true, message: "Success", data: category });
 };
@@ -76,31 +76,24 @@ const getSubCategories = async (req: Request, res: Response, next: NextFunction)
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const id = req.params.id;
-  const { title } = req.body;
-  const { files: { categoryImage } = {} } = req;
+  const { title, categoryImageUrl } = req.body;
 
-  if (!title && !categoryImage) {
+  if (!title && !categoryImageUrl) {
     return next(createError(StatusCodes.BAD_REQUEST, "Nothing to update"));
   }
 
-  let error, category, oldImagePath;
+  let error, category;
   [error, category] = await to(Category.findById(id));
   if (error) return next(error);
   if (!category) return next(createError(StatusCodes.NOT_FOUND, "Category Not Found"));
 
-  if (categoryImage && category.categoryImage) {
-    oldImagePath = category.categoryImage;
-    category.categoryImage = categoryImage[0].path;
+  if (categoryImageUrl) {
+    // await Cloudinary.remove(category.categoryImage);
+    category.categoryImage = categoryImageUrl;
   }
   category.title = title || category.title;
   [error] = await to(category.save());
   if (error) return next(error);
-
-  if (oldImagePath) {
-    fs.unlink(path.resolve(oldImagePath), (error) => {
-      if (error) logger.error("Failed to delete category image: ", error);
-    });
-  }
 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: category });
 };
@@ -113,16 +106,12 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
   if (error) return next(error);
   if (!category) return next(createError(StatusCodes.NOT_FOUND, "Category Not Found"));
 
-  const oldImagePath: string | null | undefined = category.categoryImage;
+  if (category.categoryImage) {
+    await Cloudinary.remove(category.categoryImage);
+  }
 
   [error] = await to(Category.findByIdAndDelete(id));
   if (error) return next(error);
-
-  if (oldImagePath) {
-    fs.unlink(path.resolve(oldImagePath), (error) => {
-      if (error) logger.error("Failed to delete category image: ", error);
-    });
-  }
 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
 };

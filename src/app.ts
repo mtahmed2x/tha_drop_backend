@@ -14,8 +14,11 @@ import PrivacyRouter from "@routers/privacyRouter";
 import AboutRouter from "@routers/aboutRouter";
 import BookmarkRouter from "@routers/bookmarkRouter";
 import ReviewRouter from "@routers/reviewRouter";
+import WebhookRouter from "@routers/webhookRouter";
 
 const app = express();
+
+app.use("/", WebhookRouter);
 
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));

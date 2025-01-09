@@ -10,10 +10,12 @@ import User from "@models/userModel";
 import { Role } from "@shared/enum";
 import sendEmail from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
+import Stripe from "stripe";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, email, phoneNumber, role, password, confirmPassword, licenseUrl } = req.body;
-  
+
   let error, auth;
   const hashedPassword = await bcrypt.hash(password, 10);
   const verificationOTP = generateOTP();
@@ -44,8 +46,9 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
       })
     );
     if (error) throw error;
+    let user, account;
 
-    [error] = await to(
+    [error, user] = await to(
       User.create({
         auth: auth._id,
         name,
@@ -54,6 +57,16 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
       })
     );
     if (error) throw error;
+
+    if (role !== Role.GUEST && role !== Role.ADMIN) {
+      [error, account] = await to(stripe.accounts.create({ type: "express" }));
+      if (error) throw error;
+
+      user.stripeAccountId = account.id;
+      user.stripeAccoutStatus = false;
+      [error] = await to(user.save());
+      if (error) throw error;
+    }
 
     await sendEmail(email, verificationOTP);
     await session.commitTransaction();

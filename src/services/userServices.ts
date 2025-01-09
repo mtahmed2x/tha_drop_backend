@@ -4,6 +4,43 @@ import to from "await-to-ts";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
 import TimeUtils from "@utils/tileUtils";
+import Stripe from "stripe";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+const linkStripeAccount = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  let error, user;
+  [error, user] = await to(User.findById(userId));
+  if (error) return next(error);
+  if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+
+  const accountLink = await stripe.accountLinks.create({
+    account: user.stripeAccountId,
+    refresh_url: "https://example.com/cancel",
+    return_url: `https://example.com/success?accountId=${user.stripeAccountId}`,
+    type: "account_onboarding",
+  });
+
+  res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { accountLink: accountLink.url } });
+};
+
+const getMyTickets = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  const [error, user] = await to(User.findById(userId));
+  if (error) return next(error);
+  if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+
+  return res.status(StatusCodes.OK).json({ success: true, nessage: "Success", data: user.tickets });
+};
+
+const getMyGuests = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  const [error, user] = await to(User.findById(userId));
+  if (error) return next(error);
+  if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+
+  return res.status(StatusCodes.OK).json({ success: true, nessage: "Success", data: user.guests });
+};
 
 const updateSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
@@ -42,18 +79,18 @@ const getReviews = async (req: Request, res: Response, next: NextFunction): Prom
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "Account not found"));
 
-  if (user.review?.length === 0) {
+  if (user.reviews?.length === 0) {
     return res
       .status(StatusCodes.OK)
       .json({ success: true, message: "Success", data: { totalReviews: 0, avgRating: 0 } });
   }
 
-  const totalReviews = user.review!.length;
-  const avgRating = user.review!.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
+  const totalReviews = user.reviews!.length;
+  const avgRating = user.reviews!.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
 
   return res
     .status(StatusCodes.OK)
-    .json({ success: true, message: "Success", data: { totalReviews, avgRating, reviews: user.review } });
+    .json({ success: true, message: "Success", data: { totalReviews, avgRating, reviews: user.reviews } });
 };
 
 const UserServices = {

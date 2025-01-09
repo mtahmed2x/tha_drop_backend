@@ -12,12 +12,12 @@ import Cloudinary from "@shared/cloudinary";
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userid = req.user.userId;
   const [error, user] = await to(
-    User.findById(userid).populate({ path: "auth", select: "email role isApproved isBlocked avatar" }).lean()
+    User.findById(userid).populate({ path: "auth", select: "email role isApproved isBlocked" }).lean()
   );
-  if(!user!.dateOfBirth) user!.dateOfBirth = null;
-  if(!user!.address) user!.address = null;
-  if(!user!.gender) user!.gender = null;
-  
+  if (!user!.dateOfBirth) user!.dateOfBirth = null;
+  if (!user!.address) user!.address = null;
+  if (!user!.gender) user!.gender = null;
+
   if (error) return next(error);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
 };
@@ -148,21 +148,21 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   const userId = req.user.userId;
   console.log(req.body);
 
-  const { name, phoneNumber, address, dateOfBirth, gender, isResturentOwner, resturentName, avatarUrl, licenseUrl } = req.body;
+  const { name, phoneNumber, address, dateOfBirth, gender, isResturentOwner, resturentName, avatarUrl, licenseUrl } =
+    req.body;
   console.log(avatarUrl);
-  
 
   let error, user;
-  [error, user] = await to(User.findById(userId));
+  [error, user] = await to(User.findById(userId).populate({ path: "auth", select: "email role isApproved isBlocked" }));
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User Not Found"));
 
-  if(avatarUrl) {
+  if (avatarUrl) {
     await Cloudinary.remove(user.avatar);
     user.avatar = avatarUrl;
   }
 
-  if(licenseUrl) {
+  if (licenseUrl) {
     await Cloudinary.remove(user.licensePhoto);
     user.licensePhoto = licenseUrl;
   }
@@ -172,7 +172,6 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   user.address = address || user.address;
   user.dateOfBirth = dateOfBirth || user.dateOfBirth;
   user.gender = gender || user.gender;
-    
 
   if (isResturentOwner !== undefined) {
     user.isResturentOwner = isResturentOwner;

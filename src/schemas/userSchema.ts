@@ -18,7 +18,7 @@ export type UserSchema = Document & {
     startAt: number | null;
     endAt: number | null;
   }[];
-  review?: {
+  reviews?: {
     user: Types.ObjectId;
     name: string;
     avatar: string;
@@ -28,4 +28,24 @@ export type UserSchema = Document & {
     updatedAt: Date;
   }[];
   averageRating: number;
+  stripeAccountId: string;
+  stripeAccoutStatus: boolean;
+  tickets?: {
+    event: Types.ObjectId;
+    title: string;
+    description: string;
+    location: string;
+    date: Date;
+    quantity: number;
+    customId: string;
+  }[];
+  guests?: {
+    user: Types.ObjectId;
+    event: Types.ObjectId;
+    name: string;
+    avatar: string;
+    quantity: number;
+    eventTitle: string;
+    location: string;
+  }[];
 };

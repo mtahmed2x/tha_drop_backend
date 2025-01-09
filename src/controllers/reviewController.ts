@@ -28,7 +28,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
     createdAt: new Date(),
     updatedAt: new Date(),
   };
-  targetUser.review?.push(review);
+  targetUser.reviews?.push(review);
   [error] = await to(targetUser.save());
   if (error) return next(error);
   return res.status(StatusCodes.CREATED).json({ success: true, message: "Success", data: review });
@@ -47,17 +47,17 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   if (error) return next(error);
   if (!targetUser) return next(createError(StatusCodes.NOT_FOUND, "Account not found"));
 
-  const reviewIndex = targetUser.review?.findIndex(
+  const reviewIndex = targetUser.reviews?.findIndex(
     (rev) => rev.user.toString() === (user._id as Types.ObjectId).toString()
   );
 
-  if (reviewIndex === undefined || reviewIndex < 0 || targetUser.review?.length === 0) {
+  if (reviewIndex === undefined || reviewIndex < 0 || targetUser.reviews?.length === 0) {
     return next(createError(StatusCodes.NOT_FOUND, "Review not found"));
   }
 
-  targetUser.review![reviewIndex].rating = rating || targetUser.review![reviewIndex].rating;
-  targetUser.review![reviewIndex].comment = comment || targetUser.review![reviewIndex].comment;
-  targetUser.review![reviewIndex].updatedAt = new Date();
+  targetUser.reviews![reviewIndex].rating = rating || targetUser.reviews![reviewIndex].rating;
+  targetUser.reviews![reviewIndex].comment = comment || targetUser.reviews![reviewIndex].comment;
+  targetUser.reviews![reviewIndex].updatedAt = new Date();
 
   [error] = await to(targetUser.save());
   if (error) return next(error);
@@ -65,7 +65,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Success",
-    data: targetUser.review![reviewIndex],
+    data: targetUser.reviews![reviewIndex],
   });
 };
 

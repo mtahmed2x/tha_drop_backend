@@ -5,25 +5,21 @@ import { StatusCodes } from "http-status-codes";
 import { NextFunction, Request, Response } from "express";
 import Category from "@models/categoryModel";
 import SubCategory from "@models/subCategoryModel";
-import fs from "fs";
-import path from "path";
 import { logger } from "@shared/logger";
-import { CategorySchema } from "@schemas/categorySchema";
+import Cloudinary from "@shared/cloudinary";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const { categoryId, title, subcategoryImageUrl } = req.body;
   let error, category, subCategory;
-  const { categoryId, title } = req.body;
-  const { files: { subCategoryImage } = {} } = req;
 
-  if (!categoryId || !title || !subCategoryImage)
+  if (!categoryId || !title || !subcategoryImageUrl)
     return next(createError(StatusCodes.BAD_REQUEST, "Subcategory Title and Image is required"));
 
   [error, category] = await to(Category.findById(categoryId));
   if (error) return next(error);
   if (!category) return next(createError(StatusCodes.NOT_FOUND, "Category not found!"));
 
-  const subCategoryImagePath = subCategoryImage[0].path;
-  [error, subCategory] = await to(SubCategory.create({ title, subCategoryImage: subCategoryImagePath }));
+  [error, subCategory] = await to(SubCategory.create({ title, subCategoryImage: subcategoryImageUrl }));
   if (error) return next(error);
 
   category.subCategories.push(subCategory._id as Types.ObjectId);
@@ -129,31 +125,25 @@ const getEvents = async (req: Request, res: Response, next: NextFunction): Promi
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const id = req.params.id;
-  const { title } = req.body;
-  const { files: { subCategoryImage } = {} } = req;
+  const { title, subcategoryImageUrl } = req.body;
 
-  if (!title && !subCategoryImage) {
+  if (!title && !subcategoryImageUrl) {
     return next(createError(StatusCodes.BAD_REQUEST, "Nothing to update"));
   }
 
-  let error, subCategory, oldImagePath;
+  let error, subCategory;
   [error, subCategory] = await to(SubCategory.findById(id));
   if (error) return next(error);
   if (!subCategory) return next(createError(StatusCodes.NOT_FOUND, "SubCategory not found"));
 
-  if (subCategoryImage && subCategory.subCategoryImage) {
-    oldImagePath = subCategory.subCategoryImage;
-    subCategory.subCategoryImage = subCategoryImage[0].path;
+  if (subcategoryImageUrl) {
+    // await Cloudinary.remove(subCategory.subCategoryImage);
+    subCategory.subCategoryImage = subcategoryImageUrl;
   }
+
   subCategory.title = title || subCategory.title;
   [error] = await to(subCategory.save());
   if (error) return next(error);
-
-  if (oldImagePath) {
-    fs.unlink(path.resolve(oldImagePath), (error) => {
-      if (error) logger.error("Failed to delete category image: ", error);
-    });
-  }
 
   return res.status(StatusCodes.OK).json({
     success: true,
@@ -170,15 +160,12 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
   if (error) return next(error);
   if (!subCategory) return next(createError(StatusCodes.NOT_FOUND, "SubCategory not found"));
 
-  const oldImagePath: string | null | undefined = subCategory.subCategoryImage;
+  if (subCategory.subCategoryImage) {
+    // await Cloudinary.remove(subCategory.subCategoryImage);
+  }
+
   [error] = await to(SubCategory.findByIdAndDelete(id));
   if (error) return next(error);
-
-  if (oldImagePath) {
-    fs.unlink(path.resolve(oldImagePath), (error) => {
-      if (error) logger.error("Failed to delete subcategory image: ", error);
-    });
-  }
 
   const category = await Category.findOneAndUpdate(
     { subCategories: id },
