@@ -21,8 +21,6 @@ const app = express();
 app.use("/", WebhookRouter);
 
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
-app.use("/assets", express.static("assets"));
 
 app.use(
   cors({

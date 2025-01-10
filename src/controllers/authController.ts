@@ -42,12 +42,12 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
         verificationOTPExpiredAt,
         isVerified: false,
         isBlocked: false,
-        isApproved: role === Role.GUEST,
+        isApproved: role === Role.GUEST || role === Role.ADMIN,
       })
     );
     if (error) throw error;
-    let user, account;
 
+    let user;
     [error, user] = await to(
       User.create({
         auth: auth._id,
@@ -58,7 +58,8 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     );
     if (error) throw error;
 
-    if (role !== Role.GUEST && role !== Role.ADMIN) {
+    if (role !== Role.GUEST) {
+      let account;
       [error, account] = await to(stripe.accounts.create({ type: "express" }));
       if (error) throw error;
 
@@ -70,19 +71,17 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
     await sendEmail(email, verificationOTP);
     await session.commitTransaction();
-    await session.endSession();
 
     return res.status(StatusCodes.CREATED).json({
       success: true,
       message: "Success",
-      data: { isVerified: auth.isVerified },
+      data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
     });
   } catch (error) {
     if (session.inTransaction()) {
       await session.abortTransaction();
-      await session.endSession();
+      return next(error);
     }
-    return next(error);
   } finally {
     await session.endSession();
   }

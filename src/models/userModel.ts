@@ -68,7 +68,6 @@ const userSchema = new Schema<UserSchema>({
           type: Schema.Types.ObjectId,
           ref: "User",
           required: true,
-          unique: true,
         },
         name: {
           type: String,
@@ -76,7 +75,6 @@ const userSchema = new Schema<UserSchema>({
         },
         avatar: {
           type: String,
-          required: true,
         },
         rating: {
           type: Number,
@@ -160,7 +158,6 @@ const userSchema = new Schema<UserSchema>({
         },
         avatar: {
           type: String,
-          required: true,
         },
         quantity: {
           type: Number,

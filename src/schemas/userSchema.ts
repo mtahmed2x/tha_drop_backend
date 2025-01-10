@@ -21,7 +21,7 @@ export type UserSchema = Document & {
   reviews?: {
     user: Types.ObjectId;
     name: string;
-    avatar: string;
+    avatar?: string;
     rating: number;
     comment: string;
     createdAt: Date;
@@ -43,7 +43,7 @@ export type UserSchema = Document & {
     user: Types.ObjectId;
     event: Types.ObjectId;
     name: string;
-    avatar: string;
+    avatar?: string;
     quantity: number;
     eventTitle: string;
     location: string;

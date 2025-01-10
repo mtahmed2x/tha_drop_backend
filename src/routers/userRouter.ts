@@ -7,6 +7,7 @@ import fileHandler from "@middlewares/fileHandler";
 
 const router = express.Router();
 
+router.post("/link-account", authorize, UserServices.linkStripeAccount);
 router.put("/update-schedule", authorize, UserServices.updateSchedule);
 router.get("/my-schedule", authorize, UserServices.getMySchedules);
 router.get("/my-tickets", authorize, UserServices.getMyTickets);

@@ -89,6 +89,7 @@ const getMyReviews = async (req: Request, res: Response, next: NextFunction): Pr
 };
 
 const UserServices = {
+  linkStripeAccount,
   updateSchedule,
   getMyTickets,
   getMyGuests,
