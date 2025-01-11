@@ -28,15 +28,28 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
     createdAt: new Date(),
     updatedAt: new Date(),
   };
-  targetUser.reviews?.push(review);
+
+  targetUser.reviews = targetUser.reviews || [];
+  targetUser.reviews.push(review);
+
+  const totalReviews = targetUser.reviews.length;
+  const avgRating = targetUser.reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
+  targetUser.averageRating = avgRating;
+
   [error] = await to(targetUser.save());
   if (error) return next(error);
+
   return res.status(StatusCodes.CREATED).json({ success: true, message: "Success", data: review });
 };
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { targetId, rating, comment } = req.body;
   const userId = req.user.userId;
+
+  if (rating && (rating < 1 || rating > 5)) {
+    return next(createError(StatusCodes.BAD_REQUEST, "Rating must be between 1 and 5"));
+  }
+
   let error, user, targetUser;
 
   [error, user] = await to(User.findById(userId));
@@ -48,7 +61,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   if (!targetUser) return next(createError(StatusCodes.NOT_FOUND, "Account not found"));
 
   const reviewIndex = targetUser.reviews?.findIndex(
-    (rev) => rev.user.toString() === (user._id as Types.ObjectId).toString()
+    (review) => review.user.toString() === (user._id as Types.ObjectId).toString()
   );
 
   if (reviewIndex === undefined || reviewIndex < 0 || targetUser.reviews?.length === 0) {
@@ -58,6 +71,12 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   targetUser.reviews![reviewIndex].rating = rating || targetUser.reviews![reviewIndex].rating;
   targetUser.reviews![reviewIndex].comment = comment || targetUser.reviews![reviewIndex].comment;
   targetUser.reviews![reviewIndex].updatedAt = new Date();
+
+  if (rating) {
+    const totalReviews = targetUser.reviews!.length;
+    const avgRating = targetUser.reviews!.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
+    targetUser.averageRating = avgRating;
+  }
 
   [error] = await to(targetUser.save());
   if (error) return next(error);
