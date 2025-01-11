@@ -2,6 +2,11 @@
   "name": "tha_drop_backend",
   "version": "1.0.0",
   "main": "index.js",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "bcrypt"
+    ]
+  },
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
