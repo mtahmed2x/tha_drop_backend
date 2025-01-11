@@ -44,11 +44,23 @@ const getMyGuests = async (req: Request, res: Response, next: NextFunction): Pro
 
 const getMySchedules = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
-  const [error, user] = await to(User.findById(userId));
+
+  const [error, user] = await to(User.findById(userId).lean());
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
 
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user.schedule });
+  const schedules = user.schedule?.map((schedule) => {
+    const startAtConverted = schedule.startAt !== null ? TimeUtils.parseMinutesToTime(schedule.startAt) : null;
+    const endAtConverted = schedule.endAt !== null ? TimeUtils.parseMinutesToTime(schedule.endAt) : null;
+
+    return {
+      ...schedule,
+      startAt: startAtConverted,
+      endAt: endAtConverted,
+    };
+  });
+
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: schedules });
 };
 
 const updateSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -60,7 +72,19 @@ const updateSchedule = async (req: Request, res: Response, next: NextFunction): 
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "Account not found"));
 
-  user.schedule = schedules;
+  type Schedule = {
+    day: string;
+    isActive: boolean;
+    startAt: string;
+    endAt: string;
+  };
+  schedules.forEach((schedule: Schedule) => {
+    const day = schedule.day;
+    const isActive = schedule.isActive;
+    const startAt = schedule.startAt ? TimeUtils.parseTimeToMinutes(schedule.startAt) : null;
+    const endAt = schedule.startAt ? TimeUtils.parseTimeToMinutes(schedule.endAt) : null;
+    user.schedule?.push({ day, isActive, startAt, endAt });
+  });
   [error] = await to(user.save());
   if (error) return next(error);
 

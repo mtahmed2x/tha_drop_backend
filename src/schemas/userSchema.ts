@@ -15,8 +15,8 @@ export type UserSchema = Document & {
   schedule?: {
     day: string;
     isActive: boolean;
-    startAt: string | null;
-    endAt: string | null;
+    startAt: number | null;
+    endAt: number | null;
   }[];
   reviews?: {
     user: Types.ObjectId;

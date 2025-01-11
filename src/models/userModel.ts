@@ -52,10 +52,10 @@ const userSchema = new Schema<UserSchema>({
           required: true,
         },
         startAt: {
-          type: String,
+          type: Number,
         },
         endAt: {
-          type: String,
+          type: Number,
         },
       },
     ],
