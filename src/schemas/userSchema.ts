@@ -1,5 +1,5 @@
 import { Document, Types } from "mongoose";
-import { Gender } from "@shared/enum";
+import { Gender, RequestStatus, RequestType } from "@shared/enum";
 
 export type UserSchema = Document & {
   auth: Types.ObjectId;
@@ -12,6 +12,9 @@ export type UserSchema = Document & {
   licensePhoto: string;
   isResturentOwner: boolean;
   resturentName?: string;
+  averageRating: number;
+  stripeAccountId: string;
+  stripeAccoutStatus: boolean;
   schedule?: {
     day: string;
     isActive: boolean;
@@ -27,9 +30,6 @@ export type UserSchema = Document & {
     createdAt: Date;
     updatedAt: Date;
   }[];
-  averageRating: number;
-  stripeAccountId: string;
-  stripeAccoutStatus: boolean;
   tickets?: {
     event: Types.ObjectId;
     title: string;
@@ -47,5 +47,23 @@ export type UserSchema = Document & {
     quantity: number;
     eventTitle: string;
     location: string;
+  }[];
+  requests: {
+    types: RequestType;
+    status: RequestStatus;
+    date: Date;
+    schedule: {
+      startAt: string;
+      endAt: string;
+    };
+    map: {
+      location: string;
+      latitude: number;
+      longitude: number;
+    };
+    user: Types.ObjectId;
+    name: string;
+    avatar?: string;
+    rating: number;
   }[];
 };

@@ -5,6 +5,7 @@ import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
 import TimeUtils from "@utils/tileUtils";
 import Stripe from "stripe";
+import { RequestType } from "@shared/enum";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const linkStripeAccount = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -63,6 +64,25 @@ const getMySchedules = async (req: Request, res: Response, next: NextFunction): 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: schedules });
 };
 
+const getMyRequests = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  try {
+    const user = await User.findById(userId).lean();
+    if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+
+    const sentRequests = user.requests?.filter((request) => request.types === RequestType.SENT) || [];
+    const receivedRequests = user.requests?.filter((request) => request.types === RequestType.RECIEVED) || [];
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Success",
+      data: { sentRequests, receivedRequests },
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 const updateSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   const schedules = req.body.schedules;
@@ -115,6 +135,7 @@ const getMyReviews = async (req: Request, res: Response, next: NextFunction): Pr
 const UserServices = {
   linkStripeAccount,
   updateSchedule,
+  getMyRequests,
   getMyTickets,
   getMyGuests,
   getMySchedules,

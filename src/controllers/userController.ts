@@ -25,6 +25,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
 const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const role = req.query.role as Role;
   const isApproved = req.query.isApproved === "true";
+  console.log(role);
   const dateString = req.query.date as string;
   const searchQuery = req.query.search as string;
 
