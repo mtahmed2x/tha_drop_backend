@@ -40,6 +40,9 @@ const userSchema = new Schema<UserSchema>({
   resturentName: {
     type: String,
   },
+  ratePerHour: {
+    type: Number,
+  },
   schedule: {
     type: [
       {
@@ -118,9 +121,23 @@ const userSchema = new Schema<UserSchema>({
           type: String,
           required: true,
         },
-        location: {
+        cover: {
           type: String,
           required: true,
+        },
+        map: {
+          location: {
+            type: String,
+            required: true,
+          },
+          latitude: {
+            type: Number,
+            required: true,
+          },
+          longitude: {
+            type: Number,
+            required: true,
+          },
         },
         date: {
           type: Date,
@@ -167,8 +184,8 @@ const userSchema = new Schema<UserSchema>({
           type: String,
           required: true,
         },
-        location: {
-          type: String,
+        eventDate: {
+          type: Date,
           required: true,
         },
       },
@@ -227,7 +244,7 @@ const userSchema = new Schema<UserSchema>({
         rating: {
           type: Number,
           required: true,
-          min: [1, "Rating must be at least 1"],
+          min: [0, "Rating must be at least 0"],
           max: [5, "Rating must not exceed 5"],
         },
       },

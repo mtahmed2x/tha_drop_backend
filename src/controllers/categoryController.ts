@@ -39,7 +39,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
   const totalPages = Math.ceil(total / limit);
 
   if (!categories)
-    return res.json({
+    return res.status(StatusCodes.OK).json({
       success: true,
       message: "No Categories found",
       data: { categories: [], page, limit, total, totalPages },

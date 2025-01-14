@@ -47,12 +47,16 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
         return res.status(StatusCodes.OK).send();
       }
 
+      console.log(user);
+
       [error, event] = await to(Event.findById(eventId));
       if (error) throw error;
       if (!event) {
         console.error(`Event not found for ID: ${eventId}`);
         return res.status(StatusCodes.OK).send();
       }
+
+      console.log(event);
 
       [error, eventHost] = await to(User.findById(event.host));
       if (error) throw error;
@@ -61,32 +65,45 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
         return res.status(StatusCodes.OK).send();
       }
 
+      console.log(eventHost);
+
       const ticket = {
         event: event._id as Types.ObjectId,
         title: event.title,
         description: event.description,
-        location: event.map.location!,
+        cover: event.cover,
+        map: event.map,
         date: event.date,
         quantity: Number.parseInt(quantity),
         customId: uuidv4(),
       };
       user.tickets?.push(ticket);
 
+      console.log(user.tickets);
+
       const guest = {
         user: new Types.ObjectId(userId),
         event: new Types.ObjectId(eventId),
         name: user.name,
-        avatar: user.avatar,
+        avatar: user.avatar ?? null,
         quantity: Number.parseInt(quantity),
         eventTitle: event.title,
-        location: event.map.location!,
+        eventDate: event.date,
       };
       eventHost.guests?.push(guest);
 
       await Promise.all([
         user.save(),
         eventHost.save(),
-        Event.updateOne({ _id: eventId }, { $inc: { ticketSell: 1 } }),
+        Event.updateOne(
+          { _id: eventId },
+          {
+            $inc: {
+              ticketSell: quantity,
+              availableTickets: -quantity,
+            },
+          }
+        ),
       ]);
     }
 

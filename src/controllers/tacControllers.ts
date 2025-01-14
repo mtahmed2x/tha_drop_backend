@@ -14,7 +14,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const [error, tac] = await to(TaC.findOne().limit(1));
   if (error) return next(error);
-  if (!tac) return next(createError(404, "Terms and Condition not found"));
+  if (!tac) res.status(StatusCodes.OK).json({ success: true, message: "No Terms and Conditions", data: {} });
   res.status(StatusCodes.OK).json({ success: true, message: "Success", data: tac });
 };
 

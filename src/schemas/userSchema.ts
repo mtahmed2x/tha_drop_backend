@@ -12,6 +12,7 @@ export type UserSchema = Document & {
   licensePhoto: string;
   isResturentOwner: boolean;
   resturentName?: string;
+  ratePerHour?: number | null;
   averageRating: number;
   stripeAccountId: string;
   stripeAccoutStatus: boolean;
@@ -34,7 +35,12 @@ export type UserSchema = Document & {
     event: Types.ObjectId;
     title: string;
     description: string;
-    location: string;
+    cover: string;
+    map: {
+      location?: string;
+      latitude: number;
+      longitude: number;
+    };
     date: Date;
     quantity: number;
     customId: string;
@@ -43,12 +49,13 @@ export type UserSchema = Document & {
     user: Types.ObjectId;
     event: Types.ObjectId;
     name: string;
-    avatar?: string;
+    avatar: string | null;
     quantity: number;
     eventTitle: string;
-    location: string;
+    eventDate: Date;
   }[];
-  requests: {
+  requests?: {
+    id: string;
     types: RequestType;
     status: RequestStatus;
     date: Date;

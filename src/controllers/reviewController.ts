@@ -22,7 +22,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   const review = {
     user: user._id as Types.ObjectId,
     name: user.name,
-    avatar: user.avatar,
+    avatar: user.avatar ?? null,
     rating: Number.parseInt(rating),
     comment: comment as string,
     createdAt: new Date(),

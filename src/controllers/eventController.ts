@@ -7,6 +7,7 @@ import createError from "http-errors";
 import Cloudinary from "@shared/cloudinary";
 import SubCategory from "@models/subCategoryModel";
 import { Types } from "mongoose";
+import TimeUtils from "@utils/tileUtils";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -68,8 +69,8 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
       availableTickets,
       map: {
         location,
-        latitude: Number.parseInt(latitude),
-        longitude: Number.parseInt(longitude),
+        latitude: Number.parseFloat(latitude),
+        longitude: Number.parseFloat(longitude),
       },
     })
   );
@@ -93,6 +94,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
   );
   if (error) return next(error);
   if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
+
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
 };
 

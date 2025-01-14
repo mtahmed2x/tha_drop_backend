@@ -41,11 +41,12 @@ const toggle = async (req: Request, res: Response, next: NextFunction): Promise<
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
-  let error, bookmark;
-  [error, bookmark] = await to(Bookmark.findOne({ user: userId }));
+  let error, bookmarks;
+  [error, bookmarks] = await to(Bookmark.findOne({ user: userId }));
   if (error) return next(error);
-  if (!bookmark) return res.status(StatusCodes.OK).json({ success: true, message: "No bookmark found", data: {} });
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: bookmark });
+  if (!bookmarks)
+    return res.status(StatusCodes.OK).json({ success: true, message: "No bookmark found", data: { bookmarks: [] } });
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: bookmarks });
 };
 
 const BookmarkController = {

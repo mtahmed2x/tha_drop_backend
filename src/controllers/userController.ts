@@ -17,6 +17,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
   if (!user!.dateOfBirth) user!.dateOfBirth = null;
   if (!user!.address) user!.address = null;
   if (!user!.gender) user!.gender = null;
+  if (!user!.ratePerHour) user!.ratePerHour = null;
 
   if (error) return next(error);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
@@ -149,9 +150,18 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   const userId = req.user.userId;
   console.log(req.body);
 
-  const { name, phoneNumber, address, dateOfBirth, gender, isResturentOwner, resturentName, avatarUrl, licenseUrl } =
-    req.body;
-  console.log(avatarUrl);
+  const {
+    name,
+    phoneNumber,
+    ratePerHour,
+    address,
+    dateOfBirth,
+    gender,
+    isResturentOwner,
+    resturentName,
+    avatarUrl,
+    licenseUrl,
+  } = req.body;
 
   let error, user;
   [error, user] = await to(User.findById(userId).populate({ path: "auth", select: "email role isApproved isBlocked" }));
@@ -173,6 +183,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   user.address = address || user.address;
   user.dateOfBirth = dateOfBirth || user.dateOfBirth;
   user.gender = gender || user.gender;
+  user.ratePerHour = Number.parseFloat(ratePerHour) || user.ratePerHour;
 
   if (isResturentOwner !== undefined) {
     user.isResturentOwner = isResturentOwner;

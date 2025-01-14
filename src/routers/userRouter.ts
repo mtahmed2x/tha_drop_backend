@@ -13,6 +13,7 @@ router.get("/my-schedule", authorize, UserServices.getMySchedules);
 router.get("/my-tickets", authorize, UserServices.getMyTickets);
 router.get("/my-guests", authorize, UserServices.getMyGuests);
 router.get("/my-reviews", authorize, UserServices.getMyReviews);
+router.get("/my-requests", authorize, UserServices.getMyRequests);
 router.post("/approve/:id", authorize, isAdmin, UserController.approve);
 router.post("/block/:id", authorize, isAdmin, UserController.block);
 router.post("/unblock/:id", authorize, isAdmin, UserController.unblock);

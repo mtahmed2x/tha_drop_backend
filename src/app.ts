@@ -14,7 +14,9 @@ import PrivacyRouter from "@routers/privacyRouter";
 import AboutRouter from "@routers/aboutRouter";
 import BookmarkRouter from "@routers/bookmarkRouter";
 import ReviewRouter from "@routers/reviewRouter";
+import HiringRouter from "@routers/hiringRouter";
 import WebhookRouter from "@routers/webhookRouter";
+import HomeRouter from "@routers/homeRouter";
 
 const app = express();
 
@@ -38,7 +40,8 @@ app.use("/category", CategoryRouter);
 app.use("/subCategory", SubCategoryRouter);
 app.use("/bookmark", BookmarkRouter);
 app.use("/review", ReviewRouter);
-
+app.use("/hiring", HiringRouter);
+app.use("/home", HomeRouter);
 app.use("/tac", TaCRouter);
 app.use("/faq", FaqRouter);
 app.use("/privacy", PrivacyRouter);
