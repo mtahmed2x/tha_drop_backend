@@ -3,8 +3,8 @@ name: CI/CD Deployment
 on:
   push:
     branches:
-      - master  
-      
+      - master
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -21,7 +21,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/projects/tha_drop_backend
+            git reset --hard origin/master
             git pull origin master
-            docker-compose down
-            docker-compose build
-            docker-compose up -d
+            docker stop tha-bank-backend 
+            docker rm tha-bank-backend 
+            docker buildx build --platform linux/amd64 -t tha-bank-backend:latest --load .
+            docker run -d -p 8080:8080 --env-file .env --restart on-failure --name tha-bank-backend tha-bank-backend:latest
