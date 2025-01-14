@@ -1,0 +1,25 @@
+Tue Jan 14 2025 12:2:40 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:2:40 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:2:56 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:2:56 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:3:26 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:3:26 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:12:47 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at param (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:365:14)
+    at param (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:421:3)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+UnauthorizedError
+Tue Jan 14 2025 12:29:43 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:29:43 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:50:3 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:50:3 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:50:49 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:50:49 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080

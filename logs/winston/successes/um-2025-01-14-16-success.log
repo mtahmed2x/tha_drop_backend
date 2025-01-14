@@ -1,0 +1,52 @@
+Tue Jan 14 2025 16:10:29 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:10:29 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:10:46 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:10:46 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:11:58 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:11:58 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:12:3 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:12:3 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:12:18 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:12:18 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:12:32 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:12:32 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:13:14 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:13:14 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:41:56 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:41:56 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:42:24 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:42:24 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:43:28 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:43:28 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:43:49 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:43:49 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:44:3 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:44:3 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:47:11 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:47:11 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:50:13 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:50:13 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:51:41 [Tha Drop] [31merror[39m: Request not found
+NotFoundError: Request not found
+    at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:216:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 16:51:51 [Tha Drop] [31merror[39m: Request not found
+NotFoundError: Request not found
+    at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:216:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 16:55:21 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:55:21 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:56:4 [Tha Drop] [31merror[39m: Request not found
+NotFoundError: Request not found
+    at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:218:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 16:56:34 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:56:34 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:56:37 [Tha Drop] [31merror[39m: No requests found
+NotFoundError: No requests found
+    at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:221:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError

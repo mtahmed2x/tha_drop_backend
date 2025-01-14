@@ -1,0 +1,85 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/.801cf4922a985a910fa69039626a42cd94560e11-audit.json",
+    "files": [
+        {
+            "date": 1736569763892,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-11-10-error.log",
+            "hash": "88ade42b9fef81bca7f67cc107e21064e02299531b7e865137d96fd54105c583"
+        },
+        {
+            "date": 1736572478414,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-11-11-error.log",
+            "hash": "720c86b17d2a783c0f97114ea0410a8a70db31db31c700ac9399be644add38f4"
+        },
+        {
+            "date": 1736575275547,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-11-12-error.log",
+            "hash": "a66be1179996bb2ebc5c134622a0678c3c315820a211b3dea89a2b1012edb12c"
+        },
+        {
+            "date": 1736582928795,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-11-14-error.log",
+            "hash": "21ef553ff67e3ecb92ceef29a1944a5c9761a63956216e9dfb79e3d4a25183f7"
+        },
+        {
+            "date": 1736742700467,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-13-10-error.log",
+            "hash": "fc9a10d561136a5230d7f958612f70bea49e800c745b0cfe9320450caaabb59c"
+        },
+        {
+            "date": 1736745766623,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-13-11-error.log",
+            "hash": "1053617afd3262b4345e911488824ed68a7c9385bdfa706499f62a370f64f6f1"
+        },
+        {
+            "date": 1736762017365,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-13-15-error.log",
+            "hash": "3d537b7d283747f3c69fc9d4b07c08fba9f89e37c8a2c81ace2722df4a8b3e1c"
+        },
+        {
+            "date": 1736827923857,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-14-10-error.log",
+            "hash": "593d26232f13fcdda1e0123c45ec0a6ab5b06d5719a5631dc1499bf9f3b38726"
+        },
+        {
+            "date": 1736832101237,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-14-11-error.log",
+            "hash": "cb50cb8ec9b0c94e09e4adb3707cdd03b7ee896fe262fb25fe55e297754031b8"
+        },
+        {
+            "date": 1736834558008,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-14-12-error.log",
+            "hash": "882396245fe0d07e18849a2fcb6a8ff6c3c77e7470cf57414a7962895553d53d"
+        },
+        {
+            "date": 1736839952628,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-14-13-error.log",
+            "hash": "8b0926d23d4eb5dc4001b6860862dc393de9ec821394a2eec6521b2db0ffb694"
+        },
+        {
+            "date": 1736841899533,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-14-14-error.log",
+            "hash": "3dadbb6e277f87edd49d372e02dec5485dbd3b354a95df5d620acc08b78f6047"
+        },
+        {
+            "date": 1736845505727,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-14-15-error.log",
+            "hash": "62190321d5bcea1c172533b43f546666cc48f1394348394918c65960d9e0eb1c"
+        },
+        {
+            "date": 1736849426801,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-14-16-error.log",
+            "hash": "8ef461019f7550fd2ae6b889b7f6e63bd9235615d78d5f3a4cfa35eb80e30a73"
+        },
+        {
+            "date": 1736854534285,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-14-17-error.log",
+            "hash": "3837a1475553b7a4cb77827d17c93ed5b5c434a21693941441956885c8c1c0a7"
+        }
+    ],
+    "hashType": "sha256"
+}

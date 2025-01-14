@@ -1,0 +1,100 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/.0ecfb6813543f88e7790c37d04de8f61720e48ba-audit.json",
+    "files": [
+        {
+            "date": 1736569763890,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-11-10-success.log",
+            "hash": "2c7756947b21e92ccec8c586a81e59625c942797bfa99782faabfebfa81cf057"
+        },
+        {
+            "date": 1736572478413,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-11-11-success.log",
+            "hash": "02106c9808aa069f158a47bba4014bf70d862905875c0648164a0b70e5846031"
+        },
+        {
+            "date": 1736575275546,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-11-12-success.log",
+            "hash": "29ed99b443d247fba1b7b588e9460e244ceef8debd740ee5508fad322f64e513"
+        },
+        {
+            "date": 1736581215547,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-11-13-success.log",
+            "hash": "9163701bc9a667025f92d23be060b388d57549e36ae496051d27a78a824ba359"
+        },
+        {
+            "date": 1736582928794,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-11-14-success.log",
+            "hash": "3b42edb4d46ac0ab78703de17ff3166802247b8ec877cca5cb350fce15bc44ba"
+        },
+        {
+            "date": 1736742700465,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-13-10-success.log",
+            "hash": "fc7ae25fb1c0e056334c7d3d9efce9a7fc9c607ca4f448763405e706eee999f9"
+        },
+        {
+            "date": 1736745766621,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-13-11-success.log",
+            "hash": "ffec3d3902b08c70deadcc1a5bca3458c7f55d5256200576833384c7ac38181c"
+        },
+        {
+            "date": 1736759311349,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-13-15-success.log",
+            "hash": "87e1db8b9ec451471a837c8daa5eec9566c17259480758d725fef467039a4a15"
+        },
+        {
+            "date": 1736769503503,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-13-17-success.log",
+            "hash": "7aa288bde91910dfa91bfac10fe87c18e3c74f3c9f07cd1be091c2fb9b84aa3b"
+        },
+        {
+            "date": 1736769638269,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-13-18-success.log",
+            "hash": "d7f75024aa6bd8c6ebd832cd5661d692190a8be2aed41338d40ae7f782933ed8"
+        },
+        {
+            "date": 1736827923855,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-14-10-success.log",
+            "hash": "849a4b2d9580f839cbfb7e7ec75859d5aa1ae4b223c1cb2266d312973b9b426f"
+        },
+        {
+            "date": 1736832101235,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-14-11-success.log",
+            "hash": "47cfabf0c0c854be98d5a16b1641e05ede1ab89bbb9486690735f0dd47299b7d"
+        },
+        {
+            "date": 1736834558007,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-14-12-success.log",
+            "hash": "ccf98a58860daf39a6b8566508668be1270d5c782ed34e39a6ffeb9f481fe614"
+        },
+        {
+            "date": 1736839952627,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-14-13-success.log",
+            "hash": "ec32dfcd76463ad337131a821f88e5a8cebc44a6b3edac4bb12304f27522bf7f"
+        },
+        {
+            "date": 1736841899532,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-14-14-success.log",
+            "hash": "c2a60b873ac30a9c2191deb5ded6e9f8feb5ece568033a4ce8ceff447fe454a8"
+        },
+        {
+            "date": 1736845505726,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-14-15-success.log",
+            "hash": "f9c7b0cf49a4d8051896fe76585382ace1c494265e2f9497badc166d8d256657"
+        },
+        {
+            "date": 1736849426799,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-14-16-success.log",
+            "hash": "ae13de81899f008e54ffcb5cafb31fdf6466d73504cc1c1441a5d43df2204169"
+        },
+        {
+            "date": 1736854534284,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/successes/um-2025-01-14-17-success.log",
+            "hash": "c8f407626d21fa7230ca1f146b2bf10ff7b8e307cb2fa6240954c1595c7563e5"
+        }
+    ],
+    "hashType": "sha256"
+}

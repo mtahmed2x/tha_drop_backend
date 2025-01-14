@@ -1,0 +1,7 @@
+Sat Jan 11 2025 10:29:25 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 10:29:25 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 10:30:2 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError

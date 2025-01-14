@@ -1,0 +1,515 @@
+Sat Jan 11 2025 10:29:25 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 10:29:25 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 10:30:2 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sat Jan 11 2025 11:14:39 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 11:14:39 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 11:21:52 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 11:21:52 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 11:25:28 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 11:25:28 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 11:25:46 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 11:25:46 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 11:35:5 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 11:35:5 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 11:47:58 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 11:47:58 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:1:16 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:1:16 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:2:32 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:2:32 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:4:27 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:4:27 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:5:48 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:5:48 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:7:28 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:7:28 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:7:39 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:7:39 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:9:54 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:9:54 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:10:33 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:10:33 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:12:7 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:12:7 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:20:26 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:20:26 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:28:39 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:28:39 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:31:29 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:31:29 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:32:2 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:32:2 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:34:21 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:34:21 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:35:24 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:35:24 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 12:37:19 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 12:37:19 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 13:40:15 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at param (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:365:14)
+    at param (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:421:3)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+UnauthorizedError
+Sat Jan 11 2025 14:8:50 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 14:8:50 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 14:9:8 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 14:9:8 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Sat Jan 11 2025 14:16:36 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 11 2025 14:16:36 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Mon Jan 13 2025 10:31:41 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jan 13 2025 10:31:41 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Mon Jan 13 2025 11:22:49 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jan 13 2025 11:22:49 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Mon Jan 13 2025 11:23:31 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Mon Jan 13 2025 11:28:53 [Tha Drop] [31merror[39m: Your destination account needs to have at least one of the following capabilities enabled: transfers, crypto_transfers, legacy_payments
+Error: Your destination account needs to have at least one of the following capabilities enabled: transfers, crypto_transfers, legacy_payments
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Jan 13 2025 15:8:31 [Tha Drop] [31merror[39m: The Checkout Session's total amount due must add up to at least $0.50 usd
+Error: The Checkout Session's total amount due must add up to at least $0.50 usd
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Jan 13 2025 15:10:33 [Tha Drop] [31merror[39m: The Checkout Session's total amount due must add up to at least $0.50 usd
+Error: The Checkout Session's total amount due must add up to at least $0.50 usd
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Jan 13 2025 15:13:57 [Tha Drop] [31merror[39m: The Checkout Session's total amount due must add up to at least $0.50 usd
+Error: The Checkout Session's total amount due must add up to at least $0.50 usd
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Jan 13 2025 15:19:33 [Tha Drop] [31merror[39m: The Checkout Session's total amount due must add up to at least $0.50 usd
+Error: The Checkout Session's total amount due must add up to at least $0.50 usd
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Jan 13 2025 15:21:0 [Tha Drop] [31merror[39m: The Checkout Session's total amount due must add up to at least $0.50 usd
+Error: The Checkout Session's total amount due must add up to at least $0.50 usd
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Jan 13 2025 15:21:22 [Tha Drop] [31merror[39m: The Checkout Session's total amount due must add up to at least $0.50 usd
+Error: The Checkout Session's total amount due must add up to at least $0.50 usd
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Jan 13 2025 15:21:41 [Tha Drop] [31merror[39m: The Checkout Session's total amount due must add up to at least $0.50 usd
+Error: The Checkout Session's total amount due must add up to at least $0.50 usd
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Jan 13 2025 15:53:39 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jan 13 2025 15:53:39 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Mon Jan 13 2025 15:53:48 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jan 13 2025 15:53:48 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Mon Jan 13 2025 17:58:23 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Mon Jan 13 2025 18:0:38 [Tha Drop] [31merror[39m: The Checkout Session's total amount due must add up to at least $0.50 usd
+Error: The Checkout Session's total amount due must add up to at least $0.50 usd
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Jan 13 2025 18:1:55 [Tha Drop] [31merror[39m: User validation failed: schedule.0.startAt: Cast to Number failed for value "11:00 AM" (type string) at path "startAt", schedule.0.endAt: Cast to Number failed for value "10:55 PM" (type string) at path "endAt", schedule.1.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.1.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.2.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.2.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.3.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.3.endAt: Cast to Number failed for value "6:00 PM" (type string) at path "endAt", schedule.4.startAt: Cast to Number failed for value "6:00 AM" (type string) at path "startAt", schedule.4.endAt: Cast to Number failed for value "1:00 AM" (type string) at path "endAt", schedule.5.startAt: Cast to Number failed for value "12:00 AM" (type string) at path "startAt", schedule.5.endAt: Cast to Number failed for value "4:00 PM" (type string) at path "endAt", schedule.6.startAt: Cast to Number failed for value "5:00 AM" (type string) at path "startAt", schedule.6.endAt: Cast to Number failed for value "3:00 PM" (type string) at path "endAt"
+ValidationError: User validation failed: schedule.0.startAt: Cast to Number failed for value "11:00 AM" (type string) at path "startAt", schedule.0.endAt: Cast to Number failed for value "10:55 PM" (type string) at path "endAt", schedule.1.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.1.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.2.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.2.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.3.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.3.endAt: Cast to Number failed for value "6:00 PM" (type string) at path "endAt", schedule.4.startAt: Cast to Number failed for value "6:00 AM" (type string) at path "startAt", schedule.4.endAt: Cast to Number failed for value "1:00 AM" (type string) at path "endAt", schedule.5.startAt: Cast to Number failed for value "12:00 AM" (type string) at path "startAt", schedule.5.endAt: Cast to Number failed for value "4:00 PM" (type string) at path "endAt", schedule.6.startAt: Cast to Number failed for value "5:00 AM" (type string) at path "startAt", schedule.6.endAt: Cast to Number failed for value "3:00 PM" (type string) at path "endAt"
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at EmbeddedDocument.Subdocument.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/types/subdocument.js:229:12)
+    at _init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:800:18)
+    at init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:747:5)
+    at EmbeddedDocument.Document.$__init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:705:3)
+    at EmbeddedDocument.syncWrapper [as $__init] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/kareem@2.6.3/node_modules/kareem/index.js:331:25)
+    at EmbeddedDocument.Document.init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:649:8)
+    at EmbeddedDocument.Document.$init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:665:42)
+    at SchemaDocumentArray.cast (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/documentArray.js:481:30)
+    at _init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:797:35)
+ValidationError
+Tue Jan 14 2025 10:12:6 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 10:12:6 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 10:14:58 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 10:14:58 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 10:15:9 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 10:15:9 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 10:17:8 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 10:17:8 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 10:17:16 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 10:17:16 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 10:18:57 [Tha Drop] [31merror[39m: User validation failed: schedule.0.startAt: Cast to Number failed for value "11:00 AM" (type string) at path "startAt", schedule.0.endAt: Cast to Number failed for value "10:55 PM" (type string) at path "endAt", schedule.1.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.1.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.2.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.2.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.3.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.3.endAt: Cast to Number failed for value "6:00 PM" (type string) at path "endAt", schedule.4.startAt: Cast to Number failed for value "6:00 AM" (type string) at path "startAt", schedule.4.endAt: Cast to Number failed for value "1:00 AM" (type string) at path "endAt", schedule.5.startAt: Cast to Number failed for value "12:00 AM" (type string) at path "startAt", schedule.5.endAt: Cast to Number failed for value "4:00 PM" (type string) at path "endAt", schedule.6.startAt: Cast to Number failed for value "5:00 AM" (type string) at path "startAt", schedule.6.endAt: Cast to Number failed for value "3:00 PM" (type string) at path "endAt"
+ValidationError: User validation failed: schedule.0.startAt: Cast to Number failed for value "11:00 AM" (type string) at path "startAt", schedule.0.endAt: Cast to Number failed for value "10:55 PM" (type string) at path "endAt", schedule.1.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.1.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.2.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.2.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.3.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.3.endAt: Cast to Number failed for value "6:00 PM" (type string) at path "endAt", schedule.4.startAt: Cast to Number failed for value "6:00 AM" (type string) at path "startAt", schedule.4.endAt: Cast to Number failed for value "1:00 AM" (type string) at path "endAt", schedule.5.startAt: Cast to Number failed for value "12:00 AM" (type string) at path "startAt", schedule.5.endAt: Cast to Number failed for value "4:00 PM" (type string) at path "endAt", schedule.6.startAt: Cast to Number failed for value "5:00 AM" (type string) at path "startAt", schedule.6.endAt: Cast to Number failed for value "3:00 PM" (type string) at path "endAt"
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at EmbeddedDocument.Subdocument.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/types/subdocument.js:229:12)
+    at _init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:800:18)
+    at init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:747:5)
+    at EmbeddedDocument.Document.$__init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:705:3)
+    at EmbeddedDocument.syncWrapper [as $__init] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/kareem@2.6.3/node_modules/kareem/index.js:331:25)
+    at EmbeddedDocument.Document.init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:649:8)
+    at EmbeddedDocument.Document.$init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:665:42)
+    at SchemaDocumentArray.cast (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/documentArray.js:481:30)
+    at _init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:797:35)
+ValidationError
+Tue Jan 14 2025 10:23:20 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 10:23:20 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 10:23:50 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 10:23:50 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 10:24:47 [Tha Drop] [31merror[39m: User validation failed: schedule.0.startAt: Cast to Number failed for value "11:00 AM" (type string) at path "startAt", schedule.0.endAt: Cast to Number failed for value "10:55 PM" (type string) at path "endAt", schedule.1.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.1.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.2.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.2.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.3.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.3.endAt: Cast to Number failed for value "6:00 PM" (type string) at path "endAt", schedule.4.startAt: Cast to Number failed for value "6:00 AM" (type string) at path "startAt", schedule.4.endAt: Cast to Number failed for value "1:00 AM" (type string) at path "endAt", schedule.5.startAt: Cast to Number failed for value "12:00 AM" (type string) at path "startAt", schedule.5.endAt: Cast to Number failed for value "4:00 PM" (type string) at path "endAt", schedule.6.startAt: Cast to Number failed for value "5:00 AM" (type string) at path "startAt", schedule.6.endAt: Cast to Number failed for value "3:00 PM" (type string) at path "endAt"
+ValidationError: User validation failed: schedule.0.startAt: Cast to Number failed for value "11:00 AM" (type string) at path "startAt", schedule.0.endAt: Cast to Number failed for value "10:55 PM" (type string) at path "endAt", schedule.1.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.1.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.2.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.2.endAt: Cast to Number failed for value "5:00 PM" (type string) at path "endAt", schedule.3.startAt: Cast to Number failed for value "9:00 AM" (type string) at path "startAt", schedule.3.endAt: Cast to Number failed for value "6:00 PM" (type string) at path "endAt", schedule.4.startAt: Cast to Number failed for value "6:00 AM" (type string) at path "startAt", schedule.4.endAt: Cast to Number failed for value "1:00 AM" (type string) at path "endAt", schedule.5.startAt: Cast to Number failed for value "12:00 AM" (type string) at path "startAt", schedule.5.endAt: Cast to Number failed for value "4:00 PM" (type string) at path "endAt", schedule.6.startAt: Cast to Number failed for value "5:00 AM" (type string) at path "startAt", schedule.6.endAt: Cast to Number failed for value "3:00 PM" (type string) at path "endAt"
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at EmbeddedDocument.Subdocument.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/types/subdocument.js:229:12)
+    at _init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:800:18)
+    at init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:747:5)
+    at EmbeddedDocument.Document.$__init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:705:3)
+    at EmbeddedDocument.syncWrapper [as $__init] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/kareem@2.6.3/node_modules/kareem/index.js:331:25)
+    at EmbeddedDocument.Document.init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:649:8)
+    at EmbeddedDocument.Document.$init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:665:42)
+    at SchemaDocumentArray.cast (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/documentArray.js:481:30)
+    at _init (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:797:35)
+ValidationError
+Tue Jan 14 2025 10:29:54 [Tha Drop] [31merror[39m: User validation failed: licensePhoto: Path `licensePhoto` is required.
+ValidationError: User validation failed: licensePhoto: Path `licensePhoto` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Tue Jan 14 2025 10:39:8 [Tha Drop] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/tha_drop_backend/src/controllers/authController.ts:161:48)
+UnauthorizedError
+Tue Jan 14 2025 10:47:49 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 10:47:49 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 10:48:4 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 10:48:4 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 10:48:53 [Tha Drop] [31merror[39m: Auth validation failed: role: `Admin` is not a valid enum value for path `role`.
+ValidationError: Auth validation failed: role: `Admin` is not a valid enum value for path `role`.
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Tue Jan 14 2025 10:55:43 [Tha Drop] [31merror[39m: Your destination account needs to have at least one of the following capabilities enabled: transfers, crypto_transfers, legacy_payments
+Error: Your destination account needs to have at least one of the following capabilities enabled: transfers, crypto_transfers, legacy_payments
+    at generateV1Error (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Tue Jan 14 2025 11:21:43 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:21:43 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:21:58 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:21:58 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:33:36 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:33:36 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:41:17 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:41:17 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:41:59 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Tue Jan 14 2025 11:42:46 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:42:46 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:43:24 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:43:24 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:44:32 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Tue Jan 14 2025 11:44:41 [Tha Drop] [31merror[39m: Access Denied.
+ForbiddenError: Access Denied.
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:64:32
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:55:16
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Tue Jan 14 2025 11:44:51 [Tha Drop] [31merror[39m: About validation failed: text: Path `text` is required.
+ValidationError: About validation failed: text: Path `text` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Tue Jan 14 2025 11:45:16 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:45:16 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:45:20 [Tha Drop] [31merror[39m: About validation failed: text: Path `text` is required.
+ValidationError: About validation failed: text: Path `text` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Tue Jan 14 2025 11:46:9 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:46:9 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:48:12 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Tue Jan 14 2025 11:50:1 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:50:1 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:52:56 [Tha Drop] [31merror[39m: Terms and Condition not found
+NotFoundError: Terms and Condition not found
+    at get (/home/mir/dev/projects/tha_drop_backend/src/controllers/tacControllers.ts:17:36)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 11:53:40 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:53:40 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 11:55:13 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 11:55:13 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:2:40 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:2:40 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:2:56 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:2:56 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:3:26 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:3:26 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:12:47 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at param (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:365:14)
+    at param (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:421:3)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+UnauthorizedError
+Tue Jan 14 2025 12:29:43 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:29:43 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:50:3 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:50:3 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 12:50:49 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 12:50:49 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:32:34 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 13:32:34 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:35:20 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 13:35:20 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:38:17 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 13:38:17 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:38:33 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 13:38:33 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:39:7 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 13:39:7 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:40:2 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 13:40:2 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:40:42 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 13:40:50 [Tha Drop] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/tha_drop_backend/src/controllers/authController.ts:157:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 13:41:6 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 13:41:6 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:41:48 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 13:41:48 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:42:3 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 13:42:3 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 13:43:47 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Tue Jan 14 2025 14:5:1 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:5:1 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:5:23 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:5:23 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:10:2 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:10:2 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:10:55 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:10:55 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:11:16 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:11:16 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:32:40 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:32:40 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:34:41 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:34:41 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:35:0 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:35:0 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:44:2 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:44:2 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:56:30 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:56:30 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:57:54 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:57:54 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 14:58:20 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 14:58:20 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:5:8 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:5:8 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:35:4 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:35:4 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:36:16 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:36:16 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:38:0 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:38:0 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:39:16 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:39:16 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:41:0 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:41:0 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:41:24 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:41:24 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:42:18 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:42:18 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:42:58 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:42:58 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:43:40 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:43:40 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:43:51 [Tha Drop] [31merror[39m: User validation failed: requests.0.rating: Path `rating` is required.
+ValidationError: User validation failed: requests.0.rating: Path `rating` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at EmbeddedDocument.Subdocument.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/types/subdocument.js:229:12)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Tue Jan 14 2025 15:44:40 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:44:40 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:44:43 [Tha Drop] [31merror[39m: User validation failed: requests.0.rating: Rating must be at least 1
+ValidationError: User validation failed: requests.0.rating: Rating must be at least 1
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at EmbeddedDocument.Subdocument.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/types/subdocument.js:229:12)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Tue Jan 14 2025 15:45:59 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:45:59 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:47:34 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:47:34 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:47:41 [Tha Drop] [31merror[39m: User validation failed: requests.0.rating: Path `rating` is required.
+ValidationError: User validation failed: requests.0.rating: Path `rating` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at EmbeddedDocument.Subdocument.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/types/subdocument.js:229:12)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Tue Jan 14 2025 15:48:20 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:48:20 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:49:53 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:49:53 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:51:33 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:51:33 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 15:54:46 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 15:54:46 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:10:29 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:10:29 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:10:46 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:10:46 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:11:58 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:11:58 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:12:3 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:12:3 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:12:18 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:12:18 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:12:32 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:12:32 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:13:14 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:13:14 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:41:56 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:41:56 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:42:24 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:42:24 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:43:28 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:43:28 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:43:49 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:43:49 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:44:3 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:44:3 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:47:11 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:47:11 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:50:13 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:50:13 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:51:41 [Tha Drop] [31merror[39m: Request not found
+NotFoundError: Request not found
+    at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:216:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 16:51:51 [Tha Drop] [31merror[39m: Request not found
+NotFoundError: Request not found
+    at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:216:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 16:55:21 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:55:21 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:56:4 [Tha Drop] [31merror[39m: Request not found
+NotFoundError: Request not found
+    at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:218:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 16:56:34 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 16:56:34 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 16:56:37 [Tha Drop] [31merror[39m: No requests found
+NotFoundError: No requests found
+    at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:221:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:35:36 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 17:35:36 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 17:43:41 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 14 2025 17:43:41 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
