@@ -2,3 +2,63 @@ Tue Jan 14 2025 17:35:36 [Tha Drop] [32minfo[39m: Successfully Connected to Mo
 Tue Jan 14 2025 17:35:36 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
 Tue Jan 14 2025 17:43:41 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
 Tue Jan 14 2025 17:43:41 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Tue Jan 14 2025 17:48:23 [Tha Drop] [31merror[39m: data and hash arguments required
+Error: data and hash arguments required
+    at Object.compare (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/bcrypt@5.1.1/node_modules/bcrypt/bcrypt.js:208:17)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/bcrypt@5.1.1/node_modules/bcrypt/promises.js:29:12
+    at new Promise (<anonymous>)
+    at Object.module.exports.promise (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/bcrypt@5.1.1/node_modules/bcrypt/promises.js:20:12)
+    at Object.compare (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/bcrypt@5.1.1/node_modules/bcrypt/bcrypt.js:204:25)
+    at changePassword (/home/mir/dev/projects/tha_drop_backend/src/controllers/authController.ts:238:38)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Tue Jan 14 2025 17:51:8 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:51:8 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:51:9 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:51:9 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:51:9 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:51:30 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:51:33 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:52:15 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:52:17 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 14 2025 17:52:27 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
