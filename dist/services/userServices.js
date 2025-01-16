@@ -11,22 +11,6 @@ const tileUtils_1 = __importDefault(require("../utils/tileUtils"));
 const stripe_1 = __importDefault(require("stripe"));
 const enum_1 = require("../shared/enum");
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
-const linkStripeAccount = async (req, res, next) => {
-    const userId = req.user.userId;
-    let error, user;
-    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userId));
-    if (error)
-        return next(error);
-    if (!user)
-        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
-    const accountLink = await stripe.accountLinks.create({
-        account: user.stripeAccountId,
-        refresh_url: "https://example.com/cancel",
-        return_url: `https://example.com/success?accountId=${user.stripeAccountId}`,
-        type: "account_onboarding",
-    });
-    res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: { accountLink: accountLink.url } });
-};
 const getMyTickets = async (req, res, next) => {
     const userId = req.user.userId;
     const [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userId));
@@ -121,7 +105,6 @@ const getMyReviews = async (req, res, next) => {
         .json({ success: true, message: "Success", data: { totalReviews, avgRating, reviews: user.reviews } });
 };
 const UserServices = {
-    linkStripeAccount,
     updateSchedule,
     getMyRequests,
     getMyTickets,

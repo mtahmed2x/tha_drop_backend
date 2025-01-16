@@ -8,6 +8,7 @@ import Cloudinary from "@shared/cloudinary";
 import SubCategory from "@models/subCategoryModel";
 import { Types } from "mongoose";
 import TimeUtils from "@utils/tileUtils";
+import Bookmark from "@models/bookmarkModel";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -84,6 +85,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
 };
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
   const id = req.params.id;
   const [error, event] = await to(
     Event.findById(id)
@@ -95,7 +97,12 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
   if (error) return next(error);
   if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
 
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
+  let isBookmarked = false;
+  const bookmark = await Bookmark.findOne({ user: userId });
+  if (bookmark) {
+    isBookmarked = bookmark.event.includes(new Types.ObjectId(id));
+  }
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { event, isBookmarked } });
 };
 
 const getAll = async (req: Request, res: Response, next: NextFunction): Promise<any> => {

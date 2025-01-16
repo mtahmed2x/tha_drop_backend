@@ -1,20 +1,27 @@
+import Stripe from "stripe";
 import { Request, Response, NextFunction } from "express";
 import User from "@models/userModel";
 import { Types } from "mongoose";
 import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
-import { RequestStatus, RequestType, Role } from "@shared/enum";
+import { RequestStatus, RequestType, Role, TransactionSubject } from "@shared/enum";
 import to from "await-to-ts";
 import TimeUtils from "@utils/tileUtils";
 import { v4 as uuidv4 } from "uuid";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const getAvailableHire = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const role = req.query.role as Role;
+  const isApproved = req.query.isApproved === "true";
+  console.log(role);
   const dateString = req.query.date as string;
-  const startAt = TimeUtils.parseTimeToMinutes(req.query.startAt as string);
-  const endAt = TimeUtils.parseTimeToMinutes(req.query.endAt as string);
+  const searchQuery = req.query.search as string;
 
-  const isApproved = "true";
+  let startAt, endAt;
+  if (req.query.startAt && req.query.endAt) {
+    startAt = TimeUtils.parseTimeToMinutes(req.query.startAt as string);
+    endAt = TimeUtils.parseTimeToMinutes(req.query.endAt as string);
+  }
 
   let day: string | null = null;
   if (dateString) {
@@ -27,6 +34,15 @@ const getAvailableHire = async (req: Request, res: Response, next: NextFunction)
 
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || 10;
+
+  const searchFilter = searchQuery
+    ? {
+        $or: [
+          { name: { $regex: searchQuery, $options: "i" } },
+          { "auth.email": { $regex: searchQuery, $options: "i" } },
+        ],
+      }
+    : {};
 
   const scheduleFilter = day
     ? {
@@ -61,6 +77,7 @@ const getAvailableHire = async (req: Request, res: Response, next: NextFunction)
         $match: {
           "auth.role": role,
           "auth.isApproved": isApproved,
+          ...searchFilter,
           ...scheduleFilter,
         },
       },
@@ -68,6 +85,7 @@ const getAvailableHire = async (req: Request, res: Response, next: NextFunction)
         $addFields: {
           avatar: { $ifNull: ["$avatar", null] },
           dateOfBirth: { $ifNull: ["$dateOfBirth", null] },
+          ratePerHour: { $ifNull: ["$ratePerHour", null] },
         },
       },
       {
@@ -82,7 +100,6 @@ const getAvailableHire = async (req: Request, res: Response, next: NextFunction)
                 address: 1,
                 dateOfBirth: 1,
                 avatar: 1,
-                schedule: 1,
                 "auth._id": 1,
                 "auth.isApproved": 1,
                 "auth.isBlocked": 1,
@@ -92,6 +109,9 @@ const getAvailableHire = async (req: Request, res: Response, next: NextFunction)
                 isResturentOwner: 1,
                 resturentName: 1,
                 "auth.role": 1,
+                ratePerHour: 1,
+                averageRating: 1,
+                totalReviews: 1,
               },
             },
           ],
@@ -154,10 +174,17 @@ const hire = async (req: Request<{}, {}, payload>, res: Response, next: NextFunc
     };
 
     for (const targetUser of targetUsers) {
+      const startAt = TimeUtils.parseTimeToMinutes(schedule.startAt);
+      const endAt = TimeUtils.parseTimeToMinutes(schedule.endAt);
+      const workableTime = endAt - startAt;
+      const cost = (targetUser.ratePerHour! * workableTime) / 60;
+
       user.requests = user.requests || [];
       const id = uuidv4();
+      console.log(id);
+
       const sentRequest = {
-        id: id,
+        id,
         types: RequestType.SENT,
         status: RequestStatus.PENDING,
         date,
@@ -167,12 +194,13 @@ const hire = async (req: Request<{}, {}, payload>, res: Response, next: NextFunc
         name: targetUser.name,
         avatar: targetUser.avatar ?? null,
         rating: targetUser.averageRating ?? 0,
+        cost: cost,
       };
       user.requests.push(sentRequest);
 
       targetUser.requests = targetUser.requests || [];
       const receivedRequest = {
-        id: id,
+        id,
         types: RequestType.RECIEVED,
         status: RequestStatus.PENDING,
         date,
@@ -182,6 +210,7 @@ const hire = async (req: Request<{}, {}, payload>, res: Response, next: NextFunc
         name: user.name,
         avatar: user.avatar ?? null,
         rating: user.averageRating ?? 0,
+        cost: cost,
       };
       targetUser.requests.push(receivedRequest);
     }
@@ -191,25 +220,39 @@ const hire = async (req: Request<{}, {}, payload>, res: Response, next: NextFunc
 
     res.status(StatusCodes.OK).json({ success: true, message: "Requests sent successfully" });
   } catch (error) {
-    next(error);
+    return next(error);
   }
 };
 
 const acceptRequest = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   const requestId = req.body.requestId;
+
   let error, user;
   [error, user] = await to(User.findById(userId));
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+
   if (user.requests) {
     console.log(user.requests);
     console.log(requestId);
     const request = user.requests.find((r) => r.id === requestId);
+
     if (request) {
       if (request.types === RequestType.RECIEVED) {
+        let hirerer;
+        [error, hirerer] = await to(User.findById(request.user));
+        if (error) return next(error);
+        if (!hirerer) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+
+        const hirererRequest = hirerer.requests?.find((r) => r.id === requestId);
+
+        hirererRequest!.status = RequestStatus.ACCEPTED;
         request.status = RequestStatus.ACCEPTED;
+
         await user.save();
+        await hirerer.save();
+
         res.status(StatusCodes.OK).json({ success: true, message: "Request accepted successfully", data: {} });
       } else {
         return next(createError(StatusCodes.BAD_REQUEST, "Invalid request type"));
@@ -235,7 +278,7 @@ const rejectRequest = async (req: Request, res: Response, next: NextFunction): P
       if (request.types === RequestType.RECIEVED) {
         request.status = RequestStatus.REJECTED;
         await user.save();
-        res.status(StatusCodes.OK).json({ success: true, message: "Request rejected successfully", data: {} });
+        res.status(StatusCodes.OK).json({ success: true, message: "Request rejected successfully", data: request });
       } else {
         return next(createError(StatusCodes.BAD_REQUEST, "Invalid request type"));
       }
@@ -244,6 +287,75 @@ const rejectRequest = async (req: Request, res: Response, next: NextFunction): P
     }
   }
   return next(createError(StatusCodes.NOT_FOUND, "No requests found"));
+};
+
+const pay = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  const requestId = req.params.requestId;
+  let error, user, hired, session;
+
+  [error, user] = await to(User.findById(userId));
+  if (error) return next(error);
+  if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+  const request = user.requests!.find((r) => r.id === requestId);
+
+  [error, hired] = await to(User.findById(request!.user));
+  if (error) return next(error);
+  if (!hired) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+  const hiredRequest = hired.requests?.find((r) => r.id === requestId);
+
+  [error, session] = await to(
+    stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: "Hiring",
+            },
+            unit_amount: request!.cost * 100,
+          },
+          quantity: 1,
+        },
+      ],
+      mode: "payment",
+      payment_intent_data: {
+        transfer_data: {
+          destination: hired.stripeAccountId,
+        },
+        metadata: {
+          type: TransactionSubject.HIRING,
+          hirerId: userId,
+          hiredId: hired._id!.toString(),
+          requestId: requestId,
+        },
+      },
+      success_url: `https://example.com/success`,
+      cancel_url: `https://example.com/cancel`,
+    })
+  );
+  if (error) return next(error);
+
+  // if (user.requests) {
+  //   const request = user.requests.find((r) => r.id === requestId);
+  //   if (request) {
+  //     if (request.types === RequestType.SENT && request.status === RequestStatus.ACCEPTED) {
+
+  //       hiredRequest!.status = RequestStatus.COMPLETED;
+  //       request.status = RequestStatus.COMPLETED;
+
+  //       await user.save();
+  //       await hired.save();
+
+  //       res.status(StatusCodes.OK).json({ success: true, message: "Payment completed successfully", data: request });
+  //     } else {
+  //       return next(createError(StatusCodes.BAD_REQUEST, "Invalid request type or status"));
+  //     }
+  //   } else {
+  //     return next(createError(StatusCodes.NOT_FOUND, "Request not found"));
+  //   }
+  // }
 };
 
 const HiringService = {

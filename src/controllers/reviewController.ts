@@ -35,6 +35,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   const totalReviews = targetUser.reviews.length;
   const avgRating = targetUser.reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
   targetUser.averageRating = avgRating;
+  targetUser.totalReviews = totalReviews;
 
   [error] = await to(targetUser.save());
   if (error) return next(error);

@@ -12,6 +12,30 @@ const http_status_codes_1 = require("http-status-codes");
 const mongoose_1 = require("mongoose");
 const uuid_1 = require("uuid");
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
+const linkStripeAccount = async (req, res, next) => {
+    const userId = req.user.userId;
+    let error, user, account;
+    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userId));
+    if (error)
+        return next(error);
+    if (!user)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
+    [error, account] = await (0, await_to_ts_1.default)(stripe.accounts.create({ type: "express" }));
+    if (error)
+        return next(error);
+    user.stripeAccountId = account.id;
+    user.stripeAccoutStatus = false;
+    [error] = await (0, await_to_ts_1.default)(user.save());
+    if (error)
+        return next(error);
+    const accountLink = await stripe.accountLinks.create({
+        account: user.stripeAccountId,
+        refresh_url: "https://example.com/cancel",
+        return_url: `https://example.com/success?accountId=${user.stripeAccountId}`,
+        type: "account_onboarding",
+    });
+    res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: { accountLink: accountLink.url } });
+};
 const webhook = async (req, res, next) => {
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
     const sig = req.headers["stripe-signature"];
@@ -104,6 +128,7 @@ const webhook = async (req, res, next) => {
     }
 };
 const StripeServices = {
+    linkStripeAccount,
     webhook,
 };
 exports.default = StripeServices;

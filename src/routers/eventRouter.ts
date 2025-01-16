@@ -10,8 +10,9 @@ const EventRouter = express.Router();
 
 EventRouter.post("/buy-ticket", authorize, EventServices.buyTicket);
 EventRouter.post("/create", fileUpload(), fileHandler, authorize, EventController.create);
+
+EventRouter.get("/:id", authorize, EventController.get);
 EventRouter.get("/", EventController.getAll);
-EventRouter.get("/:id", EventController.get);
 EventRouter.put("/update/:id", fileUpload(), fileHandler, authorize, EventController.update);
 EventRouter.delete("/delete/:id", authorize, EventController.remove);
 

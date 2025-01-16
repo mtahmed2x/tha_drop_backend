@@ -1,0 +1,102 @@
+Wed Jan 15 2025 15:1:40 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at param (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:365:14)
+    at param (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:421:3)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+UnauthorizedError
+Wed Jan 15 2025 15:2:8 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:2:8 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:2:37 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:2:37 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:3:6 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:3:6 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:3:48 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:3:48 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:4:15 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:4:15 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:8:47 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:8:47 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:9:41 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:9:41 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:10:16 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:10:16 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:11:13 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:11:13 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:15:50 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Wed Jan 15 2025 15:15:52 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Wed Jan 15 2025 15:16:3 [Tha Drop] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:37:36
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Wed Jan 15 2025 15:16:44 [Tha Drop] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (/home/mir/dev/projects/tha_drop_backend/src/utils/jwt.ts:17:26)
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Wed Jan 15 2025 15:17:8 [Tha Drop] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (/home/mir/dev/projects/tha_drop_backend/src/utils/jwt.ts:17:26)
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Wed Jan 15 2025 15:23:3 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:23:3 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:24:0 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:24:0 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 15:24:55 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 15:24:55 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080

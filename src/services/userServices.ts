@@ -8,23 +8,6 @@ import Stripe from "stripe";
 import { RequestType } from "@shared/enum";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-const linkStripeAccount = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const userId = req.user.userId;
-  let error, user;
-  [error, user] = await to(User.findById(userId));
-  if (error) return next(error);
-  if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
-
-  const accountLink = await stripe.accountLinks.create({
-    account: user.stripeAccountId,
-    refresh_url: "https://example.com/cancel",
-    return_url: `https://example.com/success?accountId=${user.stripeAccountId}`,
-    type: "account_onboarding",
-  });
-
-  res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { accountLink: accountLink.url } });
-};
-
 const getMyTickets = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   const [error, user] = await to(User.findById(userId));
@@ -133,7 +116,6 @@ const getMyReviews = async (req: Request, res: Response, next: NextFunction): Pr
 };
 
 const UserServices = {
-  linkStripeAccount,
   updateSchedule,
   getMyRequests,
   getMyTickets,

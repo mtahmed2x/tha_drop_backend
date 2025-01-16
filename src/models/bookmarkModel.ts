@@ -8,6 +8,7 @@ const bookMarkSchema = new Schema<BookmarkSchema>({
   },
   event: {
     type: [Schema.Types.ObjectId],
+    ref: "Event",
     required: true,
   },
 });

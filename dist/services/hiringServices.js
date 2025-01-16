@@ -128,10 +128,15 @@ const hire = async (req, res, next) => {
             longitude: Number.parseFloat(map.longitude),
         };
         for (const targetUser of targetUsers) {
+            const startAt = tileUtils_1.default.parseTimeToMinutes(schedule.startAt);
+            const endAt = tileUtils_1.default.parseTimeToMinutes(schedule.endAt);
+            const workableTime = endAt - startAt;
+            const cost = (targetUser.ratePerHour * workableTime) / 60;
             user.requests = user.requests || [];
             const id = (0, uuid_1.v4)();
+            console.log(id);
             const sentRequest = {
-                id: id,
+                id,
                 types: enum_1.RequestType.SENT,
                 status: enum_1.RequestStatus.PENDING,
                 date,
@@ -141,11 +146,12 @@ const hire = async (req, res, next) => {
                 name: targetUser.name,
                 avatar: targetUser.avatar ?? null,
                 rating: targetUser.averageRating ?? 0,
+                cost: cost,
             };
             user.requests.push(sentRequest);
             targetUser.requests = targetUser.requests || [];
             const receivedRequest = {
-                id: id,
+                id,
                 types: enum_1.RequestType.RECIEVED,
                 status: enum_1.RequestStatus.PENDING,
                 date,
@@ -155,6 +161,7 @@ const hire = async (req, res, next) => {
                 name: user.name,
                 avatar: user.avatar ?? null,
                 rating: user.averageRating ?? 0,
+                cost: cost,
             };
             targetUser.requests.push(receivedRequest);
         }
@@ -210,7 +217,7 @@ const rejectRequest = async (req, res, next) => {
             if (request.types === enum_1.RequestType.RECIEVED) {
                 request.status = enum_1.RequestStatus.REJECTED;
                 await user.save();
-                res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Request rejected successfully", data: {} });
+                res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Request rejected successfully", data: request });
             }
             else {
                 return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "Invalid request type"));

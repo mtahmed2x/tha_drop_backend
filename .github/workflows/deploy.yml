@@ -20,10 +20,55 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ~/projects/tha_drop_backend
-            git reset --hard origin/master
-            git pull origin master
-            docker stop tha-bank-backend 
-            docker rm tha-bank-backend 
+            set -e 
+
+            PROJECT_DIR=~/projects/tha_drop_backend
+            REPO_URL=https://github.com/mir2x/tha_drop_backend.git
+            BRANCH=master
+
+            echo "Starting deployment..."
+
+            if [ ! -d "$PROJECT_DIR" ]; then
+              echo "Directory $PROJECT_DIR does not exist. Creating..."
+              mkdir -p "$PROJECT_DIR"
+            else
+              echo "Directory $PROJECT_DIR exists."
+            fi
+
+            cd "$PROJECT_DIR"
+
+            if [ ! -d ".git" ]; then
+              echo "Directory is not a Git repository. Cloning repository..."
+              git clone --branch $BRANCH $REPO_URL .
+            else
+              echo "Directory is a Git repository. Fetching latest changes..."
+              git fetch origin $BRANCH
+              git reset --hard origin/$BRANCH
+            fi
+
+            echo "Ensuring the working directory is up-to-date..."
+            git pull origin $BRANCH
+
+            if [ "$(docker ps -q -f name=tha-bank-backend)" ]; then
+              echo "Container 'tha-bank-backend' is running. Stopping and removing..."
+              docker stop tha-bank-backend
+              docker rm tha-bank-backend
+            elif [ "$(docker ps -aq -f status=exited -f name=tha-bank-backend)" ]; then
+              echo "Container 'tha-bank-backend' exists but is not running. Removing..."
+              docker rm tha-bank-backend
+            else
+              echo "No existing container 'tha-bank-backend' found."
+            fi
+
+            echo "Building Docker image..."
             docker buildx build --platform linux/amd64 -t tha-bank-backend:latest --load .
-            docker run -d -p 8080:8080 --env-file .env --restart on-failure --name tha-bank-backend tha-bank-backend:latest
+
+            echo "Running Docker container..."
+            docker run -d \
+              -p 8080:8080 \
+              --env-file .env \
+              --restart on-failure \
+              --name tha-bank-backend \
+              tha-bank-backend:latest
+
+            echo "Deployment completed successfully."

@@ -1,0 +1,36 @@
+Wed Jan 15 2025 9:37:23 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 9:37:23 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 9:43:0 [Tha Drop] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/tha_drop_backend/src/controllers/authController.ts:157:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jan 15 2025 9:45:53 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 9:45:53 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 9:50:16 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 9:50:16 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 9:52:15 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 9:52:15 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 9:53:38 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 15 2025 9:53:38 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 15 2025 9:55:8 [Tha Drop] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:50:43
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jan 15 2025 9:55:32 [Tha Drop] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/tha_drop_backend/src/controllers/authController.ts:157:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jan 15 2025 9:55:56 [Tha Drop] [31merror[39m: User validation failed: licensePhoto: Path `licensePhoto` is required.
+ValidationError: User validation failed: licensePhoto: Path `licensePhoto` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Wed Jan 15 2025 9:56:19 [Tha Drop] [31merror[39m: Verify your email first
+UnauthorizedError: Verify your email first
+    at login (/home/mir/dev/projects/tha_drop_backend/src/controllers/authController.ts:162:48)
+UnauthorizedError

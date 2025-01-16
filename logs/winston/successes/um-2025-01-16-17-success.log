@@ -1,0 +1,18 @@
+Thu Jan 16 2025 17:15:29 [Tha Drop] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (/home/mir/dev/projects/tha_drop_backend/src/utils/jwt.ts:17:26)
+    at /home/mir/dev/projects/tha_drop_backend/src/middlewares/authorization.ts:45:45
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/tha_drop_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Thu Jan 16 2025 17:22:45 [Tha Drop] [31merror[39m: No requests found
+NotFoundError: No requests found
+    at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:264:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError

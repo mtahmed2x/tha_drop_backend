@@ -193,6 +193,10 @@ const userSchema = new mongoose_1.Schema({
     requests: {
         type: [
             {
+                id: {
+                    type: String,
+                    required: true,
+                },
                 types: {
                     type: String,
                     required: true,
@@ -245,6 +249,9 @@ const userSchema = new mongoose_1.Schema({
                     required: true,
                     min: [0, "Rating must be at least 0"],
                     max: [5, "Rating must not exceed 5"],
+                },
+                cost: {
+                    type: Number,
                 },
             },
         ],

@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 import { UserSchema } from "../schemas/userSchema";
-import { Gender, RequestStatus, RequestType, Role } from "../shared/enum";
+import { Gender, NotificationType, RequestStatus, RequestType, Role } from "../shared/enum";
 
 const userSchema = new Schema<UserSchema>({
   auth: {
@@ -42,6 +42,15 @@ const userSchema = new Schema<UserSchema>({
   },
   ratePerHour: {
     type: Number,
+    default: null,
+  },
+  averageRating: {
+    type: Number,
+    default: 0,
+  },
+  totalReviews: {
+    type: Number,
+    default: 0,
   },
   schedule: {
     type: [
@@ -194,6 +203,10 @@ const userSchema = new Schema<UserSchema>({
   requests: {
     type: [
       {
+        id: {
+          type: String,
+          required: true,
+        },
         types: {
           type: String,
           required: true,
@@ -246,6 +259,31 @@ const userSchema = new Schema<UserSchema>({
           required: true,
           min: [0, "Rating must be at least 0"],
           max: [5, "Rating must not exceed 5"],
+        },
+        cost: {
+          type: Number,
+        },
+      },
+    ],
+  },
+  notifications: {
+    type: [
+      {
+        types: {
+          type: String,
+          required: true,
+          enum: NotificationType,
+        },
+        metadata: {
+          eventTitle: {
+            type: String,
+            required: true,
+          },
+          eventId: {
+            type: Schema.Types.ObjectId,
+            ref: "Event",
+            required: true,
+          },
         },
       },
     ],

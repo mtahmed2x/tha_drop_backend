@@ -16,12 +16,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, email, phoneNumber, role, password, confirmPassword, licenseUrl } = req.body;
 
-  let error, auth;
+  let error, auth, user;
   const hashedPassword = await bcrypt.hash(password, 10);
   const verificationOTP = generateOTP();
   const verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
-
-  const session = await mongoose.startSession();
 
   [error, auth] = await to(Auth.findOne({ email }));
   if (error) return next(error);
@@ -30,9 +28,10 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
       .status(StatusCodes.CONFLICT)
       .json({ success: false, message: "Email already exists.", data: { isVerified: auth.isVerified } });
   }
+  const session = await mongoose.startSession();
+  session.startTransaction();
 
   try {
-    session.startTransaction();
     [error, auth] = await to(
       Auth.create({
         email,
@@ -47,7 +46,6 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     );
     if (error) throw error;
 
-    let user;
     [error, user] = await to(
       User.create({
         auth: auth._id,
@@ -58,19 +56,9 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     );
     if (error) throw error;
 
-    if (role !== Role.GUEST) {
-      let account;
-      [error, account] = await to(stripe.accounts.create({ type: "express" }));
-      if (error) throw error;
-
-      user.stripeAccountId = account.id;
-      user.stripeAccoutStatus = false;
-      [error] = await to(user.save());
-      if (error) throw error;
-    }
+    await session.commitTransaction();
 
     await sendEmail(email, verificationOTP);
-    await session.commitTransaction();
 
     return res.status(StatusCodes.CREATED).json({
       success: true,
@@ -78,10 +66,8 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
       data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
     });
   } catch (error) {
-    if (session.inTransaction()) {
-      await session.abortTransaction();
-      return next(error);
-    }
+    await session.abortTransaction();
+    return next(error);
   } finally {
     await session.endSession();
   }

@@ -18,11 +18,10 @@ const stripe_1 = __importDefault(require("stripe"));
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const register = async (req, res, next) => {
     const { name, email, phoneNumber, role, password, confirmPassword, licenseUrl } = req.body;
-    let error, auth;
+    let error, auth, user;
     const hashedPassword = await bcrypt_1.default.hash(password, 10);
     const verificationOTP = (0, generateOTP_1.default)();
     const verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
-    const session = await mongoose_1.default.startSession();
     [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ email }));
     if (error)
         return next(error);
@@ -31,8 +30,9 @@ const register = async (req, res, next) => {
             .status(http_status_codes_1.StatusCodes.CONFLICT)
             .json({ success: false, message: "Email already exists.", data: { isVerified: auth.isVerified } });
     }
+    const session = await mongoose_1.default.startSession();
+    session.startTransaction();
     try {
-        session.startTransaction();
         [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.create({
             email,
             password: hashedPassword,
@@ -45,7 +45,6 @@ const register = async (req, res, next) => {
         }));
         if (error)
             throw error;
-        let user;
         [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.create({
             auth: auth._id,
             name,
@@ -54,19 +53,8 @@ const register = async (req, res, next) => {
         }));
         if (error)
             throw error;
-        if (role !== enum_1.Role.GUEST) {
-            let account;
-            [error, account] = await (0, await_to_ts_1.default)(stripe.accounts.create({ type: "express" }));
-            if (error)
-                throw error;
-            user.stripeAccountId = account.id;
-            user.stripeAccoutStatus = false;
-            [error] = await (0, await_to_ts_1.default)(user.save());
-            if (error)
-                throw error;
-        }
-        await (0, sendEmail_1.default)(email, verificationOTP);
         await session.commitTransaction();
+        await (0, sendEmail_1.default)(email, verificationOTP);
         return res.status(http_status_codes_1.StatusCodes.CREATED).json({
             success: true,
             message: "Success",
@@ -74,10 +62,8 @@ const register = async (req, res, next) => {
         });
     }
     catch (error) {
-        if (session.inTransaction()) {
-            await session.abortTransaction();
-            return next(error);
-        }
+        await session.abortTransaction();
+        return next(error);
     }
     finally {
         await session.endSession();

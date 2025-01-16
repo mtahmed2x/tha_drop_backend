@@ -4,7 +4,6 @@ import { NextFunction, Request, Response } from "express";
 import to from "await-to-ts";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
-import { UserSchema } from "@schemas/userSchema";
 import { Role } from "@shared/enum";
 import TimeUtils from "@utils/tileUtils";
 import Cloudinary from "@shared/cloudinary";
@@ -14,6 +13,25 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
   const [error, user] = await to(
     User.findById(userid).populate({ path: "auth", select: "email role isApproved isBlocked" }).lean()
   );
+  if (!user!.dateOfBirth) user!.dateOfBirth = null;
+  if (!user!.address) user!.address = null;
+  if (!user!.gender) user!.gender = null;
+  if (!user!.ratePerHour) user!.ratePerHour = null;
+
+  if (error) return next(error);
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
+};
+
+const getById = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userid = req.params.id;
+  const [error, user] = await to(
+    User.findById(userid)
+      .select("-schedule -tickets -requests -guests -notifications")
+      .populate({ path: "auth", select: "email role isApproved isBlocked" })
+      .lean()
+  );
+  user!.avatar = user!.avatar || "";
+
   if (!user!.dateOfBirth) user!.dateOfBirth = null;
   if (!user!.address) user!.address = null;
   if (!user!.gender) user!.gender = null;
@@ -169,7 +187,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User Not Found"));
 
   if (avatarUrl) {
-    await Cloudinary.remove(user.avatar);
+    if (user.avatar) await Cloudinary.remove(user.avatar);
     user.avatar = avatarUrl;
   }
 
@@ -253,6 +271,7 @@ const unblock = async (req: Request, res: Response, next: NextFunction): Promise
 
 const UserController = {
   get,
+  getById,
   getAllUsers,
   update,
   approve,

@@ -7,6 +7,7 @@ import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
 import User from "@models/userModel";
 import { Types } from "mongoose";
+import { TransactionSubject } from "@shared/enum";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const buyTicket = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -46,6 +47,7 @@ const buyTicket = async (req: Request, res: Response, next: NextFunction): Promi
           destination: eventHost.stripeAccountId,
         },
         metadata: {
+          type: TransactionSubject.TICKET,
           quantity: Number.parseInt(quantity as string),
           userId: userId,
           eventId: eventId,

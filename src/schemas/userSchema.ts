@@ -1,5 +1,5 @@
 import { Document, Types } from "mongoose";
-import { Gender, RequestStatus, RequestType } from "@shared/enum";
+import { Gender, NotificationType, RequestStatus, RequestType } from "@shared/enum";
 
 export type UserSchema = Document & {
   auth: Types.ObjectId;
@@ -14,6 +14,7 @@ export type UserSchema = Document & {
   resturentName?: string;
   ratePerHour?: number | null;
   averageRating: number;
+  totalReviews: number;
   stripeAccountId: string;
   stripeAccoutStatus: boolean;
   schedule?: {
@@ -72,5 +73,13 @@ export type UserSchema = Document & {
     name: string;
     avatar?: string;
     rating: number;
+    cost: number;
+  }[];
+  notifications?: {
+    types: NotificationType;
+    metadata: {
+      eventTitle: string;
+      eventId: Types.ObjectId;
+    };
   }[];
 };
