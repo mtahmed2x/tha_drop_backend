@@ -130,53 +130,62 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   const { title, organizer, description, coverUrl, currentGalleryUrls, galleryUrls, availableTickets, deadline } =
     req.body;
 
-  let error, event: EventSchema | null;
-  [error, event] = await to(Event.findById(id));
-  if (error) return next(error);
-  if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
-
-  console.log(event);
-
-  if (title || description) {
-    event.title = title || event.title;
-    event.description = description || event.description;
-
-    [error] = await to(stripe.products.update(event.productId, { name: title, description: description }));
-    if (error) return next(error);
-  }
-
-  event.organizer = organizer || event.organizer;
-  event.deadline = deadline || event.deadline;
-  event.availableTickets = availableTickets || event.availableTickets;
-  event.gallery = currentGalleryUrls;
-
-  if (coverUrl) {
-    if (event.cover !== null && event.cover !== "") {
-      await Cloudinary.remove(event.cover);
+  try {
+    // Fetch the event
+    const event = await Event.findById(id);
+    if (!event) {
+      return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
     }
-    event.cover = coverUrl;
-  }
 
-  if (currentGalleryUrls) {
-    (event.gallery as GalleryURL).map(async (gallery) => {
-      if (!currentGalleryUrls.includes(gallery)) {
-        await Cloudinary.remove(gallery);
+    // Update title and description, if provided
+    if (title || description) {
+      const updatedTitle = title || event.title;
+      const updatedDescription = description || event.description;
+
+      await stripe.products.update(event.productId, {
+        name: updatedTitle,
+        description: updatedDescription,
+      });
+
+      event.title = updatedTitle;
+      event.description = updatedDescription;
+    }
+
+    // Update other fields
+    event.organizer = organizer || event.organizer;
+    event.deadline = deadline || event.deadline;
+    event.availableTickets = availableTickets || event.availableTickets;
+
+    // Handle cover image update
+    if (coverUrl) {
+      if (event.cover) {
+        await Cloudinary.remove(event.cover);
       }
-    });
-    event.gallery = currentGalleryUrls;
-  } else {
-    event.gallery = [];
-  }
-  if (galleryUrls) {
-    (galleryUrls as GalleryURL).forEach((gallery) => {
-      event?.gallery?.push(gallery);
-    });
-  }
+      event.cover = coverUrl;
+    }
 
-  [error, event] = await to(event.save());
-  if (error) return next(error);
+    // Handle gallery update
+    const currentGallery = currentGalleryUrls || [];
+    const newGallery = galleryUrls || [];
 
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
+    // Remove images not in the updated gallery
+    const imagesToRemove = (event.gallery as GalleryURL).filter((url) => !currentGallery.includes(url));
+    await Promise.all(imagesToRemove.map((url) => Cloudinary.remove(url)));
+
+    // Update gallery
+    event.gallery = [...currentGallery, ...newGallery];
+
+    // Save changes
+    await event.save();
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Success",
+      data: event, // Consider sanitizing the response
+    });
+  } catch (error) {
+    return next(error);
+  }
 };
 
 const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {

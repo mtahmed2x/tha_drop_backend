@@ -104,50 +104,53 @@ const getAll = async (req, res, next) => {
 const update = async (req, res, next) => {
     const id = req.params.id;
     const { title, organizer, description, coverUrl, currentGalleryUrls, galleryUrls, availableTickets, deadline } = req.body;
-    let error, event;
-    [error, event] = await (0, await_to_ts_1.default)(eventModel_1.default.findById(id));
-    if (error)
-        return next(error);
-    if (!event)
-        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Event Not Found"));
-    console.log(event);
-    if (title || description) {
-        event.title = title || event.title;
-        event.description = description || event.description;
-        [error] = await (0, await_to_ts_1.default)(stripe.products.update(event.productId, { name: title, description: description }));
-        if (error)
-            return next(error);
-    }
-    event.organizer = organizer || event.organizer;
-    event.deadline = deadline || event.deadline;
-    event.availableTickets = availableTickets || event.availableTickets;
-    event.gallery = currentGalleryUrls;
-    if (coverUrl) {
-        if (event.cover !== null && event.cover !== "") {
-            await cloudinary_1.default.remove(event.cover);
+    try {
+        // Fetch the event
+        const event = await eventModel_1.default.findById(id);
+        if (!event) {
+            return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Event Not Found"));
         }
-        event.cover = coverUrl;
-    }
-    if (currentGalleryUrls) {
-        event.gallery.map(async (gallery) => {
-            if (!currentGalleryUrls.includes(gallery)) {
-                await cloudinary_1.default.remove(gallery);
+        // Update title and description, if provided
+        if (title || description) {
+            const updatedTitle = title || event.title;
+            const updatedDescription = description || event.description;
+            await stripe.products.update(event.productId, {
+                name: updatedTitle,
+                description: updatedDescription,
+            });
+            event.title = updatedTitle;
+            event.description = updatedDescription;
+        }
+        // Update other fields
+        event.organizer = organizer || event.organizer;
+        event.deadline = deadline || event.deadline;
+        event.availableTickets = availableTickets || event.availableTickets;
+        // Handle cover image update
+        if (coverUrl) {
+            if (event.cover) {
+                await cloudinary_1.default.remove(event.cover);
             }
+            event.cover = coverUrl;
+        }
+        // Handle gallery update
+        const currentGallery = currentGalleryUrls || [];
+        const newGallery = galleryUrls || [];
+        // Remove images not in the updated gallery
+        const imagesToRemove = event.gallery.filter((url) => !currentGallery.includes(url));
+        await Promise.all(imagesToRemove.map((url) => cloudinary_1.default.remove(url)));
+        // Update gallery
+        event.gallery = [...currentGallery, ...newGallery];
+        // Save changes
+        await event.save();
+        return res.status(http_status_codes_1.StatusCodes.OK).json({
+            success: true,
+            message: "Success",
+            data: event, // Consider sanitizing the response
         });
-        event.gallery = currentGalleryUrls;
     }
-    else {
-        event.gallery = [];
-    }
-    if (galleryUrls) {
-        galleryUrls.forEach((gallery) => {
-            event?.gallery?.push(gallery);
-        });
-    }
-    [error, event] = await (0, await_to_ts_1.default)(event.save());
-    if (error)
+    catch (error) {
         return next(error);
-    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: event });
+    }
 };
 const remove = async (req, res, next) => {
     const id = req.params.id;
