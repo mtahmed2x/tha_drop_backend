@@ -23,5 +23,6 @@ router.post("/block/:id", authorization_1.authorize, authorization_1.isAdmin, us
 router.post("/unblock/:id", authorization_1.authorize, authorization_1.isAdmin, userController_1.default.unblock);
 router.get("/all", authorization_1.authorize, userController_1.default.getAllUsers);
 router.get("/info", authorization_1.authorize, userController_1.default.get);
+router.get("/:id", authorization_1.authorize, userController_1.default.getById);
 router.put("/update", (0, express_fileupload_1.default)(), fileHandler_1.default, authorization_1.authorize, userController_1.default.update);
 exports.default = router;

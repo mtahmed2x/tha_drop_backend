@@ -42,6 +42,15 @@ const userSchema = new mongoose_1.Schema({
     },
     ratePerHour: {
         type: Number,
+        default: null,
+    },
+    averageRating: {
+        type: Number,
+        default: 0,
+    },
+    totalReviews: {
+        type: Number,
+        default: 0,
     },
     schedule: {
         type: [
@@ -252,6 +261,28 @@ const userSchema = new mongoose_1.Schema({
                 },
                 cost: {
                     type: Number,
+                },
+            },
+        ],
+    },
+    notifications: {
+        type: [
+            {
+                types: {
+                    type: String,
+                    required: true,
+                    enum: enum_1.NotificationType,
+                },
+                metadata: {
+                    eventTitle: {
+                        type: String,
+                        required: true,
+                    },
+                    eventId: {
+                        type: mongoose_1.Schema.Types.ObjectId,
+                        ref: "Event",
+                        required: true,
+                    },
                 },
             },
         ],

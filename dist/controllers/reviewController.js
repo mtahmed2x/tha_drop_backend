@@ -35,6 +35,7 @@ const create = async (req, res, next) => {
     const totalReviews = targetUser.reviews.length;
     const avgRating = targetUser.reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
     targetUser.averageRating = avgRating;
+    targetUser.totalReviews = totalReviews;
     [error] = await (0, await_to_ts_1.default)(targetUser.save());
     if (error)
         return next(error);

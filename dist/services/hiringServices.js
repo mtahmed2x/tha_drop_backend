@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const stripe_1 = __importDefault(require("stripe"));
 const userModel_1 = __importDefault(require("../models/userModel"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const http_status_codes_1 = require("http-status-codes");
@@ -10,12 +11,18 @@ const enum_1 = require("../shared/enum");
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const tileUtils_1 = __importDefault(require("../utils/tileUtils"));
 const uuid_1 = require("uuid");
+const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const getAvailableHire = async (req, res, next) => {
     const role = req.query.role;
+    const isApproved = req.query.isApproved === "true";
+    console.log(role);
     const dateString = req.query.date;
-    const startAt = tileUtils_1.default.parseTimeToMinutes(req.query.startAt);
-    const endAt = tileUtils_1.default.parseTimeToMinutes(req.query.endAt);
-    const isApproved = "true";
+    const searchQuery = req.query.search;
+    let startAt, endAt;
+    if (req.query.startAt && req.query.endAt) {
+        startAt = tileUtils_1.default.parseTimeToMinutes(req.query.startAt);
+        endAt = tileUtils_1.default.parseTimeToMinutes(req.query.endAt);
+    }
     let day = null;
     if (dateString) {
         const date = new Date(dateString);
@@ -26,6 +33,14 @@ const getAvailableHire = async (req, res, next) => {
     }
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const searchFilter = searchQuery
+        ? {
+            $or: [
+                { name: { $regex: searchQuery, $options: "i" } },
+                { "auth.email": { $regex: searchQuery, $options: "i" } },
+            ],
+        }
+        : {};
     const scheduleFilter = day
         ? {
             schedule: {
@@ -57,6 +72,7 @@ const getAvailableHire = async (req, res, next) => {
             $match: {
                 "auth.role": role,
                 "auth.isApproved": isApproved,
+                ...searchFilter,
                 ...scheduleFilter,
             },
         },
@@ -64,6 +80,7 @@ const getAvailableHire = async (req, res, next) => {
             $addFields: {
                 avatar: { $ifNull: ["$avatar", null] },
                 dateOfBirth: { $ifNull: ["$dateOfBirth", null] },
+                ratePerHour: { $ifNull: ["$ratePerHour", null] },
             },
         },
         {
@@ -78,7 +95,6 @@ const getAvailableHire = async (req, res, next) => {
                             address: 1,
                             dateOfBirth: 1,
                             avatar: 1,
-                            schedule: 1,
                             "auth._id": 1,
                             "auth.isApproved": 1,
                             "auth.isBlocked": 1,
@@ -88,6 +104,9 @@ const getAvailableHire = async (req, res, next) => {
                             isResturentOwner: 1,
                             resturentName: 1,
                             "auth.role": 1,
+                            ratePerHour: 1,
+                            averageRating: 1,
+                            totalReviews: 1,
                         },
                     },
                 ],
@@ -170,7 +189,7 @@ const hire = async (req, res, next) => {
         res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Requests sent successfully" });
     }
     catch (error) {
-        next(error);
+        return next(error);
     }
 };
 const acceptRequest = async (req, res, next) => {
@@ -188,8 +207,17 @@ const acceptRequest = async (req, res, next) => {
         const request = user.requests.find((r) => r.id === requestId);
         if (request) {
             if (request.types === enum_1.RequestType.RECIEVED) {
+                let hirerer;
+                [error, hirerer] = await (0, await_to_ts_1.default)(userModel_1.default.findById(request.user));
+                if (error)
+                    return next(error);
+                if (!hirerer)
+                    return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
+                const hirererRequest = hirerer.requests?.find((r) => r.id === requestId);
+                hirererRequest.status = enum_1.RequestStatus.ACCEPTED;
                 request.status = enum_1.RequestStatus.ACCEPTED;
                 await user.save();
+                await hirerer.save();
                 res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Request accepted successfully", data: {} });
             }
             else {
@@ -228,6 +256,70 @@ const rejectRequest = async (req, res, next) => {
         }
     }
     return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "No requests found"));
+};
+const pay = async (req, res, next) => {
+    const userId = req.user.userId;
+    const requestId = req.params.requestId;
+    let error, user, hired, session;
+    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userId));
+    if (error)
+        return next(error);
+    if (!user)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
+    const request = user.requests.find((r) => r.id === requestId);
+    [error, hired] = await (0, await_to_ts_1.default)(userModel_1.default.findById(request.user));
+    if (error)
+        return next(error);
+    if (!hired)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
+    const hiredRequest = hired.requests?.find((r) => r.id === requestId);
+    [error, session] = await (0, await_to_ts_1.default)(stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: [
+            {
+                price_data: {
+                    currency: "usd",
+                    product_data: {
+                        name: "Hiring",
+                    },
+                    unit_amount: request.cost * 100,
+                },
+                quantity: 1,
+            },
+        ],
+        mode: "payment",
+        payment_intent_data: {
+            transfer_data: {
+                destination: hired.stripeAccountId,
+            },
+            metadata: {
+                type: enum_1.TransactionSubject.HIRING,
+                hirerId: userId,
+                hiredId: hired._id.toString(),
+                requestId: requestId,
+            },
+        },
+        success_url: `https://example.com/success`,
+        cancel_url: `https://example.com/cancel`,
+    }));
+    if (error)
+        return next(error);
+    // if (user.requests) {
+    //   const request = user.requests.find((r) => r.id === requestId);
+    //   if (request) {
+    //     if (request.types === RequestType.SENT && request.status === RequestStatus.ACCEPTED) {
+    //       hiredRequest!.status = RequestStatus.COMPLETED;
+    //       request.status = RequestStatus.COMPLETED;
+    //       await user.save();
+    //       await hired.save();
+    //       res.status(StatusCodes.OK).json({ success: true, message: "Payment completed successfully", data: request });
+    //     } else {
+    //       return next(createError(StatusCodes.BAD_REQUEST, "Invalid request type or status"));
+    //     }
+    //   } else {
+    //     return next(createError(StatusCodes.NOT_FOUND, "Request not found"));
+    //   }
+    // }
 };
 const HiringService = {
     getAvailableHire,

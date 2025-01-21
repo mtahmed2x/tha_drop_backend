@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RequestStatus = exports.RequestType = exports.Gender = exports.Role = void 0;
+exports.NotificationType = exports.TransactionSubject = exports.RequestStatus = exports.RequestType = exports.Gender = exports.Role = void 0;
 var Role;
 (function (Role) {
     Role["GUEST"] = "GUEST";
@@ -27,3 +27,18 @@ var RequestStatus;
     RequestStatus["REJECTED"] = "REJECTED";
     RequestStatus["COMPLETED"] = "COMPLETED";
 })(RequestStatus || (exports.RequestStatus = RequestStatus = {}));
+var TransactionSubject;
+(function (TransactionSubject) {
+    TransactionSubject["TICKET"] = "TICKET";
+    TransactionSubject["HIRING"] = "HIRING";
+})(TransactionSubject || (exports.TransactionSubject = TransactionSubject = {}));
+var NotificationType;
+(function (NotificationType) {
+    NotificationType["TICKET"] = "TICKET";
+    NotificationType["ACCOUNT"] = "ACCOUNT";
+    NotificationType["REQUEST_REJECT"] = "REQUEST_REJECT";
+    NotificationType["REQUEST_ACCEPT"] = "REQUEST_ACCEPT";
+    NotificationType["RECIEVED_REQUEST"] = "RECIEVED_REQUEST";
+    NotificationType["PAYMENT_SUCCESS"] = "PAYMENT_SUCCESS";
+    NotificationType["PAYMENT_FAILURE"] = "PAYMENT_FAILURE";
+})(NotificationType || (exports.NotificationType = NotificationType = {}));

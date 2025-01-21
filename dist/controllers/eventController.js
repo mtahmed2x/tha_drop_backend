@@ -9,6 +9,8 @@ const eventModel_1 = __importDefault(require("../models/eventModel"));
 const stripe_1 = __importDefault(require("stripe"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const subCategoryModel_1 = __importDefault(require("../models/subCategoryModel"));
+const mongoose_1 = require("mongoose");
+const bookmarkModel_1 = __importDefault(require("../models/bookmarkModel"));
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const create = async (req, res, next) => {
     const userId = req.user.userId;
@@ -64,6 +66,7 @@ const create = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.CREATED).json({ success: true, message: "Success", data: event });
 };
 const get = async (req, res, next) => {
+    const userId = req.user.userId;
     const id = req.params.id;
     const [error, event] = await (0, await_to_ts_1.default)(eventModel_1.default.findById(id)
         .populate({ path: "host", select: "name" })
@@ -74,7 +77,12 @@ const get = async (req, res, next) => {
         return next(error);
     if (!event)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Event Not Found"));
-    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: event });
+    let isBookmarked = false;
+    const bookmark = await bookmarkModel_1.default.findOne({ user: userId });
+    if (bookmark) {
+        isBookmarked = bookmark.event.includes(new mongoose_1.Types.ObjectId(id));
+    }
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: { event, isBookmarked } });
 };
 const getAll = async (req, res, next) => {
     const page = Number(req.query.page) || 1;

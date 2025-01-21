@@ -11,6 +11,7 @@ const http_errors_1 = __importDefault(require("http-errors"));
 const http_status_codes_1 = require("http-status-codes");
 const mongoose_1 = require("mongoose");
 const uuid_1 = require("uuid");
+const enum_1 = require("../shared/enum");
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const linkStripeAccount = async (req, res, next) => {
     const userId = req.user.userId;
@@ -59,68 +60,111 @@ const webhook = async (req, res, next) => {
         }
         if (webhook_event.type === "payment_intent.succeeded") {
             const paymentIntent = webhook_event.data.object;
-            const quantity = paymentIntent.metadata.quantity;
-            const userId = paymentIntent.metadata.userId;
-            const eventId = paymentIntent.metadata.eventId;
-            console.log(`Payment succeeded for userId: ${userId}, eventId: ${eventId}`);
-            [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userId));
-            if (error)
-                throw error;
-            if (!user) {
-                console.error(`User not found for ID: ${userId}`);
-                return res.status(http_status_codes_1.StatusCodes.OK).send();
+            const type = paymentIntent.metadata.type;
+            if (type === enum_1.TransactionSubject.HIRING) {
+                const hirerId = paymentIntent.metadata.hirerId;
+                const hiredId = paymentIntent.metadata.hiredId;
+                const requestId = paymentIntent.metadata.requestId;
+                console.log(`Hiring payment succeeded for hirerId: ${hirerId}, hiredId: ${hiredId}`);
+                let hirer, hired;
+                [error, hirer] = await (0, await_to_ts_1.default)(userModel_1.default.findById(hirerId));
+                if (error)
+                    throw error;
+                if (!hirer) {
+                    console.error(`User not found for ID: ${hirerId}`);
+                    return res.status(http_status_codes_1.StatusCodes.OK).send();
+                }
+                [error, hired] = await (0, await_to_ts_1.default)(userModel_1.default.findById(hiredId));
+                if (error)
+                    throw error;
+                if (!hired) {
+                    console.error(`Hired not found for ID: ${hiredId}`);
+                    return res.status(http_status_codes_1.StatusCodes.OK).send();
+                }
+                const hirerRequest = hirer.requests.find((r) => r.id === requestId);
+                const hiredRequest = hired.requests.find((r) => r.id === requestId);
+                hirerRequest.status = enum_1.RequestStatus.COMPLETED;
+                hiredRequest.status = enum_1.RequestStatus.COMPLETED;
+                [error] = await (0, await_to_ts_1.default)(hirer.save());
+                if (error)
+                    throw error;
+                [error] = await (0, await_to_ts_1.default)(hired.save());
+                if (error)
+                    throw error;
             }
-            console.log(user);
-            [error, event] = await (0, await_to_ts_1.default)(eventModel_1.default.findById(eventId));
-            if (error)
-                throw error;
-            if (!event) {
-                console.error(`Event not found for ID: ${eventId}`);
-                return res.status(http_status_codes_1.StatusCodes.OK).send();
-            }
-            console.log(event);
-            [error, eventHost] = await (0, await_to_ts_1.default)(userModel_1.default.findById(event.host));
-            if (error)
-                throw error;
-            if (!eventHost) {
-                console.error(`Event host not found for ID: ${event.host}`);
-                return res.status(http_status_codes_1.StatusCodes.OK).send();
-            }
-            console.log(eventHost);
-            const ticket = {
-                event: event._id,
-                title: event.title,
-                description: event.description,
-                cover: event.cover,
-                map: event.map,
-                date: event.date,
-                quantity: Number.parseInt(quantity),
-                customId: (0, uuid_1.v4)(),
-            };
-            user.tickets?.push(ticket);
-            console.log(user.tickets);
-            const guest = {
-                user: new mongoose_1.Types.ObjectId(userId),
-                event: new mongoose_1.Types.ObjectId(eventId),
-                name: user.name,
-                avatar: user.avatar ?? null,
-                quantity: Number.parseInt(quantity),
-                eventTitle: event.title,
-                eventDate: event.date,
-            };
-            eventHost.guests?.push(guest);
-            await Promise.all([
-                user.save(),
-                eventHost.save(),
-                eventModel_1.default.updateOne({ _id: eventId }, {
-                    $inc: {
-                        ticketSell: quantity,
-                        availableTickets: -quantity,
+            if (type === enum_1.TransactionSubject.TICKET) {
+                const quantity = paymentIntent.metadata.quantity;
+                const userId = paymentIntent.metadata.userId;
+                const eventId = paymentIntent.metadata.eventId;
+                console.log(`Payment succeeded for userId: ${userId}, eventId: ${eventId}`);
+                [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userId));
+                if (error)
+                    throw error;
+                if (!user) {
+                    console.error(`User not found for ID: ${userId}`);
+                    return res.status(http_status_codes_1.StatusCodes.OK).send();
+                }
+                console.log(user);
+                [error, event] = await (0, await_to_ts_1.default)(eventModel_1.default.findById(eventId));
+                if (error)
+                    throw error;
+                if (!event) {
+                    console.error(`Event not found for ID: ${eventId}`);
+                    return res.status(http_status_codes_1.StatusCodes.OK).send();
+                }
+                console.log(event);
+                [error, eventHost] = await (0, await_to_ts_1.default)(userModel_1.default.findById(event.host));
+                if (error)
+                    throw error;
+                if (!eventHost) {
+                    console.error(`Event host not found for ID: ${event.host}`);
+                    return res.status(http_status_codes_1.StatusCodes.OK).send();
+                }
+                console.log(eventHost);
+                const ticket = {
+                    event: event._id,
+                    title: event.title,
+                    description: event.description,
+                    cover: event.cover,
+                    map: event.map,
+                    date: event.date,
+                    quantity: Number.parseInt(quantity),
+                    customId: (0, uuid_1.v4)(),
+                };
+                user.tickets?.push(ticket);
+                console.log(user.tickets);
+                const guest = {
+                    user: new mongoose_1.Types.ObjectId(userId),
+                    event: new mongoose_1.Types.ObjectId(eventId),
+                    name: user.name,
+                    avatar: user.avatar ?? null,
+                    quantity: Number.parseInt(quantity),
+                    eventTitle: event.title,
+                    eventDate: event.date,
+                };
+                eventHost.guests?.push(guest);
+                user.notifications = user.notifications || [];
+                const notification = {
+                    types: enum_1.NotificationType.TICKET,
+                    metadata: {
+                        eventTitle: event.title,
+                        eventId: event._id,
                     },
-                }),
-            ]);
+                };
+                user.notifications.push(notification);
+                await Promise.all([
+                    user.save(),
+                    eventHost.save(),
+                    eventModel_1.default.updateOne({ _id: eventId }, {
+                        $inc: {
+                            ticketSell: quantity,
+                            availableTickets: -quantity,
+                        },
+                    }),
+                ]);
+            }
+            res.status(http_status_codes_1.StatusCodes.OK).send();
         }
-        res.status(http_status_codes_1.StatusCodes.OK).send();
     }
     catch (error) {
         console.log(error);

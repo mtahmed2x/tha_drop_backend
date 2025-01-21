@@ -25,6 +25,25 @@ const get = async (req, res, next) => {
         return next(error);
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: user });
 };
+const getById = async (req, res, next) => {
+    const userid = req.params.id;
+    const [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userid)
+        .select("-schedule -tickets -requests -guests -notifications")
+        .populate({ path: "auth", select: "email role isApproved isBlocked" })
+        .lean());
+    user.avatar = user.avatar || "";
+    if (!user.dateOfBirth)
+        user.dateOfBirth = null;
+    if (!user.address)
+        user.address = null;
+    if (!user.gender)
+        user.gender = null;
+    if (!user.ratePerHour)
+        user.ratePerHour = null;
+    if (error)
+        return next(error);
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: user });
+};
 const getAllUsers = async (req, res, next) => {
     const role = req.query.role;
     const isApproved = req.query.isApproved === "true";
@@ -148,7 +167,8 @@ const update = async (req, res, next) => {
     if (!user)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User Not Found"));
     if (avatarUrl) {
-        await cloudinary_1.default.remove(user.avatar);
+        if (user.avatar)
+            await cloudinary_1.default.remove(user.avatar);
         user.avatar = avatarUrl;
     }
     if (licenseUrl) {
@@ -229,6 +249,7 @@ const unblock = async (req, res, next) => {
 };
 const UserController = {
     get,
+    getById,
     getAllUsers,
     update,
     approve,

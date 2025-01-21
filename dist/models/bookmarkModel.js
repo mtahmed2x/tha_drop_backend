@@ -8,6 +8,7 @@ const bookMarkSchema = new mongoose_1.Schema({
     },
     event: {
         type: [mongoose_1.Schema.Types.ObjectId],
+        ref: "Event",
         required: true,
     },
 });

@@ -10,6 +10,7 @@ const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const http_status_codes_1 = require("http-status-codes");
 const userModel_1 = __importDefault(require("../models/userModel"));
+const enum_1 = require("../shared/enum");
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const buyTicket = async (req, res, next) => {
     const userId = req.user.userId;
@@ -48,6 +49,7 @@ const buyTicket = async (req, res, next) => {
                 destination: eventHost.stripeAccountId,
             },
             metadata: {
+                type: enum_1.TransactionSubject.TICKET,
                 quantity: Number.parseInt(quantity),
                 userId: userId,
                 eventId: eventId,
