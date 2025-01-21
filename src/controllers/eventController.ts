@@ -130,62 +130,48 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   const { title, organizer, description, coverUrl, currentGalleryUrls, galleryUrls, availableTickets, deadline } =
     req.body;
 
-  try {
-    // Fetch the event
-    const event = await Event.findById(id);
-    if (!event) {
-      return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
-    }
+  let error, event: EventSchema | null;
+  [error, event] = await to(Event.findById(id));
+  if (error) return next(error);
+  if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
 
-    // Update title and description, if provided
-    if (title || description) {
-      const updatedTitle = title || event.title;
-      const updatedDescription = description || event.description;
+  console.log(event);
 
-      await stripe.products.update(event.productId, {
-        name: updatedTitle,
-        description: updatedDescription,
-      });
+  if (title || description) {
+    event.title = title || event.title;
+    event.description = description || event.description;
 
-      event.title = updatedTitle;
-      event.description = updatedDescription;
-    }
-
-    // Update other fields
-    event.organizer = organizer || event.organizer;
-    event.deadline = deadline || event.deadline;
-    event.availableTickets = availableTickets || event.availableTickets;
-
-    // Handle cover image update
-    if (coverUrl) {
-      if (event.cover) {
-        await Cloudinary.remove(event.cover);
-      }
-      event.cover = coverUrl;
-    }
-
-    // Handle gallery update
-    const currentGallery = currentGalleryUrls || [];
-    const newGallery = galleryUrls || [];
-
-    // Remove images not in the updated gallery
-    const imagesToRemove = (event.gallery as GalleryURL).filter((url) => !currentGallery.includes(url));
-    await Promise.all(imagesToRemove.map((url) => Cloudinary.remove(url)));
-
-    // Update gallery
-    event.gallery = [...currentGallery, ...newGallery];
-
-    // Save changes
-    await event.save();
-
-    return res.status(StatusCodes.OK).json({
-      success: true,
-      message: "Success",
-      data: event, // Consider sanitizing the response
-    });
-  } catch (error) {
-    return next(error);
+    [error] = await to(stripe.products.update(event.productId, { name: title, description: description }));
+    if (error) return next(error);
   }
+
+  event.organizer = organizer || event.organizer;
+  event.deadline = deadline || event.deadline;
+  event.availableTickets = availableTickets || event.availableTickets;
+  event.gallery = currentGalleryUrls;
+
+  if (coverUrl) {
+    if (event.cover !== null && event.cover !== "") {
+      await Cloudinary.remove(event.cover);
+    }
+    event.cover = coverUrl;
+  }
+
+  if (currentGalleryUrls) {
+    event.gallery = currentGalleryUrls;
+  } else {
+    event.gallery = [];
+  }
+  if (galleryUrls) {
+    (galleryUrls as GalleryURL).forEach((gallery) => {
+      event?.gallery?.push(gallery);
+    });
+  }
+
+  [error, event] = await to(event.save());
+  if (error) return next(error);
+
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
 };
 
 const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
