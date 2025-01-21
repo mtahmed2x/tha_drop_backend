@@ -7,7 +7,7 @@ import fileHandler from "@middlewares/fileHandler";
 import EventServices from "@services/eventServices";
 
 const EventRouter = express.Router();
-
+EventRouter.get("/search", authorize, EventController.search);
 EventRouter.post("/buy-ticket", authorize, EventServices.buyTicket);
 EventRouter.post("/create", fileUpload(), fileHandler, authorize, EventController.create);
 

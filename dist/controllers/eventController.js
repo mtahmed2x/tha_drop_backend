@@ -8,6 +8,7 @@ const http_status_codes_1 = require("http-status-codes");
 const eventModel_1 = __importDefault(require("../models/eventModel"));
 const stripe_1 = __importDefault(require("stripe"));
 const http_errors_1 = __importDefault(require("http-errors"));
+const cloudinary_1 = __importDefault(require("../shared/cloudinary"));
 const subCategoryModel_1 = __importDefault(require("../models/subCategoryModel"));
 const mongoose_1 = require("mongoose");
 const bookmarkModel_1 = __importDefault(require("../models/bookmarkModel"));
@@ -102,7 +103,7 @@ const getAll = async (req, res, next) => {
 };
 const update = async (req, res, next) => {
     const id = req.params.id;
-    const { title, organizer, description, coverUrl, galleryUrls, availableTickets, deadline } = req.body;
+    const { title, organizer, description, coverUrl, currentGalleryUrls, galleryUrls, availableTickets, deadline } = req.body;
     let error, event;
     [error, event] = await (0, await_to_ts_1.default)(eventModel_1.default.findById(id));
     if (error)
@@ -120,13 +121,28 @@ const update = async (req, res, next) => {
     event.organizer = organizer || event.organizer;
     event.deadline = deadline || event.deadline;
     event.availableTickets = availableTickets || event.availableTickets;
+    event.gallery = currentGalleryUrls;
     if (coverUrl) {
-        // await Cloudinary.remove(coverUrl);
+        if (event.cover !== null && event.cover !== "") {
+            await cloudinary_1.default.remove(event.cover);
+        }
         event.cover = coverUrl;
     }
+    if (currentGalleryUrls) {
+        event.gallery.map(async (gallery) => {
+            if (!currentGalleryUrls.includes(gallery)) {
+                await cloudinary_1.default.remove(gallery);
+            }
+        });
+        event.gallery = currentGalleryUrls;
+    }
+    else {
+        event.gallery = [];
+    }
     if (galleryUrls) {
-        // await Cloudinary.remove(galleryUrls);
-        event.gallery = galleryUrls;
+        galleryUrls.forEach((gallery) => {
+            event?.gallery?.push(gallery);
+        });
     }
     [error, event] = await (0, await_to_ts_1.default)(event.save());
     if (error)
@@ -142,10 +158,37 @@ const remove = async (req, res, next) => {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Event Not Found"));
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: {} });
 };
+const search = async (req, res, next) => {
+    const searchTerm = req.query.q;
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    if (!searchTerm || searchTerm.trim() === "") {
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "Search term is required"));
+    }
+    const regex = new RegExp(searchTerm, "i");
+    const [error, events] = await (0, await_to_ts_1.default)(eventModel_1.default.find({ title: { $regex: regex } })
+        .populate({ path: "host", select: "name" })
+        .populate({ path: "category", select: "title" })
+        .populate({ path: "subCategory", select: "title" })
+        .skip((page - 1) * limit)
+        .limit(limit)
+        .lean());
+    if (error)
+        return next(error);
+    if (!events || events.length === 0) {
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "No events found matching the search term"));
+    }
+    return res.status(http_status_codes_1.StatusCodes.OK).json({
+        success: true,
+        message: "Success",
+        data: events,
+    });
+};
 const EventController = {
     create,
     get,
     getAll,
+    search,
     update,
     remove,
 };
