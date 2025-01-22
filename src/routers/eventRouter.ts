@@ -13,7 +13,7 @@ EventRouter.post("/event-payment", authorize, EventServices.eventPayment);
 EventRouter.post("/create", fileUpload(), fileHandler, authorize, EventController.create);
 EventRouter.get("/:id", authorize, EventController.get);
 EventRouter.get("/", EventController.getAll);
-EventRouter.patch("/update/:id", fileUpload(), fileHandler, authorize, EventController.update);
+EventRouter.put("/update/:id", fileUpload(), fileHandler, authorize, EventController.update);
 EventRouter.delete("/delete/:id", authorize, EventController.remove);
 
 export default EventRouter;

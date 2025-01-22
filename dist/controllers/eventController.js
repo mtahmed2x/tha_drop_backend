@@ -18,6 +18,7 @@ const create = async (req, res, next) => {
     const { title, organizer, categoryId, subCategoryId, date, description, coverUrl, galleryUrls, deadline, location, latitude, longitude, } = req.body;
     const ticketPrice = parseInt(req.body.ticketPrice);
     const availableTickets = parseInt(req.body.availableTickets);
+    console.log("gallery: ", galleryUrls);
     let error, product, price, event, subCategory;
     [error, product] = await (0, await_to_ts_1.default)(stripe.products.create({
         name: title,
@@ -103,14 +104,19 @@ const getAll = async (req, res, next) => {
 };
 const update = async (req, res, next) => {
     const id = req.params.id;
-    const { title, organizer, description, coverUrl, currentGalleryUrls, galleryUrls, availableTickets, deadline } = req.body;
+    const { title, organizer, description, coverUrl, galleryUrls, availableTickets, deadline } = req.body;
+    let currentGalleryUrls = [];
+    if (req.body.currentGalleryUrls) {
+        currentGalleryUrls = JSON.parse(req.body.currentGalleryUrls);
+    }
+    console.log("currentGalleryUrls: ", currentGalleryUrls);
+    console.log("gallery: ", galleryUrls);
     let error, event;
     [error, event] = await (0, await_to_ts_1.default)(eventModel_1.default.findById(id));
     if (error)
         return next(error);
     if (!event)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Event Not Found"));
-    console.log(event);
     if (title || description) {
         event.title = title || event.title;
         event.description = description || event.description;
@@ -121,7 +127,6 @@ const update = async (req, res, next) => {
     event.organizer = organizer || event.organizer;
     event.deadline = deadline || event.deadline;
     event.availableTickets = availableTickets || event.availableTickets;
-    event.gallery = currentGalleryUrls;
     if (coverUrl) {
         if (event.cover !== null && event.cover !== "") {
             await cloudinary_1.default.remove(event.cover);
@@ -134,14 +139,19 @@ const update = async (req, res, next) => {
     else {
         event.gallery = [];
     }
-    if (galleryUrls) {
-        galleryUrls.forEach((gallery) => {
-            event?.gallery?.push(gallery);
-        });
+    if (Array.isArray(galleryUrls)) {
+        for (const galleryUrl of galleryUrls) {
+            console.log(galleryUrl);
+            event.gallery.push(galleryUrl);
+        }
+    }
+    else {
+        event.gallery.push(galleryUrls);
     }
     [error, event] = await (0, await_to_ts_1.default)(event.save());
     if (error)
         return next(error);
+    console.log(event);
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: event });
 };
 const remove = async (req, res, next) => {

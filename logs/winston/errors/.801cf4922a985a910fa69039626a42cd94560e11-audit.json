@@ -164,6 +164,11 @@
             "date": 1737543986305,
             "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-22-17-error.log",
             "hash": "f25404276324ebaa3a0480e9101e99d5822de78b2aa2ee5d2bc429ac54629bbb"
+        },
+        {
+            "date": 1737547314115,
+            "name": "/home/mir/dev/projects/tha_drop_backend/logs/winston/errors/um-2025-01-22-18-error.log",
+            "hash": "993689acafd0a2ffc06bdce19250bbb44de4f25d4d6f9f08f44462e9ca3afa31"
         }
     ],
     "hashType": "sha256"

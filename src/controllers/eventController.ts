@@ -31,6 +31,8 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   const ticketPrice = parseInt(req.body.ticketPrice);
   const availableTickets = parseInt(req.body.availableTickets);
 
+  console.log("gallery: ", galleryUrls);
+
   let error, product, price, event, subCategory;
   [error, product] = await to(
     stripe.products.create({
@@ -127,15 +129,19 @@ type GalleryURL = string[];
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const id = req.params.id;
-  const { title, organizer, description, coverUrl, currentGalleryUrls, galleryUrls, availableTickets, deadline } =
-    req.body;
+  const { title, organizer, description, coverUrl, galleryUrls, availableTickets, deadline } = req.body;
+  let currentGalleryUrls: GalleryURL = [];
+  if (req.body.currentGalleryUrls) {
+    currentGalleryUrls = JSON.parse(req.body.currentGalleryUrls);
+  }
+
+  console.log("currentGalleryUrls: ", currentGalleryUrls);
+  console.log("gallery: ", galleryUrls);
 
   let error, event: EventSchema | null;
   [error, event] = await to(Event.findById(id));
   if (error) return next(error);
   if (!event) return next(createError(StatusCodes.NOT_FOUND, "Event Not Found"));
-
-  console.log(event);
 
   if (title || description) {
     event.title = title || event.title;
@@ -148,7 +154,6 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   event.organizer = organizer || event.organizer;
   event.deadline = deadline || event.deadline;
   event.availableTickets = availableTickets || event.availableTickets;
-  event.gallery = currentGalleryUrls;
 
   if (coverUrl) {
     if (event.cover !== null && event.cover !== "") {
@@ -162,14 +167,20 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   } else {
     event.gallery = [];
   }
-  if (galleryUrls) {
-    (galleryUrls as GalleryURL).forEach((gallery) => {
-      event?.gallery?.push(gallery);
-    });
+
+  if (Array.isArray(galleryUrls)) {
+    for (const galleryUrl of galleryUrls) {
+      console.log(galleryUrl);
+      event.gallery!.push(galleryUrl);
+    }
+  } else {
+    event.gallery!.push(galleryUrls);
   }
 
   [error, event] = await to(event.save());
   if (error) return next(error);
+
+  console.log(event);
 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: event });
 };

@@ -16,6 +16,6 @@ EventRouter.post("/event-payment", authorization_1.authorize, eventServices_1.de
 EventRouter.post("/create", (0, express_fileupload_1.default)(), fileHandler_1.default, authorization_1.authorize, eventController_1.default.create);
 EventRouter.get("/:id", authorization_1.authorize, eventController_1.default.get);
 EventRouter.get("/", eventController_1.default.getAll);
-EventRouter.patch("/update/:id", (0, express_fileupload_1.default)(), fileHandler_1.default, authorization_1.authorize, eventController_1.default.update);
+EventRouter.put("/update/:id", (0, express_fileupload_1.default)(), fileHandler_1.default, authorization_1.authorize, eventController_1.default.update);
 EventRouter.delete("/delete/:id", authorization_1.authorize, eventController_1.default.remove);
 exports.default = EventRouter;
