@@ -41,7 +41,7 @@ const eventPayment = async (req: Request, res: Response, next: NextFunction): Pr
       mode: "payment",
       payment_intent_data: {
         transfer_data: {
-          destination: "acct_1Qh2474DMqdfWurG",
+          destination: "acct_1Qk0qnQPxMiG4NyV",
         },
         metadata: {
           type: TransactionSubject.EVENT,

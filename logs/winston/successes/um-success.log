@@ -1311,3 +1311,7 @@ NotFoundError: No requests found
     at acceptRequest (/home/mir/dev/projects/tha_drop_backend/src/services/hiringServices.ts:264:26)
     at processTicksAndRejections (node:internal/process/task_queues:105:5)
 NotFoundError
+Wed Jan 22 2025 16:4:43 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 22 2025 16:4:43 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
+Wed Jan 22 2025 16:10:24 [Tha Drop] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 22 2025 16:10:24 [Tha Drop] [32minfo[39m: Server is running at PORT: 8080
