@@ -21,4 +21,5 @@ export type EventSchema = Document & {
     latitude: number;
     longitude: number;
   };
+  paid: boolean;
 };

@@ -9,8 +9,8 @@ import EventServices from "@services/eventServices";
 const EventRouter = express.Router();
 EventRouter.get("/search", authorize, EventController.search);
 EventRouter.post("/buy-ticket", authorize, EventServices.buyTicket);
+EventRouter.post("/event-payment", authorize, EventServices.eventPayment);
 EventRouter.post("/create", fileUpload(), fileHandler, authorize, EventController.create);
-
 EventRouter.get("/:id", authorize, EventController.get);
 EventRouter.get("/", EventController.getAll);
 EventRouter.put("/update/:id", fileUpload(), fileHandler, authorize, EventController.update);

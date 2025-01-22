@@ -25,6 +25,7 @@ export enum RequestStatus {
 }
 
 export enum TransactionSubject {
+  EVENT = "EVENT",
   TICKET = "TICKET",
   HIRING = "HIRING",
 }

@@ -322,7 +322,7 @@ const pay = async (req: Request, res: Response, next: NextFunction): Promise<any
       mode: "payment",
       payment_intent_data: {
         transfer_data: {
-          destination: hired.stripeAccountId,
+          destination: "acct_1Qh2474DMqdfWurG",
         },
         metadata: {
           type: TransactionSubject.HIRING,

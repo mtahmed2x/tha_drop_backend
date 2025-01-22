@@ -79,6 +79,10 @@ const eventSchema = new Schema<EventSchema>(
         required: true,
       },
     },
+    paid: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

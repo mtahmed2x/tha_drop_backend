@@ -62,6 +62,21 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
       const paymentIntent = webhook_event.data.object as Stripe.PaymentIntent;
 
       const type = paymentIntent.metadata.type;
+
+      if (type == TransactionSubject.EVENT) {
+        const eventId = paymentIntent.metadata.eventId;
+        console.log(`Ticket payment succeeded for eventId: ${eventId}`);
+        [error, event] = await to(Event.findById(eventId));
+        if (error) throw error;
+        if (!event) {
+          console.error(`Event not found for ID: ${eventId}`);
+          return res.status(StatusCodes.OK).send();
+        }
+        event.paid = true;
+        [error] = await to(event.save());
+        if (error) throw error;
+      }
+
       if (type === TransactionSubject.HIRING) {
         const hirerId = paymentIntent.metadata.hirerId;
         const hiredId = paymentIntent.metadata.hiredId;
