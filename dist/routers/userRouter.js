@@ -14,6 +14,7 @@ const router = express_1.default.Router();
 router.post("/link-account", authorization_1.authorize, stripeServices_1.default.linkStripeAccount);
 router.put("/update-schedule", authorization_1.authorize, userServices_1.default.updateSchedule);
 router.get("/my-schedule", authorization_1.authorize, userServices_1.default.getMySchedules);
+router.get("/my-events", authorization_1.authorize, userServices_1.default.getMyEvents);
 router.get("/my-tickets", authorization_1.authorize, userServices_1.default.getMyTickets);
 router.get("/my-guests", authorization_1.authorize, userServices_1.default.getMyGuests);
 router.get("/my-reviews", authorization_1.authorize, userServices_1.default.getMyReviews);

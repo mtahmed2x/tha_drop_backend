@@ -10,6 +10,7 @@ const http_errors_1 = __importDefault(require("http-errors"));
 const tileUtils_1 = __importDefault(require("../utils/tileUtils"));
 const stripe_1 = __importDefault(require("stripe"));
 const enum_1 = require("../shared/enum");
+const eventModel_1 = __importDefault(require("../models/eventModel"));
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const getMyTickets = async (req, res, next) => {
     const userId = req.user.userId;
@@ -46,6 +47,23 @@ const getMySchedules = async (req, res, next) => {
         };
     });
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: schedules });
+};
+const getMyEvents = async (req, res, next) => {
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const userId = req.user.userId;
+    const [error, events] = await (0, await_to_ts_1.default)(eventModel_1.default.find({ host: userId })
+        .populate({ path: "host", select: "name" })
+        .populate({ path: "category", select: "title" })
+        .populate({ path: "subCategory", select: "title" })
+        .skip((page - 1) * limit)
+        .limit(limit)
+        .lean());
+    if (error)
+        return next(error);
+    if (events.length === 0)
+        return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "No event found", data: events });
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: events });
 };
 const getMyRequests = async (req, res, next) => {
     const userId = req.user.userId;
@@ -106,6 +124,7 @@ const getMyReviews = async (req, res, next) => {
 };
 const UserServices = {
     updateSchedule,
+    getMyEvents,
     getMyRequests,
     getMyTickets,
     getMyGuests,

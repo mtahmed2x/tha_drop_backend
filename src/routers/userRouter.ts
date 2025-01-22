@@ -10,6 +10,7 @@ const router = express.Router();
 router.post("/link-account", authorize, StripeServices.linkStripeAccount);
 router.put("/update-schedule", authorize, UserServices.updateSchedule);
 router.get("/my-schedule", authorize, UserServices.getMySchedules);
+router.get("/my-events", authorize, UserServices.getMyEvents);
 router.get("/my-tickets", authorize, UserServices.getMyTickets);
 router.get("/my-guests", authorize, UserServices.getMyGuests);
 router.get("/my-reviews", authorize, UserServices.getMyReviews);

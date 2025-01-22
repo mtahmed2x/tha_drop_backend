@@ -6,6 +6,7 @@ import createError from "http-errors";
 import TimeUtils from "@utils/tileUtils";
 import Stripe from "stripe";
 import { RequestType } from "@shared/enum";
+import Event from "@models/eventModel";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const getMyTickets = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -45,6 +46,25 @@ const getMySchedules = async (req: Request, res: Response, next: NextFunction): 
   });
 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: schedules });
+};
+
+const getMyEvents = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
+  const userId = req.user.userId;
+  const [error, events] = await to(
+    Event.find({ host: userId })
+      .populate({ path: "host", select: "name" })
+      .populate({ path: "category", select: "title" })
+      .populate({ path: "subCategory", select: "title" })
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .lean()
+  );
+  if (error) return next(error);
+  if (events.length === 0)
+    return res.status(StatusCodes.OK).json({ success: true, message: "No event found", data: events });
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: events });
 };
 
 const getMyRequests = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -117,6 +137,7 @@ const getMyReviews = async (req: Request, res: Response, next: NextFunction): Pr
 
 const UserServices = {
   updateSchedule,
+  getMyEvents,
   getMyRequests,
   getMyTickets,
   getMyGuests,
