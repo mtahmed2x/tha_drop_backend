@@ -43,7 +43,7 @@ const eventPayment = async (req, res, next) => {
         mode: "payment",
         payment_intent_data: {
             transfer_data: {
-                destination: "acct_1Qk0qnQPxMiG4NyV",
+                destination: "acct_1Qk5tvQQgGTysg4j",
             },
             metadata: {
                 type: enum_1.TransactionSubject.EVENT,
