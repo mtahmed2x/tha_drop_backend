@@ -290,7 +290,7 @@ const pay = async (req, res, next) => {
         mode: "payment",
         payment_intent_data: {
             transfer_data: {
-                destination: hired.stripeAccountId,
+                destination: "acct_1Qh2474DMqdfWurG",
             },
             metadata: {
                 type: enum_1.TransactionSubject.HIRING,

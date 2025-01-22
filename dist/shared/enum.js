@@ -29,6 +29,7 @@ var RequestStatus;
 })(RequestStatus || (exports.RequestStatus = RequestStatus = {}));
 var TransactionSubject;
 (function (TransactionSubject) {
+    TransactionSubject["EVENT"] = "EVENT";
     TransactionSubject["TICKET"] = "TICKET";
     TransactionSubject["HIRING"] = "HIRING";
 })(TransactionSubject || (exports.TransactionSubject = TransactionSubject = {}));

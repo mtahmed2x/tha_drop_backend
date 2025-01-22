@@ -12,6 +12,7 @@ const eventServices_1 = __importDefault(require("../services/eventServices"));
 const EventRouter = express_1.default.Router();
 EventRouter.get("/search", authorization_1.authorize, eventController_1.default.search);
 EventRouter.post("/buy-ticket", authorization_1.authorize, eventServices_1.default.buyTicket);
+EventRouter.post("/event-payment", authorization_1.authorize, eventServices_1.default.eventPayment);
 EventRouter.post("/create", (0, express_fileupload_1.default)(), fileHandler_1.default, authorization_1.authorize, eventController_1.default.create);
 EventRouter.get("/:id", authorization_1.authorize, eventController_1.default.get);
 EventRouter.get("/", eventController_1.default.getAll);

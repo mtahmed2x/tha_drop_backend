@@ -78,6 +78,10 @@ const eventSchema = new mongoose_1.Schema({
             required: true,
         },
     },
+    paid: {
+        type: Boolean,
+        default: false,
+    },
 }, { timestamps: true });
 const Event = (0, mongoose_1.model)("Event", eventSchema);
 exports.default = Event;

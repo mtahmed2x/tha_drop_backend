@@ -12,6 +12,52 @@ const http_status_codes_1 = require("http-status-codes");
 const userModel_1 = __importDefault(require("../models/userModel"));
 const enum_1 = require("../shared/enum");
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
+const eventPayment = async (req, res, next) => {
+    const userId = req.user.userId;
+    const eventId = req.body.eventId;
+    let error, user, event, session;
+    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userId));
+    if (error)
+        return next(error);
+    if (!user)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
+    [error, event] = await (0, await_to_ts_1.default)(eventModel_1.default.findById(eventId));
+    if (error)
+        return next(error);
+    if (!event)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Event not found"));
+    [error, session] = await (0, await_to_ts_1.default)(stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: [
+            {
+                price_data: {
+                    currency: "usd",
+                    product_data: {
+                        name: "Event Payment",
+                    },
+                    unit_amount: 20 * 100,
+                },
+                quantity: 1,
+            },
+        ],
+        mode: "payment",
+        payment_intent_data: {
+            transfer_data: {
+                destination: "acct_1Qh2474DMqdfWurG",
+            },
+            metadata: {
+                type: enum_1.TransactionSubject.EVENT,
+                userId: userId,
+                eventId: eventId,
+            },
+        },
+        success_url: `https://example.com/success`,
+        cancel_url: `https://example.com/cancel`,
+    }));
+    if (error)
+        return next(error);
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: session });
+};
 const buyTicket = async (req, res, next) => {
     const userId = req.user.userId;
     const quantity = req.body.quantity;
@@ -64,5 +110,6 @@ const buyTicket = async (req, res, next) => {
 };
 const EventServices = {
     buyTicket,
+    eventPayment,
 };
 exports.default = EventServices;

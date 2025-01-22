@@ -61,6 +61,21 @@ const webhook = async (req, res, next) => {
         if (webhook_event.type === "payment_intent.succeeded") {
             const paymentIntent = webhook_event.data.object;
             const type = paymentIntent.metadata.type;
+            if (type == enum_1.TransactionSubject.EVENT) {
+                const eventId = paymentIntent.metadata.eventId;
+                console.log(`Ticket payment succeeded for eventId: ${eventId}`);
+                [error, event] = await (0, await_to_ts_1.default)(eventModel_1.default.findById(eventId));
+                if (error)
+                    throw error;
+                if (!event) {
+                    console.error(`Event not found for ID: ${eventId}`);
+                    return res.status(http_status_codes_1.StatusCodes.OK).send();
+                }
+                event.paid = true;
+                [error] = await (0, await_to_ts_1.default)(event.save());
+                if (error)
+                    throw error;
+            }
             if (type === enum_1.TransactionSubject.HIRING) {
                 const hirerId = paymentIntent.metadata.hirerId;
                 const hiredId = paymentIntent.metadata.hiredId;

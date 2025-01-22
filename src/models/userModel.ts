@@ -18,9 +18,11 @@ const userSchema = new Schema<UserSchema>({
   },
   address: {
     type: String,
+    default: "",
   },
   dateOfBirth: {
     type: String,
+    default: "",
   },
   gender: {
     type: String,
@@ -28,6 +30,7 @@ const userSchema = new Schema<UserSchema>({
   },
   avatar: {
     type: String,
+    default: "",
   },
   licensePhoto: {
     type: String,
@@ -39,10 +42,11 @@ const userSchema = new Schema<UserSchema>({
   },
   resturentName: {
     type: String,
+    default: "",
   },
   ratePerHour: {
     type: Number,
-    default: null,
+    default: 0,
   },
   averageRating: {
     type: Number,
