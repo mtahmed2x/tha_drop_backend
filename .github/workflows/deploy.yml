@@ -62,6 +62,7 @@ jobs:
               -e CLOUD_API_SECRET="${{ secrets.CLOUD_API_SECRET }}" \
               -e CLOUD_NAME="${{ secrets.CLOUD_NAME }}" \
               -e JWT_ACCESS_SECRET="${{ secrets.JWT_ACCESS_SECRET }}" \
+              -e MAIL_KEY="${{ secrets.MAIL_KEY }}" \
               -e MAIL_HOST="${{ secrets.MAIL_HOST }}" \
               -e MAIL_PASSWORD="${{ secrets.MAIL_PASSWORD }}" \
               -e MAIL_USERNAME="${{ secrets.MAIL_USERNAME }}" \
