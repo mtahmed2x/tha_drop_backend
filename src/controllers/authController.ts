@@ -8,7 +8,7 @@ import { Request, Response, NextFunction } from "express";
 import Auth from "@models/authModel";
 import User from "@models/userModel";
 import { Role } from "@shared/enum";
-import sendEmail from "@utils/sendEmail";
+import sendEmail, { sendEmailByMailGun } from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
 import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -58,7 +58,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
     await session.commitTransaction();
 
-    await sendEmail(email, verificationOTP);
+    await sendEmailByMailGun(email, verificationOTP);
 
     return res.status(StatusCodes.CREATED).json({
       success: true,
@@ -116,7 +116,7 @@ const resendOTP = async (req: Request, res: Response, next: NextFunction): Promi
     auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
     [error] = await to(auth.save());
     if (error) return next(error);
-    sendEmail(email, verificationOTP);
+    sendEmailByMailGun(email, verificationOTP);
   }
 
   if (status === "recovery") {
@@ -125,7 +125,7 @@ const resendOTP = async (req: Request, res: Response, next: NextFunction): Promi
     auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
     [error] = await to(auth.save());
     if (error) return next(error);
-    sendEmail(email, recoveryOTP);
+    sendEmailByMailGun(email, recoveryOTP);
   }
 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { verificationOTP, recoveryOTP } });
@@ -175,7 +175,7 @@ const forgotPassword = async (req: Request, res: Response, next: NextFunction): 
   auth.recoveryOTP = recoveryOTP;
   auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
   await auth.save();
-  await sendEmail(email, recoveryOTP);
+  await sendEmailByMailGun(email, recoveryOTP);
 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
 };

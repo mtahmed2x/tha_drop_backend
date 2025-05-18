@@ -1,6 +1,8 @@
 import nodemailer from "nodemailer";
 import to from "await-to-ts";
 import "dotenv/config";
+import FormData from "form-data";
+import Mailgun from "mailgun.js";
 
 const currentDate = new Date();
 
@@ -28,6 +30,26 @@ const sendEmail = async (email: string, verificationOTP: string) => {
   const [error, info] = await to(transporter.sendMail(mailOptions));
   if (error) throw new Error(`Failed to send email: ${error.message}`);
   console.log(`Email sent: ${info.response}`);
+};
+
+export const sendEmailByMailGun = async (email: string, verificationOTP: string) => {
+  const mailgun = new Mailgun(FormData);
+  const mg = mailgun.client({
+    username: "api",
+    key: process.env.MAIL_KEY!,
+  });
+  try {
+    const data = await mg.messages.create("postmaster@sandbox64bd86a8903a4b7b9b587d91f288de31.mailgun.org", {
+      from: "The Drop <thedrop@postmaster@sandbox64bd86a8903a4b7b9b587d91f288de31.mailgun.org>",
+      to: [`<${email}>`],
+      subject: "Verification OTP",
+      text: `Your verification code is ${verificationOTP}`,
+    });
+
+    console.log(data); // logs response data
+  } catch (error) {
+    console.log(error); //logs any error
+  }
 };
 
 export default sendEmail;
