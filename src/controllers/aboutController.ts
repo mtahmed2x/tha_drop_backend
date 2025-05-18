@@ -14,7 +14,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const [error, about] = await to(About.findOne().lean());
   if (error) return next(error);
-  if (!about) return res.status(StatusCodes.OK).json({ success: true, message: "No about us", data: about });
+  if (!about) return res.status(StatusCodes.OK).json({ success: true, message: "No about us found!", data: about });
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: about });
 };
 
